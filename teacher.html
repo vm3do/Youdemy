@@ -30,23 +30,7 @@
             <div class="text-2xl font-bold">
                 <span class="text-primary">You</span>Demy
             </div>
-            <div class="flex items-center gap-6">
-                <div class="hidden md:flex items-center bg-gray-100 rounded-lg px-3 py-2">
-                    <input type="search" placeholder="Search courses..."
-                        class="bg-transparent border-none focus:ring-0 pl-2 pr-4 text-sm w-64">
-                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                </div>
-                <button class="relative">
-                    <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                    </svg>
-                    <span
-                        class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">2</span>
-                </button>
+            <div class="flex items-center gap-4">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                         <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -59,6 +43,15 @@
                         <p class="text-sm text-gray-500">Teacher</p>
                     </div>
                 </div>
+                <div class="h-8 w-px bg-gray-200 mx-2"></div>
+                <a href="index.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 
+                    transition-colors rounded-lg hover:bg-red-50">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    <span>Logout</span>
+                </a>
             </div>
         </div>
     </header>
@@ -104,44 +97,6 @@
                     <h2 class="text-3xl font-bold text-gray-800">847</h2>
                 </div>
             </div>
-
-            <!-- Average Rating -->
-            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-                <div class="flex items-center justify-between mb-4">
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-700">Average Rating</h3>
-                        <p class="text-sm text-gray-500">Course ratings</p>
-                    </div>
-                    <span class="bg-yellow-100 p-3 rounded-xl">
-                        <svg class="w-6 h-6 text-yellow-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-                        </svg>
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <h2 class="text-3xl font-bold text-gray-800">4.8</h2>
-                </div>
-            </div>
-
-            <!-- Total Revenue -->
-            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-                <div class="flex items-center justify-between mb-4">
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-700">Total Revenue</h3>
-                        <p class="text-sm text-gray-500">This month</p>
-                    </div>
-                    <span class="bg-purple-100 p-3 rounded-xl">
-                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <h2 class="text-3xl font-bold text-gray-800">$2,847</h2>
-                </div>
-            </div>
         </div>
 
         <!-- Course Management Section -->
@@ -162,21 +117,53 @@
                 <div class="overflow-x-auto">
                     <table class="w-full">
                         <thead>
-                            <tr class="bg-gray-50 text-left">
-                                <th class="px-6 py-3 text-gray-600 font-semibold">Course</th>
-                                <th class="px-6 py-3 text-gray-600 font-semibold">Students</th>
-                                <th class="px-6 py-3 text-gray-600 font-semibold">Rating</th>
-                                <th class="px-6 py-3 text-gray-600 font-semibold">Status</th>
-                                <th class="px-6 py-3 text-gray-600 font-semibold">Actions</th>
+                            <tr class="text-left bg-primary rounded-lg">
+                                <th class="p-4 text-white font-semibold rounded-tl-lg">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                        </svg>
+                                        Course Details
+                                    </div>
+                                </th>
+                                <th class="p-4 text-white font-semibold">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                        </svg>
+                                        Students
+                                    </div>
+                                </th>
+                                <th class="p-4 text-white font-semibold">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                        </svg>
+                                        Created At
+                                    </div>
+                                </th>
+                                <th class="p-4 text-white font-semibold rounded-tr-lg">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                                        </svg>
+                                        Actions
+                                    </div>
+                                </th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-200">
+                        <tbody class="divide-y divide-gray-100">
                             <!-- Course Row -->
-                            <tr class="hover:bg-gray-50">
+                            <tr class="hover:bg-gray-50/50 transition-colors">
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-4">
-                                        <div class="w-12 h-12 rounded-lg bg-gray-200 flex items-center justify-center">
-                                            <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor"
+                                        <div
+                                            class="w-12 h-12 rounded-xl bg-violet-100 flex items-center justify-center flex-shrink-0">
+                                            <svg class="w-6 h-6 text-violet-600" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                                     d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
@@ -185,92 +172,81 @@
                                             </svg>
                                         </div>
                                         <div>
-                                            <h4 class="font-medium text-gray-800">Web Development Masterclass</h4>
-                                            <p class="text-sm text-gray-500">Programming</p>
+                                            <h4 class="font-medium text-gray-900">Web Development Masterclass</h4>
+                                            <div class="flex items-center gap-2 mt-1">
+                                                <span
+                                                    class="px-2.5 py-0.5 text-xs font-medium text-violet-700 bg-violet-50 rounded-full">
+                                                    Programming
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <div class="flex items-center gap-1">
-                                        <span class="font-medium">234</span>
-                                        <span class="text-gray-500">enrolled</span>
+                                    <div class="flex items-center gap-2">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center">
+                                            <svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <span class="font-semibold text-gray-900">234</span>
+                                            <span class="text-gray-500 text-sm ml-1">students</span>
+                                        </div>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <div class="flex items-center gap-1">
-                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-                                        </svg>
-                                        <span class="font-medium">4.8</span>
+                                    <div class="flex items-center gap-2">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center">
+                                            <svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <span class="text-gray-900">Dec 12, 2023</span>
+                                            <span class="block text-xs text-gray-500">2:30 PM</span>
+                                        </div>
                                     </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span
-                                        class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
-                                        Active
-                                    </span>
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex gap-2">
-                                        <button class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
+                                        <button
+                                            class="p-2 text-violet-600 hover:bg-violet-50 rounded-lg transition-colors group relative">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                             </svg>
+                                            <span
+                                                class="absolute -top-2 -right-2 opacity-0 group-hover:opacity-100 text-xs bg-violet-100 text-violet-800 px-2 py-1 rounded-md transition-opacity whitespace-nowrap">
+                                                Edit Course
+                                            </span>
                                         </button>
-                                        <button class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors">
+
+                                        <button
+                                            class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors group relative">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                             </svg>
+                                            <span
+                                                class="absolute -top-2 -right-2 opacity-0 group-hover:opacity-100 text-xs bg-red-100 text-red-800 px-2 py-1 rounded-md transition-opacity whitespace-nowrap">
+                                                Delete Course
+                                            </span>
                                         </button>
                                     </div>
                                 </td>
                             </tr>
-                            <!-- Add more course rows as needed -->
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
-        <!-- Recent Activity -->
-        <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200 p-6">
-            <h3 class="text-xl font-bold text-gray-800 mb-4">Recent Activity</h3>
-            <div class="space-y-4">
-                <!-- Activity Item -->
-                <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="text-gray-800">New student enrolled in <span class="font-medium">Web Development
-                                Masterclass</span></p>
-                        <p class="text-sm text-gray-500">2 minutes ago</p>
-                    </div>
-                </div>
-
-                <!-- Activity Item -->
-                <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center flex-shrink-0">
-                        <svg class="w-5 h-5 text-yellow-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="text-gray-800">New 5-star review on <span class="font-medium">Python for
-                                Beginners</span></p>
-                        <p class="text-sm text-gray-500">1 hour ago</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Add Course Modal -->
     <div id="addCourseModal" class="fixed inset-0 bg-gray-900/50 z-50 hidden">
@@ -296,7 +272,7 @@
                     <form id="addCourseForm" class="space-y-6">
                         <!-- Title -->
                         <div class="space-y-1 text-left">
-                            <label class="block text-lg font-bold text-gray-800 mb-3 border-l-4 border-violet-500 pl-3">
+                            <label class="block text-base font-semibold text-gray-800 mb-2">
                                 Course Title
                             </label>
                             <div class="relative">
@@ -316,7 +292,7 @@
 
                         <!-- Description -->
                         <div class="space-y-1 text-left">
-                            <label class="block text-lg font-bold text-gray-800 mb-3 border-l-4 border-violet-500 pl-3">
+                            <label class="block text-base font-semibold text-gray-800 mb-2">
                                 Course Description
                             </label>
                             <div class="relative">
@@ -329,7 +305,7 @@
 
                         <!-- Content Type -->
                         <div class="space-y-1 text-left">
-                            <label class="block text-lg font-bold text-gray-800 mb-3 border-l-4 border-violet-500 pl-3">
+                            <label class="block text-base font-semibold text-gray-800 mb-2">
                                 Content Type
                             </label>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -379,35 +355,47 @@
                             </div>
                         </div>
 
-                        <!-- Dynamic Content Input -->
-                        <div id="videoInput" class="space-y-2 text-left">
+                        <!-- Video Content Input -->
+                        <div id="videoInput" class="space-y-4">
                             <label class="block text-lg font-bold text-gray-800 mb-3 border-l-4 border-violet-500 pl-3">
-                                Course Content
+                                Video Content
                             </label>
-                            <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg
-                                hover:border-violet-500 hover:bg-violet-50 transition-colors cursor-pointer group">
-                                <div class="space-y-2 text-center">
-                                    <svg class="mx-auto h-12 w-12 text-gray-400 group-hover:text-violet-500 transition-colors"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                                    </svg>
-                                    <div class="flex text-sm text-gray-600 justify-center">
-                                        <label for="videoFile"
-                                            class="relative cursor-pointer rounded-md font-medium text-violet-600 hover:text-violet-700">
-                                            <span>Upload a file</span>
-                                            <input id="videoFile" name="videoFile" type="file" accept="video/*"
-                                                class="sr-only">
-                                        </label>
-                                        <p class="pl-1">or drag and drop</p>
+                            <div class="border-2 border-gray-200 rounded-lg bg-white">
+                                <!-- Current Video Preview -->
+                                <div class="p-4 border-b border-gray-200">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-12 h-12 rounded-lg bg-violet-100 flex items-center justify-center flex-shrink-0">
+                                            <svg class="w-6 h-6 text-violet-600" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                            </svg>
+                                        </div>
                                     </div>
-                                    <p class="text-xs text-gray-500">MP4, WebM up to 2GB</p>
+                                </div>
+
+                                <!-- Upload New Video -->
+                                <div class="p-4">
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Upload New Video</label>
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex-1">
+                                            <input type="file" accept="video/mp4,video/webm" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4
+                                                file:rounded-lg file:border-0 file:text-sm file:font-semibold
+                                                file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100
+                                                cursor-pointer border border-gray-200 rounded-lg
+                                                focus:outline-none focus:ring-2 focus:ring-violet-500/20">
+                                        </div>
+                                    </div>
+                                    <p class="mt-2 text-xs text-gray-500">
+                                        Supported formats: MP4, WebM (Max size: 2GB)
+                                    </p>
                                 </div>
                             </div>
                         </div>
 
                         <div id="textInput" class="hidden space-y-1">
-                            <label class="block text-lg font-bold text-gray-800 mb-3 border-l-4 border-violet-500 pl-3">
+                            <label class="block text-base font-semibold text-gray-800 mb-2">
                                 Course Content
                             </label>
                             <div class="relative">
@@ -427,7 +415,7 @@
 
                         <!-- Tags -->
                         <div class="space-y-1 text-left">
-                            <label class="block text-lg font-bold text-gray-800 mb-3 border-l-4 border-violet-500 pl-3">
+                            <label class="block text-base font-semibold text-gray-800 mb-2">
                                 Tags
                             </label>
                             <div class="flex flex-wrap gap-2">
@@ -496,7 +484,7 @@
 
                         <!-- Category -->
                         <div class="space-y-1 text-left">
-                            <label class="block text-lg font-bold text-gray-800 mb-3 border-l-4 border-violet-500 pl-3">
+                            <label class="block text-base font-semibold text-gray-800 mb-2">
                                 Category
                             </label>
                             <div class="flex flex-wrap gap-2">
@@ -604,12 +592,6 @@
             }
         }
 
-        // Handle form submission
-        document.getElementById('addCourseForm').onsubmit = function (e) {
-            e.preventDefault();
-            // Add your form submission logic here
-            toggleModal();
-        };
     </script>
 
     <!-- Add this style to hide scrollbar -->
