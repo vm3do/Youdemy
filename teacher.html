@@ -273,7 +273,7 @@
     </div>
 
     <!-- Add Course Modal -->
-    <div id="addCourseModal" class="fixed inset-0 bg-gray-900/50 z-50 hidden overflow-y-auto">
+    <div id="addCourseModal" class="fixed inset-0 bg-gray-900/50 z-50 hidden">
         <div class="min-h-screen px-4 text-center flex items-center justify-center">
             <!-- Modal panel -->
             <div class="w-full max-w-2xl bg-white shadow-xl rounded-2xl relative">
@@ -292,16 +292,18 @@
                 </div>
 
                 <!-- Scrollable Content -->
-                <div class="px-6 py-4 max-h-[calc(100vh-180px)] overflow-y-auto">
+                <div class="px-6 py-4 max-h-[calc(100vh-180px)] overflow-y-auto scrollbar-hide">
                     <form id="addCourseForm" class="space-y-6">
                         <!-- Title -->
-                        <div class="space-y-1">
-                            <label for="courseTitle" class="block text-sm font-medium text-gray-700">Course
-                                Title</label>
+                        <div class="space-y-1 text-left">
+                            <label class="block text-lg font-bold text-gray-800 mb-3 border-l-4 border-violet-500 pl-3">
+                                Course Title
+                            </label>
                             <div class="relative">
                                 <input type="text" id="courseTitle" name="courseTitle" required class="block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm 
                                     focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 
-                                    hover:border-violet-300 transition-colors" placeholder="Enter course title">
+                                    hover:border-violet-300 outline-violet-600 transition-colors"
+                                    placeholder="Enter course title">
                                 <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                                     <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
@@ -313,48 +315,75 @@
                         </div>
 
                         <!-- Description -->
-                        <div class="space-y-1">
-                            <label for="courseDescription" class="block text-sm font-medium text-gray-700">Course
-                                Description</label>
+                        <div class="space-y-1 text-left">
+                            <label class="block text-lg font-bold text-gray-800 mb-3 border-l-4 border-violet-500 pl-3">
+                                Course Description
+                            </label>
                             <div class="relative">
                                 <textarea id="courseDescription" name="courseDescription" rows="3" required class="block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm 
                                     focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 
-                                    hover:border-violet-300 transition-colors"
+                                    hover:border-violet-300 outline-violet-600 transition-colors"
                                     placeholder="Describe your course"></textarea>
-                                <div class="absolute top-3 right-3 pointer-events-none">
-                                    <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M4 6h16M4 12h16M4 18h7" />
-                                    </svg>
-                                </div>
                             </div>
                         </div>
 
                         <!-- Content Type -->
-                        <div class="space-y-1">
-                            <label for="contentType" class="block text-sm font-medium text-gray-700">Content
-                                Type</label>
-                            <div class="relative">
-                                <select id="contentType" name="contentType" onchange="toggleContentInput()" class="block w-full pl-4 pr-10 py-3 rounded-lg border border-gray-300 shadow-sm 
-                                    focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 
-                                    hover:border-violet-300 transition-colors appearance-none bg-white">
-                                    <option value="video">Video Course</option>
-                                    <option value="text">Text Course</option>
-                                </select>
-                                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                    <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
-                                    </svg>
+                        <div class="space-y-1 text-left">
+                            <label class="block text-lg font-bold text-gray-800 mb-3 border-l-4 border-violet-500 pl-3">
+                                Content Type
+                            </label>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <!-- Video Course Option -->
+                                <div>
+                                    <input type="radio" id="type-video" name="contentType" value="video"
+                                        class="sr-only peer" checked onchange="toggleContentInput()">
+                                    <label for="type-video" class="flex flex-col items-center p-4 rounded-xl border-2 cursor-pointer
+                                        text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
+                                        peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
+                                        transition-colors">
+                                        <div
+                                            class="w-12 h-12 mb-3 rounded-full bg-violet-100 flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-violet-600" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                            </svg>
+                                        </div>
+                                        <div class="font-medium text-lg mb-1">Video Course</div>
+                                        <div class="text-sm text-gray-500 text-center">Upload video content for your
+                                            course</div>
+                                    </label>
+                                </div>
+
+                                <!-- Text Course Option -->
+                                <div>
+                                    <input type="radio" id="type-text" name="contentType" value="text"
+                                        class="sr-only peer" onchange="toggleContentInput()">
+                                    <label for="type-text" class="flex flex-col items-center p-4 rounded-xl border-2 cursor-pointer
+                                        text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
+                                        peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
+                                        transition-colors">
+                                        <div
+                                            class="w-12 h-12 mb-3 rounded-full bg-violet-100 flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-violet-600" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                            </svg>
+                                        </div>
+                                        <div class="font-medium text-lg mb-1">Text Course</div>
+                                        <div class="text-sm text-gray-500 text-center">Create text-based course content
+                                        </div>
+                                    </label>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Dynamic Content Input -->
-                        <div id="videoInput" class="space-y-2">
-                            <label class="block text-sm font-medium text-gray-700">Course Content</label>
+                        <div id="videoInput" class="space-y-2 text-left">
+                            <label class="block text-lg font-bold text-gray-800 mb-3 border-l-4 border-violet-500 pl-3">
+                                Course Content
+                            </label>
                             <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg
                                 hover:border-violet-500 hover:bg-violet-50 transition-colors cursor-pointer group">
                                 <div class="space-y-2 text-center">
@@ -378,12 +407,13 @@
                         </div>
 
                         <div id="textInput" class="hidden space-y-1">
-                            <label for="textContent" class="block text-sm font-medium text-gray-700">Course
-                                Content</label>
+                            <label class="block text-lg font-bold text-gray-800 mb-3 border-l-4 border-violet-500 pl-3">
+                                Course Content
+                            </label>
                             <div class="relative">
                                 <textarea id="textContent" name="textContent" rows="6" class="block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm 
                                     focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 
-                                    hover:border-violet-300 transition-colors"
+                                    hover:border-violet-300 outline-violet-600 transition-colors"
                                     placeholder="Enter your course content"></textarea>
                                 <div class="absolute top-3 right-3 pointer-events-none">
                                     <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor"
@@ -396,22 +426,19 @@
                         </div>
 
                         <!-- Tags -->
-                        <div class="space-y-1">
-                            <label class="block text-sm font-medium text-gray-700">Tags</label>
+                        <div class="space-y-1 text-left">
+                            <label class="block text-lg font-bold text-gray-800 mb-3 border-l-4 border-violet-500 pl-3">
+                                Tags
+                            </label>
                             <div class="flex flex-wrap gap-2">
                                 <!-- Web Development -->
                                 <div>
                                     <input type="checkbox" id="tag-webdev" name="tags[]" value="webdev"
                                         class="sr-only peer">
-                                    <label for="tag-webdev" class="inline-flex items-center px-3 py-1.5 rounded-lg border-2 cursor-pointer
+                                    <label for="tag-webdev" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
                                         text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
                                         peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
                                         transition-colors">
-                                        <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                                        </svg>
                                         Web Development
                                     </label>
                                 </div>
@@ -420,15 +447,10 @@
                                 <div>
                                     <input type="checkbox" id="tag-design" name="tags[]" value="design"
                                         class="sr-only peer">
-                                    <label for="tag-design" class="inline-flex items-center px-3 py-1.5 rounded-lg border-2 cursor-pointer
+                                    <label for="tag-design" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
                                         text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
                                         peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
                                         transition-colors">
-                                        <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                                        </svg>
                                         Design
                                     </label>
                                 </div>
@@ -437,15 +459,10 @@
                                 <div>
                                     <input type="checkbox" id="tag-programming" name="tags[]" value="programming"
                                         class="sr-only peer">
-                                    <label for="tag-programming" class="inline-flex items-center px-3 py-1.5 rounded-lg border-2 cursor-pointer
+                                    <label for="tag-programming" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
                                         text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
                                         peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
                                         transition-colors">
-                                        <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                        </svg>
                                         Programming
                                     </label>
                                 </div>
@@ -454,15 +471,10 @@
                                 <div>
                                     <input type="checkbox" id="tag-business" name="tags[]" value="business"
                                         class="sr-only peer">
-                                    <label for="tag-business" class="inline-flex items-center px-3 py-1.5 rounded-lg border-2 cursor-pointer
+                                    <label for="tag-business" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
                                         text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
                                         peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
                                         transition-colors">
-                                        <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                        </svg>
                                         Business
                                     </label>
                                 </div>
@@ -471,35 +483,11 @@
                                 <div>
                                     <input type="checkbox" id="tag-marketing" name="tags[]" value="marketing"
                                         class="sr-only peer">
-                                    <label for="tag-marketing" class="inline-flex items-center px-3 py-1.5 rounded-lg border-2 cursor-pointer
+                                    <label for="tag-marketing" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
                                         text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
                                         peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
                                         transition-colors">
-                                        <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                        </svg>
                                         Marketing
-                                    </label>
-                                </div>
-
-                                <!-- Photography -->
-                                <div>
-                                    <input type="checkbox" id="tag-photography" name="tags[]" value="photography"
-                                        class="sr-only peer">
-                                    <label for="tag-photography" class="inline-flex items-center px-3 py-1.5 rounded-lg border-2 cursor-pointer
-                                        text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
-                                        peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
-                                        transition-colors">
-                                        <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                                        </svg>
-                                        Photography
                                     </label>
                                 </div>
                             </div>
@@ -507,25 +495,72 @@
                         </div>
 
                         <!-- Category -->
-                        <div class="space-y-1">
-                            <label for="courseCategory" class="block text-sm font-medium text-gray-700">Category</label>
-                            <div class="relative">
-                                <select id="courseCategory" name="courseCategory" class="block w-full pl-4 pr-10 py-3 rounded-lg border border-gray-300 shadow-sm 
-                                    focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 
-                                    hover:border-violet-300 transition-colors appearance-none bg-white">
-                                    <option value="programming">Programming</option>
-                                    <option value="design">Design</option>
-                                    <option value="business">Business</option>
-                                    <option value="marketing">Marketing</option>
-                                </select>
-                                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                    <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7" />
-                                    </svg>
+                        <div class="space-y-1 text-left">
+                            <label class="block text-lg font-bold text-gray-800 mb-3 border-l-4 border-violet-500 pl-3">
+                                Category
+                            </label>
+                            <div class="flex flex-wrap gap-2">
+                                <!-- Programming -->
+                                <div>
+                                    <input type="radio" id="cat-programming" name="category" value="programming"
+                                        class="sr-only peer" checked>
+                                    <label for="cat-programming" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
+                                        text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
+                                        peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
+                                        transition-colors">
+                                        Programming
+                                    </label>
+                                </div>
+
+                                <!-- Design -->
+                                <div>
+                                    <input type="radio" id="cat-design" name="category" value="design"
+                                        class="sr-only peer">
+                                    <label for="cat-design" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
+                                        text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
+                                        peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
+                                        transition-colors">
+                                        Design
+                                    </label>
+                                </div>
+
+                                <!-- Business -->
+                                <div>
+                                    <input type="radio" id="cat-business" name="category" value="business"
+                                        class="sr-only peer">
+                                    <label for="cat-business" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
+                                        text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
+                                        peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
+                                        transition-colors">
+                                        Business
+                                    </label>
+                                </div>
+
+                                <!-- Marketing -->
+                                <div>
+                                    <input type="radio" id="cat-marketing" name="category" value="marketing"
+                                        class="sr-only peer">
+                                    <label for="cat-marketing" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
+                                        text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
+                                        peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
+                                        transition-colors">
+                                        Marketing
+                                    </label>
+                                </div>
+
+                                <!-- Music -->
+                                <div>
+                                    <input type="radio" id="cat-music" name="category" value="music"
+                                        class="sr-only peer">
+                                    <label for="cat-music" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
+                                        text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
+                                        peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
+                                        transition-colors">
+                                        Music
+                                    </label>
                                 </div>
                             </div>
+                            <p class="mt-1 text-sm text-gray-500">Select one category</p>
                         </div>
                     </form>
                 </div>
@@ -556,11 +591,11 @@
 
 
         function toggleContentInput() {
-            const contentType = document.getElementById('contentType').value;
             const videoInput = document.getElementById('videoInput');
             const textInput = document.getElementById('textInput');
+            const selectedType = document.querySelector('input[name="contentType"]:checked').value;
 
-            if (contentType === 'video') {
+            if (selectedType === 'video') {
                 videoInput.classList.remove('hidden');
                 textInput.classList.add('hidden');
             } else {
@@ -576,6 +611,22 @@
             toggleModal();
         };
     </script>
+
+    <!-- Add this style to hide scrollbar -->
+    <style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+    </style>
 </body>
 
 </html>
