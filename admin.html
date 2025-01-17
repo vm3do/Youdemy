@@ -6,21 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouDemy Admin Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            light: '#8a2be2',
-                            DEFAULT: '#690fac',
-                            dark: '#4a0c7c',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
 </head>
 
 <body class="bg-gray-100">
@@ -28,12 +13,12 @@
     <header class="w-full bg-white shadow-sm z-30 border-b">
         <div class="w-full flex items-center justify-between px-6 py-4">
             <div class="text-2xl font-bold">
-                <span class="text-primary">You</span>Demy
+                <span class="text-purple-800">You</span>Demy
             </div>
             <div class="flex items-center gap-4">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-10 h-10 rounded-full bg-purple-800/10 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-purple-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -63,9 +48,9 @@
                 <!-- Logo and Close Button -->
                 <div class="p-6 flex items-center justify-between border-b">
                     <div class="text-2xl font-bold">
-                        <span class="text-primary">You</span>Demy
+                        <span class="text-purple-800">You</span>Demy
                     </div>
-                    <button class="lg:hidden text-gray-600 hover:text-primary transition-colors" id="sidebarClose">
+                    <button class="lg:hidden text-gray-600 hover:text-purple-800 transition-colors" id="sidebarClose">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M6 18L18 6M6 6l12 12"></path>
@@ -76,16 +61,16 @@
                 <!-- Navigation -->
                 <nav class="flex-1 overflow-y-auto">
                     <div class="px-4 py-6 space-y-2">
-                        <a href="#" class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-primary/10 text-primary">
+                        <a href="admin.php"
+                            class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-purple-800/10 hover:text-purple-800 rounded-lg transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                                </path>
+                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                             </svg>
                             Dashboard
                         </a>
-                        <a href="#"
-                            class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors">
+                        <a href=""
+                            class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-purple-800/10 hover:text-purple-800 rounded-lg transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
@@ -93,17 +78,24 @@
                             </svg>
                             User Management
                         </a>
-                        <a href="#"
-                            class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors">
+                        <a href="manageusers.html"
+                            class="flex items-center gap-3 px-4 py-2.5 text-purple-800 bg-purple-800/10 rounded-lg transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
-                                </path>
+                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                             </svg>
-                            Content Management
+                            Teachers Requests
                         </a>
-                        <a href="#"
-                            class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors">
+                        <a href="managecourses.html"
+                            class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-purple-800/10 hover:text-purple-800 rounded-lg transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                            Courses Management
+                        </a>
+                        <a href="#statistics"
+                            class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-purple-800/10 hover:text-purple-800 rounded-lg transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
@@ -127,7 +119,7 @@
             <!-- Dashboard Content -->
             <main class="p-6">
                 <!-- Stats Overview -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div id="statistics"class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <!-- Total Courses Card -->
                     <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-violet-100">
                         <div class="p-6">
@@ -226,7 +218,7 @@
                             <h2 class="text-xl font-bold">Pending Teacher Validations</h2>
                             <p class="text-sm text-gray-500 mt-1">Review and approve teacher applications</p>
                         </div>
-                        <a href="#" class="text-primary hover:text-primary-dark flex items-center gap-2">
+                        <a href="#" class="text-purple-800 hover:text-purple-900 flex items-center gap-2">
                             View All
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -238,7 +230,7 @@
                         <div class="overflow-x-auto">
                             <table class="w-full">
                                 <thead>
-                                    <tr class="text-left bg-primary rounded-lg">
+                                    <tr class="text-left bg-purple-800 rounded-lg">
                                         <th class="p-4 text-white font-semibold rounded-tl-lg">
                                             <div class="flex items-center gap-2">
                                                 <svg class="w-5 h-5" fill="none" stroke="currentColor"
@@ -258,7 +250,7 @@
                                                         stroke-width="2"
                                                         d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                                 </svg>
-                                                Application Date
+                                                Date
                                             </div>
                                         </th>
                                         <th class="p-4 text-white font-semibold">
@@ -309,7 +301,7 @@
                                         <td class="p-4">
                                             <div class="flex gap-2">
                                                 <button
-                                                    class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg transition-colors flex items-center gap-1">
+                                                    class="px-4 py-2 bg-purple-800 hover:bg-purple-900 text-white rounded-lg transition-colors flex items-center gap-1">
                                                     <svg class="w-4 h-4" fill="none" stroke="currentColor"
                                                         viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -362,7 +354,7 @@
                                         <td class="p-4">
                                             <div class="flex gap-2">
                                                 <button
-                                                    class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg transition-colors flex items-center gap-1">
+                                                    class="px-4 py-2 bg-purple-800 hover:bg-purple-900 text-white rounded-lg transition-colors flex items-center gap-1">
                                                     <svg class="w-4 h-4" fill="none" stroke="currentColor"
                                                         viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -395,7 +387,7 @@
                             <h2 class="text-xl font-bold">Manage Users</h2>
                             <p class="text-sm text-gray-500 mt-1">Monitor and manage user accounts</p>
                         </div>
-                        <a href="#" class="text-primary hover:text-primary-dark flex items-center gap-2">
+                        <a href="#" class="text-purple-800 hover:text-purple-900 flex items-center gap-2">
                             View All
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -407,7 +399,7 @@
                         <div class="overflow-x-auto">
                             <table class="w-full">
                                 <thead>
-                                    <tr class="text-left bg-primary rounded-lg">
+                                    <tr class="text-left bg-purple-800 rounded-lg">
                                         <th class="p-4 text-white font-semibold rounded-tl-lg">
                                             <div class="flex items-center gap-2">
                                                 <svg class="w-5 h-5" fill="none" stroke="currentColor"
@@ -567,13 +559,13 @@
                     <div class="bg-white rounded-xl shadow-sm">
                         <div class="p-6 border-b flex justify-between items-center">
                             <h2 class="text-xl font-bold">Recent Courses</h2>
-                            <a href="#" class="text-primary hover:text-primary-dark">View More</a>
+                            <a href="#" class="text-purple-800 hover:text-purple-900">View More</a>
                         </div>
                         <div class="p-6">
                             <div class="space-y-4">
                                 <div class="flex items-center gap-4">
-                                    <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor"
+                                    <div class="w-10 h-10 bg-purple-800/10 rounded-full flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-purple-800" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -581,14 +573,14 @@
                                     </div>
                                     <div class="flex-1">
                                         <p class="font-semibold">Advanced JavaScript Masterclass</p>
-                                        <p class="text-sm text-gray-500">Sarah Johnson • 4.9 ⭐</p>
+                                        <p class="text-sm text-gray-500">Sarah Johnson</p>
                                     </div>
-                                    <span class="text-primary font-semibold">$89.99</span>
+                                    <span class="text-purple-800 font-semibold">$00.00</span>
                                 </div>
 
                                 <div class="flex items-center gap-4">
-                                    <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor"
+                                    <div class="w-10 h-10 bg-purple-800/10 rounded-full flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-purple-800" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -596,14 +588,14 @@
                                     </div>
                                     <div class="flex-1">
                                         <p class="font-semibold">Python for Data Science</p>
-                                        <p class="text-sm text-gray-500">Michael Chen • 4.8 ⭐</p>
+                                        <p class="text-sm text-gray-500">Michael Chen</p>
                                     </div>
-                                    <span class="text-primary font-semibold">$79.99</span>
+                                    <span class="text-purple-800 font-semibold">$00.00</span>
                                 </div>
 
                                 <div class="flex items-center gap-4">
-                                    <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor"
+                                    <div class="w-10 h-10 bg-purple-800/10 rounded-full flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-purple-800" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -611,9 +603,9 @@
                                     </div>
                                     <div class="flex-1">
                                         <p class="font-semibold">UI/UX Design Fundamentals</p>
-                                        <p class="text-sm text-gray-500">Emma Wilson • 4.7 ⭐</p>
+                                        <p class="text-sm text-gray-500">Emma Wilson</p>
                                     </div>
-                                    <span class="text-primary font-semibold">$69.99</span>
+                                    <span class="text-purple-800 font-semibold">$00.00</span>
                                 </div>
                             </div>
                         </div>
@@ -638,10 +630,10 @@
                                         </div>
                                         <div>
                                             <p class="font-semibold">Sarah Johnson</p>
-                                            <p class="text-sm text-gray-500">4.9 ⭐ (2,334 students)</p>
+                                            <p class="text-sm text-gray-500">(2,334 students)</p>
                                         </div>
                                     </div>
-                                    <span class="text-primary font-semibold">#1</span>
+                                    <span class="text-purple-800 font-semibold">#1</span>
                                 </div>
 
                                 <div class="flex items-center justify-between">
@@ -656,10 +648,10 @@
                                         </div>
                                         <div>
                                             <p class="font-semibold">Michael Chen</p>
-                                            <p class="text-sm text-gray-500">4.8 ⭐ (1,892 students)</p>
+                                            <p class="text-sm text-gray-500">(1,892 students)</p>
                                         </div>
                                     </div>
-                                    <span class="text-primary font-semibold">#2</span>
+                                    <span class="text-purple-800 font-semibold">#2</span>
                                 </div>
 
                                 <div class="flex items-center justify-between">
@@ -674,10 +666,10 @@
                                         </div>
                                         <div>
                                             <p class="font-semibold">Emma Wilson</p>
-                                            <p class="text-sm text-gray-500">4.7 ⭐ (1,556 students)</p>
+                                            <p class="text-sm text-gray-500">(1,556 students)</p>
                                         </div>
                                     </div>
-                                    <span class="text-primary font-semibold">#3</span>
+                                    <span class="text-purple-800 font-semibold">#3</span>
                                 </div>
                             </div>
                         </div>
@@ -686,13 +678,13 @@
 
                 <!-- Tags Management -->
                 <div class="bg-white rounded-xl shadow-sm mt-6">
-                    <div class="p-6 border-b border-primary/20">
+                    <div class="p-6 border-b border-purple-800/20">
                         <div class="flex justify-between items-center">
                             <div>
-                                <h2 class="text-xl font-bold text-primary">Tags Management</h2>
+                                <h2 class="text-xl font-bold text-purple-800">Tags Management</h2>
                                 <p class="text-sm text-gray-500 mt-1">Manage and organize course tags</p>
                             </div>
-                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">24
+                            <span class="bg-purple-800/10 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">24
                                 Tags</span>
                         </div>
                     </div>
@@ -703,7 +695,7 @@
                                 Tags</label>
                             <div class="relative">
                                 <input type="text" id="bulkTags"
-                                    class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary pl-12 pr-4 py-3"
+                                    class="w-full rounded-lg border-gray-300 focus:border-purple-800 focus:ring-purple-800 pl-12 pr-4 py-3"
                                     placeholder="Enter tags separated by commas (e.g., JavaScript, Python, Web Development)">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
@@ -713,7 +705,7 @@
                                     </svg>
                                 </div>
                                 <button
-                                    class="absolute inset-y-0 right-0 flex items-center px-4 text-primary hover:text-primary-dark">
+                                    class="absolute inset-y-0 right-0 flex items-center px-4 text-purple-800 hover:text-purple-900">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M12 4v16m8-8H4" />
@@ -729,7 +721,7 @@
                             <h3 class="text-lg font-semibold text-gray-700 mb-4">Existing Tags</h3>
                             <div class="flex flex-wrap gap-2">
                                 <span
-                                    class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-primary/10 text-primary group hover:bg-primary/20 transition-colors">
+                                    class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-purple-800/10 text-purple-800 group hover:bg-purple-800/20 transition-colors">
                                     JavaScript
                                     <button class="ml-2 opacity-75 hover:opacity-100 transition-opacity">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -746,13 +738,13 @@
 
                 <!-- Categories Management -->
                 <div class="bg-white rounded-xl shadow-sm mt-6">
-                    <div class="p-6 border-b border-primary/20">
+                    <div class="p-6 border-b border-purple-800/20">
                         <div class="flex justify-between items-center">
                             <div>
-                                <h2 class="text-xl font-bold text-primary">Categories Management</h2>
+                                <h2 class="text-xl font-bold text-purple-800">Categories Management</h2>
                                 <p class="text-sm text-gray-500 mt-1">Manage course categories and subcategories</p>
                             </div>
-                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">12
+                            <span class="bg-purple-800/10 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">12
                                 Categories</span>
                         </div>
                     </div>
@@ -763,7 +755,7 @@
                                 Category</label>
                             <div class="relative">
                                 <input type="text" id="newCategory"
-                                    class="w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary pl-12 pr-4 py-3"
+                                    class="w-full rounded-lg border-gray-300 focus:border-purple-800 focus:ring-purple-800 pl-12 pr-4 py-3"
                                     placeholder="Enter category name (e.g., Web Development)">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
@@ -773,7 +765,7 @@
                                     </svg>
                                 </div>
                                 <button
-                                    class="absolute inset-y-0 right-0 flex items-center px-4 text-primary hover:text-primary-dark">
+                                    class="absolute inset-y-0 right-0 flex items-center px-4 text-purple-800 hover:text-purple-900">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M12 4v16m8-8H4" />
@@ -788,13 +780,13 @@
                             <h3 class="text-lg font-semibold text-gray-700 mb-4">Existing Categories</h3>
                             <div class="flex flex-wrap gap-2">
                                 <span
-                                    class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-primary/10 text-primary group hover:bg-primary/20 transition-colors">
+                                    class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-purple-800/10 text-purple-800 group hover:bg-purple-800/20 transition-colors">
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                     </svg>
                                     Web Development
-                                    <span class="text-xs text-primary/75 ml-2">(24)</span>
+                                    <span class="text-xs text-purple-800/75 ml-2">(24)</span>
                                     <button class="ml-2 opacity-75 hover:opacity-100 transition-opacity">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
