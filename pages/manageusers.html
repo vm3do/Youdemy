@@ -273,9 +273,8 @@
             sidebar.classList.toggle('-translate-x-full');
         });
 
-        // Close sidebar when clicking outside on mobile
         document.addEventListener('click', (e) => {
-            if (window.innerWidth < 1024) {  // lg breakpoint
+            if (window.innerWidth < 1024) {
                 if (!sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
                     sidebar.classList.add('-translate-x-full');
                 }

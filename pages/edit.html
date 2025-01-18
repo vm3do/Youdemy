@@ -44,7 +44,7 @@
 
     <!-- Main Content -->
     <div class="container mx-auto px-4 py-8">
-        <!-- Back Button and Title -->
+        <!-- Back Button -->
         <div class="flex items-center gap-4 mb-6">
             <a href="teacher.html"
                 class="flex items-center gap-2 text-gray-600 hover:text-violet-600 transition-colors">
@@ -267,7 +267,6 @@
     </div>
 
     <script>
-        // Content type toggle functionality
         function toggleContentInput() {
             const videoInput = document.getElementById('videoInput');
             const textInput = document.getElementById('textInput');
@@ -282,12 +281,10 @@
             }
         }
 
-        // Add change event listeners to radio buttons
         document.querySelectorAll('input[name="contentType"]').forEach(radio => {
             radio.addEventListener('change', toggleContentInput);
         });
 
-        // Initialize content display on page load
         toggleContentInput();
     </script>
 </body>
