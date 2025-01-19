@@ -2,7 +2,7 @@
 
     class Database {
         
-        private $dsn = "mysql:host=localhost,dbname=youdemy";
+        private $dsn = "mysql:host=localhost;dbname=youdemy";
         private $user = "root";
         private $pass = "";
 

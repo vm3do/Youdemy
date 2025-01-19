@@ -17,19 +17,11 @@
 
         public function signup($name, $email, $password, $role){
 
-                if (empty($name) || empty($email) || empty($password) || empty($role)){
-                    return ["message"=> "all fileds are required"];
-                }
-
-                if(strlen($password) < 6){
-                    return ["message"=> "passowrd must have at least 6 characters"];
-                }
-
                 $sql = "SELECT * FROM users WHERE email = :email";
                 $stmt = $this->pdo->prepare($sql);
                 $stmt->execute(["email"=> $email]);
                 
-                if($stmt->rowCount() > 0){
+                if($stmt->rowCount() < 0){
                     return ["message"=> "use a different email"];
                 }
 
@@ -55,10 +47,6 @@
         }
 
         public function login($email, $password){
-
-            if(empty($email) || empty($password)){
-                return ["message"=> "all fields are required"];
-            }
 
             try {
                 $sql = "SELECT * FROM users WHERE email = :email";

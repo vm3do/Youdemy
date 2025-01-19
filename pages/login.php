@@ -1,3 +1,7 @@
+<?php
+    require __DIR__ . "/../actions/auth.php"
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +53,11 @@
                 <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Welcome Back!</h2>
 
                 <div class="bg-white py-8 px-6 shadow-sm rounded-xl sm:px-10">
-                    <form class="space-y-6" action="#" method="POST">
+                    
+                    <form class="space-y-6" action="login.php" method="POST">
+                        <div>
+                            <p class="text-red-500"><?= $error ?></p>
+                        </div>
                         <!-- Email -->
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700">
@@ -76,7 +84,7 @@
 
                         <!-- Submit -->
                         <div>
-                            <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm 
+                            <button name="login" type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm 
                                 text-sm font-medium text-white bg-purple-800 hover:bg-purple-800/90 focus:outline-none focus:ring-2 
                                 focus:ring-offset-2 focus:ring-purple-800/50 transition-colors">
                                 Sign in
