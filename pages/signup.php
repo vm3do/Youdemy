@@ -1,7 +1,9 @@
-<?php 
-
+<?php
     require __DIR__ . "/../actions/auth.php";
+    require __DIR__ . "/../Classes/Auth.php";
 
+    Auth::checkLogin();
+    
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +25,14 @@
             </div>
             <nav>
                 <ul class="flex items-center gap-6">
-                    <li><a href="index.html" class="text-gray-600 hover:text-purple-800">Home</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-purple-800">Courses</a></li>
+                    <li><a href="index.php" class="text-gray-600 hover:text-purple-800">Home</a></li>
+                    <li><a href="courses.php" class="text-gray-600 hover:text-purple-800">Courses</a></li>
+                    <li><a href="login.php"
+                            class="inline-flex items-center justify-center h-10 border border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white px-6 rounded-lg transition-colors">Log
+                            In</a></li>
+                    <li><a href="signup.php"
+                            class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">Sign
+                            Up</a></li>
                 </ul>
             </nav>
         </div>

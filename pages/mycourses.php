@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    require "../actions/auth.php";
+    require "../Classes/Auth.php";
+
+    Auth::checkRole("studet");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -177,7 +186,7 @@
 
             <!-- Copyright -->
             <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
-                <p>&copy; 2024 YouDemy. All rights reserved.</p>
+                <p>&copy; 2025 YouDemy. All rights reserved.</p>
             </div>
         </div>
     </footer>

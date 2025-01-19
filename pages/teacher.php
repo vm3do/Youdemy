@@ -1,6 +1,8 @@
 <?php
-    session_start();
     require "../actions/auth.php";
+    require "../Classes/Auth.php";
+
+    Auth::checkRole("teacher");
 
 ?>
 
@@ -30,7 +32,7 @@
                         </svg>
                     </div>
                     <div class="hidden md:block">
-                        <p class="font-medium text-gray-700">John Doe</p>
+                        <p class="font-medium text-gray-700"><?= $_SESSION['name'] ?? ""?></p>
                         <p class="text-sm text-gray-500">Teacher</p>
                     </div>
                 </div>

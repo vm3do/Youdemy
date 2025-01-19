@@ -56,7 +56,7 @@
                 if($stmt->rowCount() > 0){
                     $row = $stmt->fetch(PDO::FETCH_ASSOC);
                     if(password_verify($password, $row['password'])){
-                        return ["verify" => true, "user_id" => $row['id'], "role" => $row['role'], "status" => $row['status']];
+                        return ["verify" => true, "user_id" => $row['id'], "role" => $row['role'], "status" => $row['status'], "name" => $row['name']];
                     } else {
                         return ["verify" => false,"message" => "email or password incorrect !"];
                     }
