@@ -1,3 +1,9 @@
+<?php 
+
+    require __DIR__ . "/../actions/auth.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +56,10 @@
                 <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Welcome Back!</h2>
 
                 <div class="bg-white py-8 px-6 shadow-sm rounded-xl sm:px-10">
-                    <form class="space-y-6" action="#" method="POST">
+                    <form class="space-y-6" action="signup.php" method="POST">
+                        <div>
+                            <p class="text-red-500"><?= $error ?></p>
+                        </div>
                         <!-- Role -->
                         <div class="grid grid-cols-2 gap-4">
                             <!-- Student -->
@@ -97,7 +106,7 @@
                                 Full Name
                             </label>
                             <div class="mt-1">
-                                <input id="fullname" name="fullname" type="text" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm 
+                                <input id="fullname" name="name" type="text" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm 
                                     placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-800/20 focus:border-purple-800
                                     transition-colors" placeholder="Enter your full name">
                             </div>
@@ -129,7 +138,7 @@
 
                         <!-- Submit -->
                         <div>
-                            <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm 
+                            <button name="signup" type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm 
                                 text-sm font-medium text-white bg-purple-800 hover:bg-purple-800/90 focus:outline-none focus:ring-2 
                                 focus:ring-offset-2 focus:ring-purple-800/50 transition-colors">
                                 Sign in
