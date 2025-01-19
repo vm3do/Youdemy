@@ -7,17 +7,17 @@
     $db = new Database();
     $pdo = $db->conn();
 
-    $tag_err = "";
-    $cat_err = "";
+    $tag_msg = "";
+    $cat_msg = "";
 
     if(isset($_POST['add_tags'])){
 
         $Tags = new Tags($pdo);
         $return = $Tags->addTags($_POST['tags']) ;
 
-        $tag_err = $return["message"];
+        $tag_msg = $return["message"];
     }
 
     if(isset($_POST['add_categories'])){
-
+        
     }

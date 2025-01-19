@@ -28,10 +28,10 @@ class Tags {
             foreach($tags as $tag){
                 $stmt->execute(["tag" => $tag]);
             }
-            return ["message" => "Tags added succesfully"];
+            return ["verify" => true, "message" => "Tags added succesfully"];
         } catch(PDOException $e){
             error_log("error adding tags " . $e->getMessage());
-            return ["verify" => false,"message" => "Tags not added, try again"];
+            return ["verify" => false,"message" => "Tags not added, Tags may already exist"];
         }
     }
 }
