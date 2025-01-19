@@ -1,5 +1,4 @@
 <?php
-    session_start();
     require "../actions/auth.php";
     require "../Classes/Auth.php";
 
@@ -696,12 +695,12 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <!-- Add Tags Input -->
-                        <div class="mb-6">
+                        <!-- Add Tags Form -->
+                        <form action="../actions/adminFunc.php" method="POST" class="mb-6">
                             <label for="bulkTags" class="block text-sm font-medium text-gray-700 mb-2">Add Multiple
                                 Tags</label>
                             <div class="relative">
-                                <input type="text" id="bulkTags"
+                                <input type="text" id="bulkTags" name="tags"
                                     class="w-full rounded-lg border-gray-300 focus:border-purple-800 focus:ring-purple-800 outline-violet-600 pl-12 pr-4 py-3"
                                     placeholder="Enter tags separated by commas ( JavaScript, Python, ..)">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -711,17 +710,16 @@
                                             d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
                                     </svg>
                                 </div>
-                                <button
+                                <button name="add_tags" type="submit"
                                     class="absolute inset-y-0 right-0 flex items-center px-4 text-purple-800 hover:text-purple-900">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 4v16m8-8H4" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                                     </svg>
                                 </button>
                             </div>
                             <p class="mt-2 text-sm text-gray-500">Tags will be automatically converted to lowercase and
                                 trimmed</p>
-                        </div>
+                        </form>
 
                         <!-- Existing Tags -->
                         <div>
@@ -730,12 +728,14 @@
                                 <span
                                     class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-purple-800/10 text-purple-800 group hover:bg-purple-800/20 transition-colors">
                                     JavaScript
-                                    <button class="ml-2 opacity-75 hover:opacity-100 transition-opacity">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                    </button>
+                                    <form action="/delete-tag" method="POST" class="inline-block">
+                                        <input type="hidden" name="tag_id" value="TAG_ID">
+                                        <button type="submit" class="ml-2 opacity-75 hover:opacity-100 transition-opacity">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </button>
+                                    </form>
                                 </span>
                                 <!-- More tags... -->
                             </div>
@@ -749,7 +749,7 @@
                         <div class="flex justify-between items-center">
                             <div>
                                 <h2 class="text-xl font-bold text-purple-800">Categories Management</h2>
-                                <p class="text-sm text-gray-500 mt-1">Manage course categories and subcategories</p>
+                                <p class="text-sm text-gray-500 mt-1">Manage course categories</p>
                             </div>
                             <span class="bg-purple-800/10 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">12
                                 Categories</span>
@@ -757,30 +757,28 @@
                     </div>
                     <div class="p-6">
                         <!-- Add Category Form -->
-                        <div class="mb-6">
+                        <form action="/add-category" method="POST" class="mb-6">
                             <label for="newCategory" class="block text-sm font-medium text-gray-700 mb-2">Add New
                                 Category</label>
                             <div class="relative">
-                                <input type="text" id="newCategory"
+                                <input type="text" id="newCategory" name="category_name"
                                     class="w-full rounded-lg border-gray-300 focus:border-purple-800 focus:ring-purple-800 outline-violet-600 pl-12 pr-4 py-3"
                                     placeholder="Enter category name (e.g., Web Development)">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
+                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                     </svg>
                                 </div>
-                                <button
+                                <button type="submit"
                                     class="absolute inset-y-0 right-0 flex items-center px-4 text-purple-800 hover:text-purple-900">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 4v16m8-8H4" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                                     </svg>
                                 </button>
                             </div>
                             <p class="mt-2 text-sm text-gray-500">Category names should be clear and descriptive</p>
-                        </div>
+                        </form>
 
                         <!-- Existing Categories -->
                         <div>
@@ -798,7 +796,6 @@
                                             </svg>
                                         </button>
                                     </form>
-                                    
                                 </span>
                                 <!-- More categories... -->
                             </div>
