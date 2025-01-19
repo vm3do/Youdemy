@@ -1,6 +1,7 @@
 <?php
     require "../actions/auth.php";
     require "../Classes/Auth.php";
+    require "../actions/adminFunc.php";
 
     Auth::checkRole("admin");
 
@@ -696,9 +697,19 @@
                     </div>
                     <div class="p-6">
                         <!-- Add Tags Form -->
-                        <form action="../actions/adminFunc.php" method="POST" class="mb-6">
+                        <form action="admin.php" method="POST" class="mb-6">
                             <label for="bulkTags" class="block text-sm font-medium text-gray-700 mb-2">Add Multiple
                                 Tags</label>
+                                <div>
+                                    <p class="text-sm text-red-500">
+                                        <?php if(!$return["verify"]){ echo $tag_msg; } ?>
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-green-500">
+                                    <?php if($return["verify"]){ echo $tag_msg; } ?>
+                                    </p>
+                                </div>
                             <div class="relative">
                                 <input type="text" id="bulkTags" name="tags"
                                     class="w-full rounded-lg border-gray-300 focus:border-purple-800 focus:ring-purple-800 outline-violet-600 pl-12 pr-4 py-3"
