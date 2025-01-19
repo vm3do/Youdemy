@@ -149,7 +149,7 @@
                     <!-- SU Message -->
                     <div class="mt-6 text-center text-sm text-gray-600">
                         Already have an account?
-                        <a href="signup.html" class="font-medium text-purple-800 hover:text-purple-800/80">
+                        <a href="login.php" class="font-medium text-purple-800 hover:text-purple-800/80">
                             Log In
                         </a>
                     </div>

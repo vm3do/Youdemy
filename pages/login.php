@@ -95,7 +95,7 @@
                     <!-- Sign Up Message -->
                     <div class="mt-6 text-center text-sm text-gray-600">
                         Don't have an account?
-                        <a href="signup.html" class="font-medium text-purple-800 hover:text-purple-800/80">
+                        <a href="signup.php" class="font-medium text-purple-800 hover:text-purple-800/80">
                             Sign up for free
                         </a>
                     </div>
