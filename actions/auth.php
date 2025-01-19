@@ -69,6 +69,7 @@ if(isset($_POST['login'])){
                 session_start();
                 $_SESSION['admin_id'] = $return['user_id'];
                 $_SESSION['role'] = $return['role'];
+                $_SESSION['status'] = $return['rstatusole'];
                 header("Location: admin.php");
                 exit();
             }
@@ -77,6 +78,7 @@ if(isset($_POST['login'])){
                 session_start();
                 $_SESSION['teacher_id'] = $return['user_id'];
                 $_SESSION['role'] = $return['role'];
+                $_SESSION['status'] = $return['status'];
                 header("Location: teacher.php");
                 exit();
             }
@@ -85,6 +87,7 @@ if(isset($_POST['login'])){
                 session_start();
                 $_SESSION['student_id'] = $return['user_id'];
                 $_SESSION['role'] = $return['role'];
+                $_SESSION['status'] = $return['status'];
                 header("Location: courses.php");
                 exit();
             }

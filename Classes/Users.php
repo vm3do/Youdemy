@@ -15,13 +15,13 @@
             $this->pdo = $pdo;
         }
 
-        public function signup($name, $email, $password, $role){
+        public function signup($name, $email, $password, $role, $status = "active"){
 
                 $sql = "SELECT * FROM users WHERE email = :email";
                 $stmt = $this->pdo->prepare($sql);
                 $stmt->execute(["email"=> $email]);
                 
-                if($stmt->rowCount() < 0){
+                if($stmt->rowCount() > 0){
                     return ["message"=> "use a different email"];
                 }
 
@@ -29,13 +29,14 @@
 
                 try{
 
-                    $sql = "INSERT INTO users (name, email, password, role) VALUES (:name, :email, :pass, :role)";
+                    $sql = "INSERT INTO users (name, email, password, role, status) VALUES (:name, :email, :pass, :role, :status)";
                     $stmt = $this->pdo->prepare($sql);
                     $stmt->execute([
                         "name" => $name,
                         "email" => $email,
                         "pass" => $pass,
                         "role" => $role,
+                        "status" => $status,
                     ]);
 
                     return true;
@@ -55,7 +56,7 @@
                 if($stmt->rowCount() > 0){
                     $row = $stmt->fetch(PDO::FETCH_ASSOC);
                     if(password_verify($password, $row['password'])){
-                        return ["verify" => true, "user_id" => $row['id'], "role" => $row['role']];
+                        return ["verify" => true, "user_id" => $row['id'], "role" => $row['role'], "status" => $row['status']];
                     } else {
                         return ["verify" => false,"message" => "email or password incorrect !"];
                     }
