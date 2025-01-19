@@ -4,6 +4,8 @@
     require "../actions/adminFunc.php";
 
     Auth::checkRole("admin");
+    $tags = new Tags($pdo);
+    $tags = $tags->getTags();
 
 ?>
 
@@ -702,12 +704,12 @@
                                 Tags</label>
                                 <div>
                                     <p class="text-sm text-red-500">
-                                        <?php if(!$return["verify"]){ echo $tag_msg; } ?>
+                                        <?php if(isset($return) && !$return["verify"]){ echo $tag_msg; } ?>
                                     </p>
                                 </div>
                                 <div>
                                     <p class="text-sm text-green-500">
-                                    <?php if($return["verify"]){ echo $tag_msg; } ?>
+                                    <?php if(isset($return) && $return["verify"]){ echo $tag_msg; } ?>
                                     </p>
                                 </div>
                             <div class="relative">
@@ -732,23 +734,27 @@
                                 trimmed</p>
                         </form>
 
-                        <!-- Existing Tags -->
+                        <!-- Tags -->
                         <div>
                             <h3 class="text-lg font-semibold text-gray-700 mb-4">Existing Tags</h3>
                             <div class="flex flex-wrap gap-2">
-                                <span
+                                <?php foreach($tags as $tag): ?>
+                                
+                                    <span
                                     class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-purple-800/10 text-purple-800 group hover:bg-purple-800/20 transition-colors">
-                                    JavaScript
-                                    <form action="/delete-tag" method="POST" class="inline-block">
-                                        <input type="hidden" name="tag_id" value="TAG_ID">
-                                        <button type="submit" class="ml-2 opacity-75 hover:opacity-100 transition-opacity">
+                                    <?= $tag['name']?>
+                                    <form action="admin.php" method="POST" class="inline-block">
+                                        <input type="hidden" name="tag_id" value="<?= $tag['id']?>">
+                                        <button name="del_tag" type="submit" class="ml-2 opacity-75 flex items-center hover:opacity-100 transition-opacity">
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                             </svg>
                                         </button>
                                     </form>
                                 </span>
-                                <!-- More tags... -->
+                                
+                                <?php endforeach?>
+                                
                             </div>
                         </div>
                     </div>

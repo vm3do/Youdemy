@@ -18,6 +18,12 @@
         $tag_msg = $return["message"];
     }
 
+    if(isset($_POST["del_tag"])){
+        $id = $_POST["tag_id"] ?? "";
+        $Tags = new Tags($pdo);
+        $Tags->deleteTag($id);
+    }
+
     if(isset($_POST['add_categories'])){
         
     }
