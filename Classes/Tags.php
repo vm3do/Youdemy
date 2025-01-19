@@ -4,13 +4,13 @@
 
 class Tags {
 
-    private $tags;
     private $pdo;
 
     public function __construct($pdo)
     {
         $this->pdo = $pdo;
     }
+
 
     public function addTags($str_tags){
 
@@ -32,6 +32,35 @@ class Tags {
         } catch(PDOException $e){
             error_log("error adding tags " . $e->getMessage());
             return ["verify" => false,"message" => "Tags not added, Tags may already exist"];
+        }
+    }
+
+
+    public function deleteTag($id){
+        try{
+
+            $sql = "DELETE FROM tags WHERE id = :id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute(["id" => $id]);
+
+        } catch(PDOException $e){
+
+            error_log("error deleting tags : " . $e->getMessage());
+
+        }
+    }
+
+
+    public function getTags(){
+        try{
+            $sql = "SELECT * FROM tags";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (PDOException $e){
+            error_log("error fetching tags : " . $e->getMessage());
+            return [];
         }
     }
 }
