@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    require "../actions/auth.php";
+    require "../Classes/Auth.php";
+
+    Auth::checkRole("admin");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

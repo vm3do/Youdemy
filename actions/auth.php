@@ -61,36 +61,59 @@ if(isset($_POST['login'])){
     } else {
         $user = new User($pdo);
         $return = $user->login($email, $password);
-        if($return['verify'] == false){
-            $error = $return['message'];
+        if(!isset($return['verify']) || !$return['verify']){
+            $error = $return['message'] ?? "error logging in";
         } else {
-            if($return['role'] == 'admin'){
-                $admin = new Admin($pdo);
-                session_start();
-                $_SESSION['admin_id'] = $return['user_id'];
-                $_SESSION['role'] = $return['role'];
-                $_SESSION['status'] = $return['rstatusole'];
-                header("Location: admin.php");
-                exit();
+            session_start();
+            $_SESSION['user_id'] = $return['id'];
+            $_SESSION['status'] = $return['status'];
+            $_SESSION['name'] = $return['name'];
+            $_SESSION['role'] = $return['role'];
+
+            switch($return['role']){
+                case 'admin':
+                    header("Location: admin.php");
+                    break;
+                case 'teacher':
+                    header("Location: teacher.php");
+                    break;
+                case 'admin':
+                    header("Location: courses.php");
+                    break;
             }
-            elseif($return['role'] == 'teacher'){
-                $teacher = new Teacher($pdo);
-                session_start();
-                $_SESSION['teacher_id'] = $return['user_id'];
-                $_SESSION['role'] = $return['role'];
-                $_SESSION['status'] = $return['status'];
-                header("Location: teacher.php");
-                exit();
-            }
-            if($return['role'] == 'student'){
-                $student = new Student($pdo);
-                session_start();
-                $_SESSION['student_id'] = $return['user_id'];
-                $_SESSION['role'] = $return['role'];
-                $_SESSION['status'] = $return['status'];
-                header("Location: courses.php");
-                exit();
-            }
+            exit();
         }
     }
 }
+
+
+// if($return['role'] == 'admin'){
+//     $admin = new Admin($pdo);
+//     session_start();
+//     $_SESSION['admin_id'] = $return['user_id'];
+//     $_SESSION['role'] = $return['role'];
+//     $_SESSION['status'] = $return['status'];
+//     $_SESSION['name'] = $return['name'];
+//     header("Location: admin.php");
+//     exit();
+// }
+// elseif($return['role'] == 'teacher'){
+//     $teacher = new Teacher($pdo);
+//     session_start();
+//     $_SESSION['teacher_id'] = $return['user_id'];
+//     $_SESSION['role'] = $return['role'];
+//     $_SESSION['status'] = $return['status'];
+//     $_SESSION['name'] = $return['name'];
+//     header("Location: teacher.php");
+//     exit();
+// }
+// if($return['role'] == 'student'){
+//     $student = new Student($pdo);
+//     session_start();
+//     $_SESSION['student_id'] = $return['user_id'];
+//     $_SESSION['role'] = $return['role'];
+//     $_SESSION['status'] = $return['status'];
+//     $_SESSION['name'] = $return['name'];
+//     header("Location: courses.php");
+//     exit();
+// }

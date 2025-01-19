@@ -1,3 +1,10 @@
+<?php
+    require __DIR__ . "/../Classes/Auth.php";
+
+    Auth::redirect();
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -164,7 +171,7 @@
 
             <!-- Copyright -->
             <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
-                <p>&copy; 2024 YouDemy. All rights reserved.</p>
+                <p>&copy; 2025 YouDemy. All rights reserved.</p>
             </div>
         </div>
     </footer>
