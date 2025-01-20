@@ -6,9 +6,6 @@
 
     require "../actions/adminFunc.php";
 
-    $tags = new Tag();
-    $tags = $tags->getTags();
-
 ?>
 
 <!DOCTYPE html>
@@ -229,7 +226,7 @@
                             <h2 class="text-xl font-bold">Pending Teacher Validations</h2>
                             <p class="text-sm text-gray-500 mt-1">Review and approve teacher applications</p>
                         </div>
-                        <a href="#" class="text-purple-800 hover:text-purple-900 flex items-center gap-2">
+                        <a href="manageteachers.php" class="text-purple-800 hover:text-purple-900 flex items-center gap-2">
                             View All
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -746,24 +743,27 @@
                             <p class="mt-2 text-sm text-gray-500">Category names should be clear and descriptive</p>
                         </form>
 
-                        <!-- Existing Categories -->
+                        <!-- Categories -->
                         <div>
                             <h3 class="text-lg font-semibold text-gray-700 mb-4">Existing Categories</h3>
                             <div class="flex flex-wrap gap-2">
-                                <span
-                                    class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-purple-800/10 text-purple-800 group hover:bg-purple-800/20 transition-colors">
-                                    Web Development
-                                    <span class="text-xs text-purple-800/75 ml-2">(24)</span>
-                                    <form action="/delete-category" method="POST" class="inline-block">
-                                        <input type="hidden" name="category_id" value="CATEGORY_ID">
-                                        <button type="submit" class="ml-2 opacity-75 hover:opacity-100 flex items-center transition-opacity">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                            </svg>
-                                        </button>
-                                    </form>
-                                </span>
-                                <!-- More categories... -->
+
+                                <?php foreach($categories as $category): ?>
+                                    <span
+                                        class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-purple-800/10 text-purple-800 group hover:bg-purple-800/20 transition-colors">
+                                        <?= $category["name"] ?>
+                                        <span class="text-xs text-purple-800/75 ml-2">(24)</span>
+                                        <form action="admin.php" method="POST" class="inline-block">
+                                            <input type="hidden" name="cat_id" value="<?= $category["id"] ?>">
+                                            <button type="submit" name="del_cat" class="ml-2 opacity-75 hover:opacity-100 flex items-center transition-opacity">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </span>
+                                <?php endforeach ?>
+
                             </div>
                         </div>
                     </div>

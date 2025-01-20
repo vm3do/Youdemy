@@ -7,13 +7,6 @@
     $tag_msg = "";
     $cat_msg = "";
 
-    if($_SESSION["role"] === 'admin'){
-        $admin = new Admin(null, null, null, "admin");
-        $teachers = $admin->threePending() ?? [];
-        $users = $admin->threeUsers() ?? [];
-        $courses = $admin->threeCourses() ?? [];
-    }
-
     if(isset($_POST['add_tags'])){
 
         $Tags = new Tag();
@@ -24,7 +17,7 @@
 
     if(isset($_POST["del_tag"])){
         $id = $_POST["tag_id"] ?? "";
-        $Tags = new Tag($pdo);
+        $Tags = new Tag();
         $Tags->deleteTag($id);
     }
 
@@ -46,8 +39,22 @@
         $id = $_POST["teacher_id"] ?? "";
         Teacher::activate($id);
     }
+
     if(isset($_POST["reject"])){
         $id = $_POST["teacher_id"] ?? "";
         Teacher::reject($id);
+    }
+
+    if($_SESSION["role"] === 'admin'){
+        $admin = new Admin(null, null, null, "admin");
+        $teachers = $admin->threePending() ?? [];
+        $users = $admin->threeUsers() ?? [];
+        $courses = $admin->threeCourses() ?? [];
+
+        $tags = new Tag();
+        $tags = $tags->getTags();
+
+        $category = new Category();
+        $categories = $category->getcategories();
     }
 

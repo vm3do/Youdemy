@@ -28,7 +28,7 @@
         }
 
         public function threeUsers(){
-            $sql = "SELECT * FROM users WHERE role != 'admin' LIMIT 3";
+            $sql = "SELECT * FROM users WHERE role != 'admin' AND status != 'pending' LIMIT 3";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -46,6 +46,28 @@
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
+        }
+
+        public function removeUser($id){
+            try {
+                $sql = "DELETE FROM users WHERE id = :id";
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->execute(["id" => $id]);
+            } catch (PDOException $e) {
+                error_log("error removing user ." . $e->getMessage());
+                return false;
+            }
+        }
+
+        public function manageStatus($id){
+            try {
+                $sql = "UPDATE users SET status = active ? ban : active WHERE id = $id";
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->execute(["id" => $id]);
+            } catch (PDOException $e) {
+                error_log("error updating status ." . $e->getMessage());
+                return false;
+            }
         }
 
 

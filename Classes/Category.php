@@ -53,7 +53,7 @@ class Category {
     }
 
 
-    public function getcategory(){
+    public function getcategories(){
         try{
             $sql = "SELECT * FROM categories";
             $stmt = $this->pdo->prepare($sql);
