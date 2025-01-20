@@ -28,7 +28,7 @@
         }
 
         public function threeUsers(){
-            $sql = "SELECT * FROM users WHERE role != 'admin'";
+            $sql = "SELECT * FROM users WHERE role != 'admin' LIMIT 3";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -42,7 +42,7 @@
         }
 
         public function threeCourses(){
-            $sql = "SELECT * FROM courses";
+            $sql = "SELECT * FROM courses LIMIT 3";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
