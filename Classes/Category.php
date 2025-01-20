@@ -15,7 +15,7 @@ class Category {
     public function addCategory($str_cat){
 
         $trim_cat = array_map('trim', explode(',', $str_cat));
-        $lower_cat = array_map('strtolower', $trim_cat);
+        $lower_cat = array_map('ucwords', $trim_cat);
         $rm_empty = array_filter($lower_cat);
         $category = array_unique($rm_empty);
 

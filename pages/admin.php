@@ -774,11 +774,11 @@
                     </div>
                     <div class="p-6">
                         <!-- Add Category Form -->
-                        <form action="/add-category" method="POST" class="mb-6">
+                        <form action="admin.php" method="POST" class="mb-6">
                             <label for="newCategory" class="block text-sm font-medium text-gray-700 mb-2">Add New
                                 Category</label>
                             <div class="relative">
-                                <input type="text" id="newCategory" name="category_name"
+                                <input type="text" id="newCategory" name="categories"
                                     class="w-full rounded-lg border-gray-300 focus:border-purple-800 focus:ring-purple-800 outline-violet-600 pl-12 pr-4 py-3"
                                     placeholder="Enter category name (e.g., Web Development)">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -787,7 +787,7 @@
                                             d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                     </svg>
                                 </div>
-                                <button type="submit"
+                                <button name="add_cat" type="submit"
                                     class="absolute inset-y-0 right-0 flex items-center px-4 text-purple-800 hover:text-purple-900">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />

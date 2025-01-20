@@ -27,12 +27,12 @@
     if(isset($_POST['add_cat'])){
 
         $Category = new Category($pdo);
-        $return = $Category->addCategory($_POST['tags']) ;
+        $return = $Category->addCategory($_POST['categories']) ;
 
         $cat_msg = $return["message"];
     }
 
-    if(isset($_POST['add_categories'])){
+    if(isset($_POST['del_cat'])){
         $id = $_POST["cat_id"] ?? "";
         $Category = new Category($pdo);
         $Category->deleteCat($id);
