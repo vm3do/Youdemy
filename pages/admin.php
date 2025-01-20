@@ -314,7 +314,8 @@
                                         <td class="p-4">
                                             <div class="flex gap-2">
                                                 <form action="admin.php" method="post">
-                                                    <button type="submit" id="activate"
+                                                    <input type="hidden" name="teacher_id" value="<?= $teacher['id']?>">
+                                                    <button type="submit" name="activate" id="activate"
                                                         class="px-4 py-2 bg-purple-800 hover:bg-purple-900 text-white rounded-lg transition-colors flex items-center gap-1">
                                                         <svg class="w-4 h-4" fill="none" stroke="currentColor"
                                                             viewBox="0 0 24 24">
@@ -326,7 +327,8 @@
                                                 </form>
 
                                                 <form action="admin.php" method="post">
-                                                    <button type="submit" id="reject"
+                                                    <input type="hidden" name="teacher_id" value="<?= $teacher['id']?>">
+                                                    <button type="submit" name="reject" id="reject"
                                                         class="px-4 py-2 bg-white border border-red-500 text-red-500 hover:bg-red-50 rounded-lg transition-colors flex items-center gap-1">
                                                         <svg class="w-4 h-4" fill="none" stroke="currentColor"
                                                             viewBox="0 0 24 24">
@@ -531,50 +533,23 @@
                         </div>
                         <div class="p-6">
                             <div class="space-y-4">
-                                <div class="flex items-center gap-4">
-                                    <div class="w-10 h-10 bg-purple-800/10 rounded-full flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-purple-800" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                        </svg>
+                                <?php foreach($courses as $course): ?>
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-10 h-10 bg-purple-800/10 rounded-full flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-purple-800" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                            </svg>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="font-semibold"><?= $course['name']?></p>
+                                            <p class="text-sm text-gray-500"><?= $course['teacher']?></p>
+                                        </div>
+                                        <span class="text-purple-800 font-semibold">$00.00</span>
                                     </div>
-                                    <div class="flex-1">
-                                        <p class="font-semibold">Advanced JavaScript Masterclass</p>
-                                        <p class="text-sm text-gray-500">Sarah Johnson</p>
-                                    </div>
-                                    <span class="text-purple-800 font-semibold">$00.00</span>
-                                </div>
+                                <?php endforeach?>
 
-                                <div class="flex items-center gap-4">
-                                    <div class="w-10 h-10 bg-purple-800/10 rounded-full flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-purple-800" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                        </svg>
-                                    </div>
-                                    <div class="flex-1">
-                                        <p class="font-semibold">Python for Data Science</p>
-                                        <p class="text-sm text-gray-500">Michael Chen</p>
-                                    </div>
-                                    <span class="text-purple-800 font-semibold">$00.00</span>
-                                </div>
-
-                                <div class="flex items-center gap-4">
-                                    <div class="w-10 h-10 bg-purple-800/10 rounded-full flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-purple-800" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                        </svg>
-                                    </div>
-                                    <div class="flex-1">
-                                        <p class="font-semibold">UI/UX Design Fundamentals</p>
-                                        <p class="text-sm text-gray-500">Emma Wilson</p>
-                                    </div>
-                                    <span class="text-purple-800 font-semibold">$00.00</span>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -9,9 +9,9 @@
 
     if($_SESSION["role"] === 'admin'){
         $admin = new Admin(null, null, null, "admin");
-        $teachers = $admin->getPending() ?? [];
-        $users = $admin->getUsers() ?? [];
-        $courses = $admin->getCourses() ?? [];
+        $teachers = $admin->threePending() ?? [];
+        $users = $admin->threeUsers() ?? [];
+        $courses = $admin->threeCourses() ?? [];
     }
 
     if(isset($_POST['add_tags'])){
@@ -45,5 +45,9 @@
     if(isset($_POST["activate"])){
         $id = $_POST["teacher_id"] ?? "";
         Teacher::activate($id);
+    }
+    if(isset($_POST["reject"])){
+        $id = $_POST["teacher_id"] ?? "";
+        Teacher::reject($id);
     }
 

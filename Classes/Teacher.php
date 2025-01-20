@@ -21,7 +21,7 @@
             try{
 
                 $db = Database::getinstance();
-                $pdo = $db->getconnection();
+                $pdo = $db->getconn();
 
                 $sql = "UPDATE users SET status = 'active' WHERE id = :id AND role = 'teacher'";
                 $stmt = $pdo->prepare($sql);
@@ -40,7 +40,7 @@
             try{
 
                 $db = Database::getinstance();
-                $pdo = $db->getconnection();
+                $pdo = $db->getconn();
 
                 $sql = " DELETE FROM users WHERE id = :id ";
                 $stmt = $pdo->prepare($sql);
