@@ -16,4 +16,42 @@
             return parent::signup();
         
         }
+
+        static function activate($id){
+            try{
+
+                $db = Database::getinstance();
+                $pdo = $db->getconnection();
+
+                $sql = "UPDATE users SET status = 'active' WHERE id = :id AND role = 'teacher'";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute(["id" => $id]);
+
+                return true;
+
+
+            } catch (PDOException $e) {
+                error_log("error accepting the teacher :" . $e->getMessage());
+                return false;
+            }
+        }
+
+        static function reject($id){
+            try{
+
+                $db = Database::getinstance();
+                $pdo = $db->getconnection();
+
+                $sql = " DELETE FROM users WHERE id = :id ";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute(["id" => $id]);
+
+                return true;
+
+
+            } catch (PDOException $e) {
+                error_log("error rejecting the teacher :" . $e->getMessage());
+                return false;
+            }
+        }
     }

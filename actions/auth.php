@@ -24,7 +24,7 @@ if(isset($_POST['signup'])){
             exit();
         }
     } elseif($role === "teacher") {
-        $teacher = new Teacher($name, $email, $password, $role);
+        $teacher = new Teacher(null, $name, $email, $password, $role);
         $return = $teacher->signup();
         if(isset($return['message'])){
             $error = $return['message'];

@@ -7,6 +7,13 @@
     $tag_msg = "";
     $cat_msg = "";
 
+    if($_SESSION["role"] === 'admin'){
+        $admin = new Admin(null, null, null, "admin");
+        $teachers = $admin->getPending() ?? [];
+        $users = $admin->getUsers() ?? [];
+        $courses = $admin->getCourses() ?? [];
+    }
+
     if(isset($_POST['add_tags'])){
 
         $Tags = new Tag();
@@ -23,7 +30,7 @@
 
     if(isset($_POST['add_cat'])){
 
-        $Category = new Category($pdo);
+        $Category = new Category();
         $return = $Category->addCategory($_POST['categories']) ;
 
         $cat_msg = $return["message"];
@@ -31,6 +38,12 @@
 
     if(isset($_POST['del_cat'])){
         $id = $_POST["cat_id"] ?? "";
-        $Category = new Category($pdo);
+        $Category = new Category();
         $Category->deleteCat($id);
     }
+
+    if(isset($_POST["activate"])){
+        $id = $_POST["teacher_id"] ?? "";
+        Teacher::activate($id);
+    }
+
