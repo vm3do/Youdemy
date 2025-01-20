@@ -2,17 +2,37 @@
 
     class Database {
         
-        private $dsn = "mysql:host=localhost;dbname=youdemy";
-        private $user = "root";
-        private $pass = "";
+        private static $instance = NULL;
+        private $pdo;
 
-        public function conn(){
+        private function __construct()
+        {
+            $dsn = "mysql:host=localhost;dbname=youdemy";
+            $user = "root";
+            $pass = "";
+
             try{
-                $pdo = new PDO($this->dsn, $this->user, $this->pass);
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                return $pdo;
+
+                $this->pdo = new PDO($dsn, $user, $pass);
+                $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
             } catch(PDOException $e) {
                 die("Error connecting : " . $e->getMessage());
             }
         }
+
+    public static function getinstance(){
+
+        if(self::$instance === NULL){
+            return new Database();
+        }
+        return self::$instance;
+
     }
+
+    public function getconn(){
+        return $this->pdo;
+    }
+    
+
+}

@@ -1,12 +1,19 @@
 <?php
 
-    require_once __DIR__ . "/Users.php";
+    require_once __DIR__ . "/User.php";
 
     class Teacher extends User {
 
-        public function signup($name, $email, $password, $role, $status = "pending"){
+        public function __construct($name, $email, $pass, $role ){
 
-            return parent::signup($name, $email, $password, $role, $status);
+            parent::__construct($name, $email, $pass, $role);
+            $this->status = "pending";
+
+        }
+
+        public function signup(){
+            
+            return parent::signup();
         
         }
     }
