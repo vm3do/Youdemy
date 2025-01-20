@@ -2,16 +2,17 @@
 
     require_once "../Config/Database.php";
 
-class Tags {
+class Tag {
 
     private $pdo;
 
-    public function __construct($pdo)
+    public function __construct()
     {
-        $this->pdo = $pdo;
+        $instance = Database::getinstance();
+        $this->pdo = $instance->getconn();
     }
 
-    
+
     public function addTags($str_tags){
 
         $trim_tags = array_map('trim', explode(',', $str_tags));

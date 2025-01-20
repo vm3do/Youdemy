@@ -24,12 +24,12 @@
                 <span class="text-purple-800">You</span>Demy
             </div>
             <nav class="flex items-center gap-8">
-                <a href="index.html" class="text-gray-800 hover:text-purple-800">Home</a>
-                <a href="#" class="text-purple-800 font-medium">Courses</a>
-                <a href="#"
+                <a href="index.php" class="text-gray-800 hover:text-purple-800">Home</a>
+                <a href="courses.php" class="text-purple-800 font-medium">Courses</a>
+                <a href="login.php"
                     class="inline-flex items-center justify-center h-10 border border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white px-6 rounded-lg transition-colors">Log
                     In</a>
-                <a href="#"
+                <a href="signup.php"
                     class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">Sign
                     Up</a>
             </nav>

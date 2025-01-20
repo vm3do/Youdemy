@@ -1,5 +1,4 @@
 <?php
-    session_start();
     require "../actions/auth.php";
     require "../Classes/Auth.php";
 
