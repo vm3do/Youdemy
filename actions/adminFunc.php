@@ -24,6 +24,16 @@
         $Tags->deleteTag($id);
     }
 
+    if(isset($_POST['add_cat'])){
+
+        $Category = new Category($pdo);
+        $return = $Category->addCategory($_POST['tags']) ;
+
+        $cat_msg = $return["message"];
+    }
+
     if(isset($_POST['add_categories'])){
-        
+        $id = $_POST["cat_id"] ?? "";
+        $Category = new Category($pdo);
+        $Category->deleteCat($id);
     }

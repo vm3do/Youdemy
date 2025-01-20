@@ -11,11 +11,12 @@ class Tags {
         $this->pdo = $pdo;
     }
 
-
+    
     public function addTags($str_tags){
 
         $trim_tags = array_map('trim', explode(',', $str_tags));
-        $rm_empty = array_filter($trim_tags);
+        $lower_tags = array_map('strtolower', $trim_tags);
+        $rm_empty = array_filter($lower_tags);
         $tags = array_unique($rm_empty);
 
         if(empty($tags)){
