@@ -6,9 +6,10 @@ class Category {
 
     private $pdo;
 
-    public function __construct($pdo)
+    public function __construct()
     {
-        $this->pdo = $pdo;
+        $instance = Database::getinstance();
+        $this->pdo = $instance->getconn();
     }
 
 
