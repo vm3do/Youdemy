@@ -8,15 +8,30 @@
     $tag_msg = "";
     $cat_msg = "";
 
-    // if(isset($_POST['add_course'])){
+    if(isset($_POST['addcourse'])){
 
-    //     $filename = $_FILES['video']['file_name']
+        $title = $_POST["title"];
+        $description = $_POST["description"];
+        $teacher_id = $_SESSION["user_id"];
+        $category_id = $_POST["cat_id"];
+        $title = $_POST["title"];
 
-    //     $file = new File();
-    //     $file->manageFile() ;
+        if(isset($_FILES["video"])){
+            $filename = $_FILES['video']['name'];
+            $tmpPath = $_FILES['video']['tmp_name'];
+            $size = $_FILES['video']['size'];
+            $error = $_FILES['video']['error'];
 
-    //     $tag_msg = $return["message"];
-    // }
+            $file = new File($filename, $tmpPath, $size, $error);
+            $return = $file->manageFile();
+
+            if($return["success"] == true){
+                $video = new Video();
+            }
+        }
+
+        $tag_msg = $return["message"];
+    }
 
     if(isset($_POST["del_tag"])){
         $id = $_POST["tag_id"] ?? "";
