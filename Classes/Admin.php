@@ -53,6 +53,7 @@
                 $sql = "DELETE FROM users WHERE id = :id";
                 $stmt = $this->pdo->prepare($sql);
                 $stmt->execute(["id" => $id]);
+                return true;
             } catch (PDOException $e) {
                 error_log("error removing user ." . $e->getMessage());
                 return false;
@@ -61,9 +62,19 @@
 
         public function manageStatus($id){
             try {
-                $sql = "UPDATE users SET status = active ? ban : active WHERE id = $id";
+                $sql = "SELECT status FROM users WHERE id = :id";
                 $stmt = $this->pdo->prepare($sql);
                 $stmt->execute(["id" => $id]);
+                $return = $stmt->fetch(PDO::FETCH_ASSOC);
+                if(empty($return)){
+                    return false;
+                }
+
+                $status = $return["status"] == "active" ? "banned" : "active";
+                $sql = "UPDATE users SET status = :status WHERE id = :id";
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->execute(["id" => $id, "status" => $status]);
+                return true;
             } catch (PDOException $e) {
                 error_log("error updating status ." . $e->getMessage());
                 return false;

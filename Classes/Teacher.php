@@ -6,8 +6,8 @@
 
         public function __construct($name, $email, $pass, $role ){
 
-            parent::__construct($name, $email, $pass, $role);
-            $this->status = "pending";
+            parent::__construct($name, $email, $pass, $role); ///////////////
+            $this->status = "pending"; //////////////////
 
         }
 

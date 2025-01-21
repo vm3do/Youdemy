@@ -24,7 +24,7 @@ if(isset($_POST['signup'])){
             exit();
         }
     } elseif($role === "teacher") {
-        $teacher = new Teacher(null, $name, $email, $password, $role);
+        $teacher = new Teacher($name, $email, $password, $role);
         $return = $teacher->signup();
         if(isset($return['message'])){
             $error = $return['message'];
@@ -65,35 +65,3 @@ if(isset($_POST['login'])){
         exit();
     }
 }
-
-
-// if($return['role'] == 'admin'){
-//     $admin = new Admin($pdo);
-//     session_start();
-//     $_SESSION['admin_id'] = $return['user_id'];
-//     $_SESSION['role'] = $return['role'];
-//     $_SESSION['status'] = $return['status'];
-//     $_SESSION['name'] = $return['name'];
-//     header("Location: admin.php");
-//     exit();
-// }
-// elseif($return['role'] == 'teacher'){
-//     $teacher = new Teacher($pdo);
-//     session_start();
-//     $_SESSION['teacher_id'] = $return['user_id'];
-//     $_SESSION['role'] = $return['role'];
-//     $_SESSION['status'] = $return['status'];
-//     $_SESSION['name'] = $return['name'];
-//     header("Location: teacher.php");
-//     exit();
-// }
-// if($return['role'] == 'student'){
-//     $student = new Student($pdo);
-//     session_start();
-//     $_SESSION['student_id'] = $return['user_id'];
-//     $_SESSION['role'] = $return['role'];
-//     $_SESSION['status'] = $return['status'];
-//     $_SESSION['name'] = $return['name'];
-//     header("Location: courses.php");
-//     exit();
-// }
