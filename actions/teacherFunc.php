@@ -1,79 +1,14 @@
 <?php
 
+    require_once "../Classes/File.php";
+
     require_once "../Config/Database.php";
-    require "../Classes/Tag.php";
-    require "../Classes/File.php";
-    require "../Classes/Category.php";
+    require_once "../Classes/Tag.php";
+    require_once "../Classes/Video.php";
+    require_once "../Classes/Category.php";
 
     $tag_msg = "";
     $cat_msg = "";
-
-    if(isset($_POST['addcourse'])){
-
-        $title = $_POST["title"];
-        $description = $_POST["description"];
-        $teacher_id = $_SESSION["user_id"];
-        $category_id = $_POST["cat_id"];
-        $title = $_POST["title"];
-
-        if(isset($_FILES["video"])){
-            $filename = $_FILES['video']['name'];
-            $tmpPath = $_FILES['video']['tmp_name'];
-            $size = $_FILES['video']['size'];
-            $error = $_FILES['video']['error'];
-
-            $file = new File($filename, $tmpPath, $size, $error);
-            $return = $file->manageFile();
-
-            if($return["success"] == true){
-                $video = new Video();
-            }
-        }
-
-        $tag_msg = $return["message"];
-    }
-
-    if(isset($_POST["del_tag"])){
-        $id = $_POST["tag_id"] ?? "";
-        $Tags = new Tag();
-        $Tags->deleteTag($id);
-    }
-
-    if(isset($_POST['add_cat'])){
-
-        $Category = new Category();
-        $return = $Category->addCategory($_POST['categories']) ;
-
-        $cat_msg = $return["message"];
-    }
-
-    if(isset($_POST['del_cat'])){
-        $id = $_POST["cat_id"] ?? "";
-        $Category = new Category();
-        $Category->deleteCat($id);
-    }
-
-    if(isset($_POST["activate"])){
-        $id = $_POST["teacher_id"] ?? "";
-        Teacher::activate($id);
-    }
-
-    if(isset($_POST["reject"])){
-        $id = $_POST["teacher_id"] ?? "";
-        Teacher::reject($id);
-    }
-
-    if(isset($_POST["ban"]) || isset($_POST["unban"])){
-        $id = $_POST["user_id"] ?? "";
-        $admin = new Admin(null, null, null, null);
-        $admin->manageStatus($id);
-    }
-
-    if(isset($_POST["delete"])){
-        $id = $_POST["user_id"] ?? "";
-        $admin = new Admin(null, null, null, null);
-        $admin->removeUser($id);
-    }
 
     if($_SESSION["role"] === 'teacher'){
         $teacher = new Teacher(null, null, null, "teacher");
@@ -85,6 +20,44 @@
         $tags = $tags->getTags();
 
         $category = new Category();
-        $categories = $category->getcategories();
+        $categories = $category->getcategories() ?? [];
+    }
+
+    if(isset($_POST['addcourse'])){
+
+        $title = $_POST["title"];
+        $description = $_POST["description"];
+        $teacher_id = $_SESSION["user_id"];
+        $category_id = $_POST["category"] ?? "";
+        $course_tags = $_POST["tags"] ?? "";
+
+        if($_POST["contentType"] == "video"){
+            $filename = $_FILES['video']['name'];
+            $tmpPath = $_FILES['video']['tmp_name'];
+            $size = $_FILES['video']['size'];
+            $error = $_FILES['video']['error'];
+
+            $file = new File($filename, $tmpPath, $size, $error);
+            $return = $file->manageFile();
+
+            if($return["success"] == true){
+                // $video = new Video($title, $description, $teacher_id, $category_id, $course_tags, "video", $return["filepath"]);
+                $video = new Video("hhbhbj", "khjhbjh", "video", "jhbjhbjh", 2, 7, "video", "C:\xampp\htdocs\Youdemy\Classes/videos/video_67900d4c01c514.00364338.mp4");
+                print_r($return["filepath"]);
+                // $addError = $video->addCourse();
+            } else {
+                return["message"];
+            }
+        }
+
+        // $tag_msg = $return["message"] ??;
+    }
+
+    
+
+    if(isset($_POST["delete"])){
+        $id = $_POST["user_id"] ?? "";
+        $admin = new Admin(null, null, null, null);
+        $admin->removeUser($id);
     }
 

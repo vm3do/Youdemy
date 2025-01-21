@@ -276,7 +276,9 @@
 
                 <!-- Modal Content -->
                 <div class="px-6 py-4 max-h-[calc(100vh-180px)] overflow-y-auto scrollbar-hide">
-                    <form id="addCourse" action="teacher.php" method="post" enctype="multipart/form-data" class="space-y-6">
+                    <div class="font-red-500" ><?= $return["message"] ?? $addError["message"] ?? ""?></div>
+                    <form id="addCourse" action="teacher.php" method="post" name="addcourse" enctype="multipart/form-data" class="space-y-6">
+                        
                         <!-- Title -->
                         <div class="space-y-1 text-left">
                             <label class="block text-base font-semibold text-gray-800 mb-2">
@@ -432,9 +434,9 @@
                                 <?php foreach($tags as $tag): ?>
 
                                     <div>
-                                        <input type="checkbox" id="tag-webdev" name="tags[]" value="<?= $tag["id"] ?>"
+                                        <input type="checkbox" id="<?= $tag["id"] ?>" name="tags[]" value="<?= $tag["id"] ?>"
                                             class="sr-only peer">
-                                        <label for="tag-webdev" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
+                                        <label for="<?= $tag["id"] ?>" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
                                             text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
                                             peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
                                             transition-colors">
@@ -459,9 +461,9 @@
                                 <?php foreach($categories as $category): ?>
 
                                     <div>
-                                        <input type="checkbox" id="tag-webdev" name="category" value="<?= $category["id"] ?>"
+                                        <input type="checkbox" id="<?= $category["id"] ?>" name="category" value="<?= $category["id"] ?>"
                                             class="sr-only peer">
-                                        <label for="tag-webdev" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
+                                        <label for="<?= $category["id"] ?>" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
                                             text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
                                             peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
                                             transition-colors">
@@ -474,8 +476,9 @@
                             </div>
                             <p class="mt-1 text-sm text-gray-500">Select one category</p>
                         </div>
-                        <?php print_r($_FILES["video"]) ?>
+                        
                     </form>
+                    <?php print_r($_FILES["video"]) ?? ""?>
                 </div>
 
                 <!-- Modal Footer -->
