@@ -4,6 +4,8 @@
 
     Auth::checkRole("teacher");
 
+    require "../actions/teacherFunc.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +16,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouDemy Teacher Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+    </style>
 </head>
 
 <body class="bg-gray-100">
@@ -245,8 +254,10 @@
         </div>
 
     <!-- Add Course Modal -->
-    <div id="addCourseModal" class="fixed inset-0 bg-gray-900/50 z-50 hidden">
+    <div id="addCourseModal" class="fixed inset-0 bg-gray-900/50 z-50 ">
         <div class="min-h-screen px-4 text-center flex items-center justify-center">
+
+            
             <!-- Modal panel -->
             <div class="w-full max-w-2xl bg-white shadow-xl rounded-2xl relative">
                 <!-- Fixed Header -->
@@ -263,16 +274,16 @@
                     </div>
                 </div>
 
-                <!-- Scrollable Content -->
+                <!-- Modal Content -->
                 <div class="px-6 py-4 max-h-[calc(100vh-180px)] overflow-y-auto scrollbar-hide">
-                    <form id="addCourseForm" class="space-y-6">
+                    <form id="addCourse" action="teacher.php" method="post" class="space-y-6">
                         <!-- Title -->
                         <div class="space-y-1 text-left">
                             <label class="block text-base font-semibold text-gray-800 mb-2">
                                 Course Title
                             </label>
                             <div class="relative">
-                                <input type="text" id="courseTitle" name="courseTitle" required class="block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm 
+                                <input type="text" id="courseTitle" name="title" required class="block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm 
                                     focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 
                                     hover:border-violet-300 outline-violet-600 transition-colors"
                                     placeholder="Enter course title">
@@ -292,7 +303,7 @@
                                 Course Description
                             </label>
                             <div class="relative">
-                                <textarea id="courseDescription" name="courseDescription" rows="3" required class="block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm 
+                                <textarea name="description" rows="3" required class="block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm 
                                     focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 
                                     hover:border-violet-300 outline-violet-600 transition-colors"
                                     placeholder="Describe your course"></textarea>
@@ -351,13 +362,13 @@
                             </div>
                         </div>
 
-                        <!-- Video Content Input -->
+                        <!-- Video File -->
                         <div id="videoInput" class="space-y-4">
                             <label class="block text-lg font-bold text-gray-800 mb-3 border-l-4 border-violet-500 pl-3">
                                 Video Content
                             </label>
                             <div class="border-2 border-gray-200 rounded-lg bg-white">
-                                <!-- Current Video Preview -->
+                                <!-- Current Video -->
                                 <div class="p-4 border-b border-gray-200">
                                     <div class="flex items-center gap-3">
                                         <div
@@ -376,7 +387,7 @@
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Upload New Video</label>
                                     <div class="flex items-center gap-3">
                                         <div class="flex-1">
-                                            <input type="file" accept="video/mp4,video/webm" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4
+                                            <input type="file" accept="video/mp4" name="video" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4
                                                 file:rounded-lg file:border-0 file:text-sm file:font-semibold
                                                 file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100
                                                 cursor-pointer border border-gray-200 rounded-lg
@@ -384,18 +395,20 @@
                                         </div>
                                     </div>
                                     <p class="mt-2 text-xs text-gray-500">
-                                        Supported formats: MP4, WebM (Max size: 2GB)
+                                        Supported formats: MP4 (Max size: 8mb)
                                     </p>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Text Content -->
 
                         <div id="textInput" class="hidden space-y-1">
                             <label class="block text-base font-semibold text-gray-800 mb-2">
                                 Course Content
                             </label>
                             <div class="relative">
-                                <textarea id="textContent" name="textContent" rows="6" class="block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm 
+                                <textarea id="textContent" name="text" rows="6" class="block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm 
                                     focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 
                                     hover:border-violet-300 outline-violet-600 transition-colors"
                                     placeholder="Enter your course content"></textarea>
@@ -415,148 +428,64 @@
                                 Tags
                             </label>
                             <div class="flex flex-wrap gap-2">
-                                <!-- Web Development -->
-                                <div>
-                                    <input type="checkbox" id="tag-webdev" name="tags[]" value="webdev"
-                                        class="sr-only peer">
-                                    <label for="tag-webdev" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
-                                        text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
-                                        peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
-                                        transition-colors">
-                                        Web Development
-                                    </label>
-                                </div>
 
-                                <!-- Design -->
-                                <div>
-                                    <input type="checkbox" id="tag-design" name="tags[]" value="design"
-                                        class="sr-only peer">
-                                    <label for="tag-design" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
-                                        text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
-                                        peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
-                                        transition-colors">
-                                        Design
-                                    </label>
-                                </div>
+                                <?php foreach($tags as $tag): ?>
 
-                                <!-- Programming -->
-                                <div>
-                                    <input type="checkbox" id="tag-programming" name="tags[]" value="programming"
-                                        class="sr-only peer">
-                                    <label for="tag-programming" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
-                                        text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
-                                        peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
-                                        transition-colors">
-                                        Programming
-                                    </label>
-                                </div>
+                                    <div>
+                                        <input type="checkbox" id="tag-webdev" name="tags[]" value="<?= $tag["id"] ?>"
+                                            class="sr-only peer">
+                                        <label for="tag-webdev" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
+                                            text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
+                                            peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
+                                            transition-colors">
+                                            <?= $tag["name"] ?>
+                                        </label>
+                                    </div>
 
-                                <!-- Business -->
-                                <div>
-                                    <input type="checkbox" id="tag-business" name="tags[]" value="business"
-                                        class="sr-only peer">
-                                    <label for="tag-business" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
-                                        text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
-                                        peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
-                                        transition-colors">
-                                        Business
-                                    </label>
-                                </div>
+                                <?php endforeach ?>
 
-                                <!-- Marketing -->
-                                <div>
-                                    <input type="checkbox" id="tag-marketing" name="tags[]" value="marketing"
-                                        class="sr-only peer">
-                                    <label for="tag-marketing" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
-                                        text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
-                                        peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
-                                        transition-colors">
-                                        Marketing
-                                    </label>
-                                </div>
+                                
                             </div>
                             <p class="mt-1 text-sm text-gray-500">Select all that apply</p>
                         </div>
 
-                        <!-- Category -->
+                        <!-- Categories -->
                         <div class="space-y-1 text-left">
                             <label class="block text-base font-semibold text-gray-800 mb-2">
                                 Category
                             </label>
                             <div class="flex flex-wrap gap-2">
-                                <!-- Programming -->
-                                <div>
-                                    <input type="radio" id="cat-programming" name="category" value="programming"
-                                        class="sr-only peer" checked>
-                                    <label for="cat-programming" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
-                                        text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
-                                        peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
-                                        transition-colors">
-                                        Programming
-                                    </label>
-                                </div>
 
-                                <!-- Design -->
-                                <div>
-                                    <input type="radio" id="cat-design" name="category" value="design"
-                                        class="sr-only peer">
-                                    <label for="cat-design" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
-                                        text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
-                                        peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
-                                        transition-colors">
-                                        Design
-                                    </label>
-                                </div>
+                                <?php foreach($categories as $category): ?>
 
-                                <!-- Business -->
-                                <div>
-                                    <input type="radio" id="cat-business" name="category" value="business"
-                                        class="sr-only peer">
-                                    <label for="cat-business" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
-                                        text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
-                                        peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
-                                        transition-colors">
-                                        Business
-                                    </label>
-                                </div>
+                                    <div>
+                                        <input type="hidden" name="tags_id[]" value="<?= $category["name"] ?>">
+                                        <input type="checkbox" id="tag-webdev" name="tags[]" value="<?= $category["name"] ?>"
+                                            class="sr-only peer">
+                                        <label for="tag-webdev" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
+                                            text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
+                                            peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
+                                            transition-colors">
+                                            <?= $category["name"] ?>
+                                        </label>
+                                    </div>
 
-                                <!-- Marketing -->
-                                <div>
-                                    <input type="radio" id="cat-marketing" name="category" value="marketing"
-                                        class="sr-only peer">
-                                    <label for="cat-marketing" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
-                                        text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
-                                        peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
-                                        transition-colors">
-                                        Marketing
-                                    </label>
-                                </div>
+                                <?php endforeach ?>
 
-                                <!-- Music -->
-                                <div>
-                                    <input type="radio" id="cat-music" name="category" value="music"
-                                        class="sr-only peer">
-                                    <label for="cat-music" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
-                                        text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
-                                        peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
-                                        transition-colors">
-                                        Music
-                                    </label>
-                                </div>
                             </div>
                             <p class="mt-1 text-sm text-gray-500">Select one category</p>
                         </div>
                     </form>
                 </div>
 
-                <!-- Fixed Footer -->
+                <!-- Modal Footer -->
                 <div class="sticky bottom-0 bg-white px-6 py-4 border-t flex justify-end gap-3 rounded-b-2xl">
                     <button type="button" onclick="toggleModal()" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 
                         rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-violet-500/20 
                         transition-colors">
                         Cancel
                     </button>
-                    <button type="submit" form="addCourseForm" class="px-4 py-2 text-sm font-medium text-white bg-violet-600 rounded-lg 
+                    <button type="submit" form="addCourse" class="px-4 py-2 text-sm font-medium text-white bg-violet-600 rounded-lg 
                         hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500/50 
                         transition-colors">
                         Create Course
@@ -567,7 +496,6 @@
     </div>
     <?php } ?>
 
-    <!-- Add this JavaScript -->
     <script>
         function toggleModal() {
             const modal = document.getElementById('addCourseModal'); // Use the correct ID
@@ -591,21 +519,6 @@
 
     </script>
 
-    <!-- Add this style to hide scrollbar -->
-    <style>
-        /* Hide scrollbar for Chrome, Safari and Opera */
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* Hide scrollbar for IE, Edge and Firefox */
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            /* IE and Edge */
-            scrollbar-width: none;
-            /* Firefox */
-        }
-    </style>
 </body>
 
 </html>

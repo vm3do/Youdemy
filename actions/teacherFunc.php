@@ -2,18 +2,21 @@
 
     require_once "../Config/Database.php";
     require "../Classes/Tag.php";
+    require "../Classes/File.php";
     require "../Classes/Category.php";
 
     $tag_msg = "";
     $cat_msg = "";
 
-    if(isset($_POST['add_tags'])){
+    // if(isset($_POST['add_course'])){
 
-        $Tags = new Tag();
-        $return = $Tags->addTags($_POST['tags']) ;
+    //     $filename = $_FILES['video']['file_name']
 
-        $tag_msg = $return["message"];
-    }
+    //     $file = new File();
+    //     $file->manageFile() ;
+
+    //     $tag_msg = $return["message"];
+    // }
 
     if(isset($_POST["del_tag"])){
         $id = $_POST["tag_id"] ?? "";
@@ -57,11 +60,11 @@
         $admin->removeUser($id);
     }
 
-    if($_SESSION["role"] === 'admin'){
-        $admin = new Admin(null, null, null, "admin");
-        $teachers = $admin->threePending() ?? [];
-        $users = $admin->threeUsers() ?? [];
-        $courses = $admin->threeCourses() ?? [];
+    if($_SESSION["role"] === 'teacher'){
+        $teacher = new Teacher(null, null, null, "teacher");
+        // $teachers = $admin->threePending() ?? [];
+        // $users = $admin->threeUsers() ?? [];
+        // $courses = $admin->threeCourses() ?? [];
 
         $tags = new Tag();
         $tags = $tags->getTags();

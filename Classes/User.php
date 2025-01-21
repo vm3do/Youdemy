@@ -24,7 +24,7 @@
 
         public function signup(){
 
-            if(empty($this->name) || empty($this->email) || empty($this->pass)) {
+            if(empty($this->name) || empty($this->email) || empty($this->pass) || empty($this->role)) {
                 return ["message" => "All fields are required!"];
             }
 
