@@ -45,13 +45,12 @@
                 if($return){
                     $id = $stmt->lastInsertedId();
                     $sql = "INSERT INTO course_tags(tag_id, course_id) VALUES (:t_id, :c_id)";
-                    
+                    $stmt = $this->pdo->prepare($sql);
+                    foreach($tags as $tag){
+                        $stmt->execute(["t_id" => $tag, "c_id"=> $id]);
+                    }
+
                 }
-
-
-
-
-
 
             } catch(PDOException $e){
 

@@ -276,7 +276,7 @@
 
                 <!-- Modal Content -->
                 <div class="px-6 py-4 max-h-[calc(100vh-180px)] overflow-y-auto scrollbar-hide">
-                    <form id="addCourse" action="teacher.php" method="post" class="space-y-6">
+                    <form id="addCourse" action="teacher.php" method="post" enctype="multipart/form-data" class="space-y-6">
                         <!-- Title -->
                         <div class="space-y-1 text-left">
                             <label class="block text-base font-semibold text-gray-800 mb-2">
@@ -459,8 +459,7 @@
                                 <?php foreach($categories as $category): ?>
 
                                     <div>
-                                        <input type="hidden" name="tags_id[]" value="<?= $category["name"] ?>">
-                                        <input type="checkbox" id="tag-webdev" name="tags[]" value="<?= $category["name"] ?>"
+                                        <input type="checkbox" id="tag-webdev" name="category" value="<?= $category["id"] ?>"
                                             class="sr-only peer">
                                         <label for="tag-webdev" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
                                             text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
@@ -475,6 +474,7 @@
                             </div>
                             <p class="mt-1 text-sm text-gray-500">Select one category</p>
                         </div>
+                        <?php print_r($_FILES["video"]) ?>
                     </form>
                 </div>
 
@@ -485,7 +485,7 @@
                         transition-colors">
                         Cancel
                     </button>
-                    <button type="submit" form="addCourse" class="px-4 py-2 text-sm font-medium text-white bg-violet-600 rounded-lg 
+                    <button type="submit" name="addcourse" form="addCourse" class="px-4 py-2 text-sm font-medium text-white bg-violet-600 rounded-lg 
                         hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500/50 
                         transition-colors">
                         Create Course
