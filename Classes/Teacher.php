@@ -7,7 +7,7 @@
         public function __construct($name, $email, $pass, $role ){
 
             parent::__construct($name, $email, $pass, $role); ///////////////
-            $this->status = "pending"; //////////////////
+            $this->status = "pending"; ////////
 
         }
 
@@ -17,7 +17,7 @@
         
         }
 
-        static function activate($id){
+        public static function activate($id){
             try{
 
                 $db = Database::getinstance();
@@ -36,7 +36,7 @@
             }
         }
 
-        static function reject($id){
+        public static function reject($id){
             try{
 
                 $db = Database::getinstance();
@@ -51,6 +51,23 @@
 
             } catch (PDOException $e) {
                 error_log("error rejecting the teacher :" . $e->getMessage());
+                return false;
+            }
+        }
+
+        public function courseCount($id){
+
+            try{
+
+                $sql = " SELECT COUNT(*) FROM courses WHERE teacher_id = :id ";
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->execute(["id" => $id]);
+
+                return true;
+
+
+            } catch (PDOException $e) {
+                error_log("error fetching the count :" . $e->getMessage());
                 return false;
             }
         }

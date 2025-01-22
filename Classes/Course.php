@@ -27,11 +27,40 @@
 
         }
 
-        public function addCourse(){}
+        public abstract function addCourse();
         
 
-        public static function deleteCourse(){
-            
+        public static function deleteCourse($id){
+
+            $instance = Database::getinstance();
+            $pdo = $instance->getconn();
+
+                try {
+                    $sql = "DELETE FROM courses WHERE id = :id";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute(["id" => $id]);
+                    return true;
+                } catch (PDOException $e) {
+                    error_log("error removing course ." . $e->getMessage());
+                    return false;
+                }
+
+        }
+
+        public static function getCourses(){
+
+            $instance = Database::getinstance();
+            $pdo = $instance->getconn();
+
+            try{
+                $sql = "SELECT * FROM courses";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute();
+                return $stmt->fetchAll();
+
+            } catch(PDOException $e){
+                error_log("error fetching courses : " . $e->getMessage());
+            }
         }
 
 

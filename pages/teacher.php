@@ -163,90 +163,87 @@
                         </thead>
                         <tbody class="divide-y divide-gray-100">
                             <!-- Course Row -->
-                            <tr class="hover:bg-gray-100/50 transition-colors">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center gap-4">
-                                        <div
-                                            class="w-12 h-12 rounded-xl bg-violet-100 flex items-center justify-center flex-shrink-0">
-                                            <svg class="w-6 h-6 text-violet-600" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-medium text-gray-900">Web Development Masterclass</h4>
-                                            <div class="flex items-center gap-2 mt-1">
-                                                <span
-                                                    class="px-2.5 py-0.5 text-xs font-medium text-violet-700 bg-violet-50 rounded-full">
-                                                    Programming
-                                                </span>
+                            <?php foreach( $courses as $course): ?>
+
+                                <tr class="hover:bg-gray-100/50 transition-colors">
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-4">
+                                            <div
+                                                class="w-12 h-12 rounded-xl bg-violet-100 flex items-center justify-center flex-shrink-0">
+                                                <svg class="w-6 h-6 text-violet-600" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                        d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                        d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-medium text-gray-900"><?= $course["title"]?></h4>
+                                                
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center gap-2">
-                                        <div
-                                            class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center">
-                                            <svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                                            </svg>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-2">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center">
+                                                <svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <span class="font-semibold text-gray-900">234</span>
+                                                <span class="text-gray-500 text-sm ml-1">students</span>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <span class="font-semibold text-gray-900">234</span>
-                                            <span class="text-gray-500 text-sm ml-1">students</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-2">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center">
+                                                <svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-900"><?= explode(" ", $course['created_at'])[0]?></span>
+                                                <span class="block text-xs text-gray-500"><?= explode(" ", $course['created_at'])[1]?></span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center gap-2">
-                                        <div
-                                            class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center">
-                                            <svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-900">Dec 12, 2023</span>
-                                            <span class="block text-xs text-gray-500">2:30 PM</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex gap-2">
-                                        <button
-                                            class="p-2 text-violet-600 hover:bg-violet-50 rounded-lg transition-colors group relative">
-                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                            </svg>
-                                            <span
-                                                class="absolute -top-2 -right-2 opacity-0 group-hover:opacity-100 text-xs bg-violet-100 text-violet-800 px-2 py-1 rounded-md transition-opacity whitespace-nowrap">
-                                                Edit Course
-                                            </span>
-                                        </button>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex gap-2">
+                                            <form action="edit.php" method="POST">
+                                                <input type="hidden" name="course_id" value="<?= $course["id"]?>">
+                                                <button
+                                                    class="p-2 text-violet-600 hover:bg-violet-600 hover:text-white rounded-lg transition-colors group relative">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                    </svg>
+                                                </button>
+                                            </form>
 
-                                        <button
-                                            class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors group relative">
-                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                            </svg>
-                                            <span
-                                                class="absolute -top-2 -right-2 opacity-0 group-hover:opacity-100 text-xs bg-red-100 text-red-800 px-2 py-1 rounded-md transition-opacity whitespace-nowrap">
-                                                Delete Course
-                                            </span>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
+                                            <form action="teacher.php" method="POST">
+                                                <input type="hidden" name="course_id" value="<?= $course["id"]?>">
+                                                <button type="submit" name="delete"
+                                                    class="p-2 text-red-600 hover:bg-red-600 hover:text-white rounded-lg transition-colors group relative">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            <?php endforeach ?>
                         </tbody>
                     </table>
                 </div>
