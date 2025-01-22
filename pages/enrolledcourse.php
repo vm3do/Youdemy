@@ -1,9 +1,13 @@
 <?php
-    session_start();
+
     require "../actions/auth.php";
     require "../Classes/Auth.php";
+    
+    Auth::checkRole("student");
+    
+    require "../actions/studentFunc.php";
+    require "../actions/getCourse.php";
 
-    Auth::checkRole("studet");
 
 ?>
 
@@ -25,14 +29,22 @@
                 <span class="text-purple-800">You</span>Demy
             </div>
             <nav class="flex items-center gap-8">
-                <a href="index.html" class="text-gray-800 hover:text-purple-800">Home</a>
-                <a href="courses.html" class="text-gray-800 hover:text-purple-800">Courses</a>
-                <a href="#"
-                    class="inline-flex items-center justify-center h-10 border border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white px-6 rounded-lg transition-colors">Log
-                    In</a>
-                <a href="#"
-                    class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-800-purple-900 transition-colors">Sign
-                    Up</a>
+                <a href="index.php" class="text-gray-800 hover:text-purple-800">Home</a>
+                <a href="courses.php" class="text-purple-800 font-medium">Courses</a>
+                <?php if(isset($_SESSION["user_id"])): ?>
+                    <a href="mycourses.php?"
+                        class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">My Courses</a>
+
+                    <a href="../actions/logout.php"
+                        class="inline-flex items-center justify-center h-10 border border-red-800 text-red-800 hover:bg-red-800 hover:text-white px-6 rounded-lg transition-colors">Log
+                        Out</a>
+                <?php else: ?>
+                    <a href="login.php"
+                        class="inline-flex items-center justify-center h-10 border border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white px-6 rounded-lg transition-colors">Log
+                        In</a>
+                    <a href="signup.php"
+                        class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">Sign up</a>
+                <?php endif ?>
             </nav>
         </div>
     </header>
@@ -44,15 +56,12 @@
             <div class="max-w-7xl mx-auto px-4 py-8">
                 <div class="flex items-center gap-2 mb-4">
                     <span class="px-3 py-1 bg-purple-800/10 text-purple-800 text-sm font-medium rounded-full">
-                        Programming
-                    </span>
-                    <span class="px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full">
-                        Beginner
+                        Category
                     </span>
                 </div>
-                <h1 class="text-3xl lg:text-4xl font-bold mb-4">Web Development Masterclass</h1>
+                <h1 class="text-3xl lg:text-4xl font-bold mb-4"><?= $course["title"] ?? "" ?></h1>
                 <p class="text-gray-600 text-lg mb-8 max-w-3xl">
-                    Master the fundamentals of web development with hands-on projects and real-world applications.
+                <?= $course["description"] ?? "description" ?>
                 </p>
 
                 <!-- Instructor Info -->
@@ -64,8 +73,8 @@
                         </svg>
                     </div>
                     <div>
-                        <h3 class="font-medium text-gray-900">John Doe</h3>
-                        <p class="text-gray-500 text-sm">Senior Web Developer at Google</p>
+                        <h3 class="font-medium text-gray-900">Teacher</h3>
+                        <p class="text-gray-500 text-sm">Certified Teacher</p>
                     </div>
                 </div>
             </div>
@@ -74,58 +83,43 @@
         <!-- Course Content Section -->
         <div class="max-w-7xl mx-auto px-4 py-8">
             <!-- Video Template -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                <div class="aspect-w-16 aspect-h-9 bg-gray-800">
-                    <video class="w-full h-full object-cover" controls>
-                        <source src="path_to_video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+            <?php if($course["content_type"] == "video"): ?>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-800">
+                        <video class="w-full h-full object-cover" controls>
+                            <source src="../Classes/<?php echo explode("Classes/", $course["content"])[1] ?? "" ?>" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="p-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4"><?= $course["title"] ?? "" ?></h2>
+                        <p class="text-gray-600">
+                            <?= $course["description"] ?? "" ?>
+                        </p>
+                        <div class="mt-4 flex items-center gap-4">
+                            <span class="text-sm text-gray-500">Duration: 15:30</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="p-6">
-                    <h2 class="text-xl font-bold text-gray-900 mb-4">Introduction to HTML</h2>
-                    <p class="text-gray-600">
-                        In this lesson, we'll cover the basics of HTML, including document structure, elements, and
-                        semantic markup.
-                    </p>
-                    <div class="mt-4 flex items-center gap-4">
-                        <span class="text-sm text-gray-500">Duration: 15:30</span>
+            <?php endif ?>
+
+            <?php if($course["content_type"] == "text"): ?>
+            <!-- Text Template -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="p-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6"><?= $course["title"] ?? "" ?></h2>
+                    <div class="prose max-w-none">
+                        <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                            <?= $course["description"] ?>
+                        </p>
+                        <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                            <?= $course["content"] ?? "" ?>
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Text Template -->
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                <div class="p-8">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Understanding CSS Layouts</h2>
-                    <div class="prose max-w-none">
-                        <p class="text-gray-600 text-lg leading-relaxed mb-6">
-                            CSS layouts are fundamental to creating well-structured web pages. In this lesson, we'll
-                            explore
-                            the core concepts that will help you build professional-looking websites.
-                        </p>
-                        <div class="bg-violet-50 p-6 rounded-xl mb-8">
-                            <h4 class="text-lg font-semibold text-purple-800 mb-3">Key Concepts</h4>
-                            <ul class="list-disc list-inside space-y-2 text-gray-600">
-                                <li>Box Model and its components</li>
-                                <li>Display properties and their effects</li>
-                                <li>Flexbox layout system</li>
-                                <li>Grid layout system</li>
-                                <li>Responsive design principles</li>
-                            </ul>
-                        </div>
-                        <p class="text-gray-600 text-lg leading-relaxed mb-6">
-                            Understanding these concepts will allow you to create flexible and responsive layouts
-                            that work across different screen sizes and devices. Let's dive into each concept in detail.
-                        </p>
-                        <div class="bg-gray-100 p-6 rounded-xl border border-gray-100">
-                            <p class="text-gray-600 italic">
-                                "The key to mastering CSS layouts is understanding how elements interact with each other
-                                and how they respond to different screen sizes."
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php endif ?>
         </div>
     </main>
 

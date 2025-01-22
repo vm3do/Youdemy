@@ -1,8 +1,11 @@
 <?php
     require __DIR__ . "/../Classes/Auth.php";
+    require_once __DIR__ . "/../Classes/Course.php";
 
     Auth::redirect();
-    
+
+    require_once __DIR__ . "/../actions/getCourse.php";
+    require_once __DIR__ . "/../actions/studentFunc.php";
 ?>
 
 <!DOCTYPE html>
@@ -46,78 +49,83 @@
     <!-- Main Content -->
     <main class="pt-24 pb-12">
         <!-- Course Header -->
-        <div class="bg-gradient-to-br from-violet-50 to-white border-b">
-            <div class="max-w-7xl mx-auto px-4 py-12">
-                <div class="flex flex-col lg:flex-row gap-12">
-                    <!-- Course Info -->
-                    <div class="flex-1">
-                        <div class="flex items-center gap-2 mb-4">
-                            <span class="px-3 py-1 bg-purple-800/10 text-purple-800 text-sm font-medium rounded-full">
-                                Programming
-                            </span>
-                        </div>
-                        <h1 class="text-3xl lg:text-4xl font-bold mb-4">Web Development Masterclass</h1>
-                        <p class="text-gray-600 text-lg mb-8">
-                            Master the fundamentals of web development with hands-on projects and real-world
-                            applications.
-                        </p>
-
-                        <!-- Instructor Info -->
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-purple-800/10 flex items-center justify-center">
-                                <svg class="w-6 h-6 text-purple-800" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="font-medium text-gray-900">John Doe</h3>
-                                <p class="text-gray-500 text-sm">Certified Teacher</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Enroll Panel -->
-                    <div class="w-full lg:w-96">
-                        <div class="bg-white rounded-xl shadow-lg border border-violet-100 p-6 sticky top-24">
-                            <div class="flex items-center justify-between mb-6">
-                                <div>
-                                    <span class="text-3xl font-bold text-gray-900">$00.00</span>
-                                    <span class="text-lg text-gray-500 line-through ml-2">$99.99</span>
-                                </div>
-                                <span class="px-3 py-1 bg-green-100 text-green-600 text-sm font-medium rounded-full">
-                                    100% OFF
+        <?php if(isset($_POST["course_id"])): ?>
+            <div class="bg-gradient-to-br from-violet-50 to-white border-b">
+                <div class="max-w-7xl mx-auto px-4 py-12">
+                    <div class="flex flex-col lg:flex-row gap-12">
+                        <!-- Course Info -->
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="px-3 py-1 bg-purple-800/10 text-purple-800 text-sm font-medium rounded-full">
+                                    <?= $course["category"] ?? "category"?>
                                 </span>
                             </div>
-                            <button class="w-full bg-purple-800 text-white py-3 rounded-lg font-medium mb-6 
-                                hover:bg-purple-900 transition-colors">
-                                Enroll Now
-                            </button>
-                            <div class="space-y-4">
-
-                                <div class="flex items-center gap-3 text-gray-600">
-                                    <svg class="w-5 h-5 text-purple-800" fill="none" stroke="currentColor"
+                            <h1 class="text-3xl lg:text-4xl font-bold mb-4"><?= $course["title"] ?? "title"?></h1>
+                            <p class="text-gray-600 text-lg mb-8">
+                                <?= $course["description"] ?? "description"?>
+                            </p>
+            
+                            <!-- Instructor Info -->
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-purple-800/10 flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-purple-800" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                     </svg>
-                                    Lifetime access
                                 </div>
-                                <div class="flex items-center gap-3 text-gray-600">
-                                    <svg class="w-5 h-5 text-purple-800" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                                    </svg>
-                                    Certificate of completion
+                                <div>
+                                    <h3 class="font-medium text-gray-900"><?= $course["teacher_name"] ?? "teacher"?></h3>
+                                    <p class="text-gray-500 text-sm">Certified Teacher</p>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Enroll Panel -->
+                        <div class="w-full lg:w-96">
+                            <div class="bg-white rounded-xl shadow-lg border border-violet-100 p-6 sticky top-24">
+                                <div class="flex items-center justify-between mb-6">
+                                    <div>
+                                        <span class="text-3xl font-bold text-gray-900">$00.00</span>
+                                        <span class="text-lg text-gray-500 line-through ml-2">$99.99</span>
+                                    </div>
+                                    <span class="px-3 py-1 bg-green-100 text-green-600 text-sm font-medium rounded-full">
+                                        100% OFF
+                                    </span>
+                                </div>
+                                <form action="coursedetails.php" target="_blank" method="post">
+
+                                    <input type="hidden" name="course_id" value="<?= $course["id"] ?? ""?>">
+                                    <button type="submit" name="enroll" class="w-full bg-purple-800 text-white py-3 rounded-lg font-medium mb-6 
+                                        hover:bg-purple-900 transition-colors">
+                                        Enroll Now
+                                    </button>
+                                </form>
+                                <div class="space-y-4">
+            
+                                    <div class="flex items-center gap-3 text-gray-600">
+                                        <svg class="w-5 h-5 text-purple-800" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                                        </svg>
+                                        Lifetime access
+                                    </div>
+                                    <div class="flex items-center gap-3 text-gray-600">
+                                        <svg class="w-5 h-5 text-purple-800" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                                        </svg>
+                                        Certificate of completion
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        <?php endif ?>
 
         <!-- Locked Content -->
         <div class="max-w-7xl mx-auto px-4 mt-12">
