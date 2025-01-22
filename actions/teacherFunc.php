@@ -5,6 +5,7 @@
     require_once "../Config/Database.php";
     require_once "../Classes/Tag.php";
     require_once "../Classes/Video.php";
+    require_once "../Classes/Text.php";
     require_once "../Classes/Category.php";
 
     $tag_msg = "";
@@ -22,8 +23,8 @@
 
     if(isset($_POST['addCourse'])){
 
-        $title = $_POST["title"];
-        $description = $_POST["description"];
+        $title = $_POST["title"] ?? "";
+        $description = $_POST["description"] ?? "";
         $teacher_id = $_SESSION["user_id"];
         $category_id = $_POST["category"] ?? "";
         $course_tags = $_POST["tags"] ?? "";
@@ -46,7 +47,9 @@
                 return["message"];
             }
         } elseif($_POST["contentType"] == "text"){
-            
+            $content = $_POST["text"];
+            $text = new Text($title, $description, $teacher_id,$course_tags, $category_id, "text", $content);
+            $addError = $text->addCourse();
         }
 
     }
