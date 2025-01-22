@@ -60,6 +60,39 @@
 
             } catch(PDOException $e){
                 error_log("error fetching courses : " . $e->getMessage());
+                return false;
+            }
+        }
+
+        public static function getCourse($id){
+            $instance = Database::getinstance();
+            $pdo = $instance->getconn();
+
+            try{
+                $sql = "SELECT * FROM courses WHERE id = :id";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute(["id" => $id]);
+                return $stmt->fetch();
+            } catch(PDOException $e){
+                error_log("Error fetching the course by id : " . $e->getMessage());
+                return false;
+            }
+        }
+
+        public static function enroll($id , $course){
+            $instance = Database::getinstance();
+            $pdo = $instance->getconn();
+
+            try {
+                $sql = "INSERT INTO enrollments(student_id, course_id) VALUES (:s_id, :c_id)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute(["s_id" => $id, "c_id" => $course]);
+                return true;
+
+
+            } catch(PDOException $e) {
+                error_log("error enrolling : " . $e->getMessage());
+                return false;
             }
         }
 

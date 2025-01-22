@@ -4,6 +4,8 @@
 
     Auth::checkRole("student");
 
+    require "../actions/studentFunc.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -58,43 +60,38 @@
         <div class="max-w-7xl mx-auto px-4 py-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Course Card -->
-                <div
-                    class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
-                    <a href="enrolledcourse.html" class="block">
-                        <img src="https://placehold.co/600x400" alt="Course thumbnail" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <div class="flex items-center gap-2 mb-3">
-                                <span class="px-2.5 py-0.5 bg-purple-800/10 text-purple-800 text-sm font-medium rounded-full">
-                                    Programming
-                                </span>
-                            </div>
-                            <h3 class="font-bold text-lg mb-2 text-gray-900">Web Development Masterclass</h3>
-                            <p class="text-gray-600 text-sm mb-4 line-clamp-2">
-                                Master the fundamentals of web development with hands-on projects and real-world
-                                applications.
-                            </p>
-                            <div class="flex items-center gap-3 text-sm text-gray-500">
-                                <div class="flex items-center gap-2">
-                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    20 hours
+                <?php foreach($enrolleds as $enrolled): ?>
+
+                    <div
+                        class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                        <a href="enrolledcourse.php?id=<?= $enrolled["course_id"] ?? "" ?>" class="block">
+                            <img src="../assets/cover.jpeg" alt="Course thumbnail" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="px-2.5 py-0.5 bg-purple-800/10 text-purple-800 text-sm font-medium rounded-full">
+                                        <?= $enrolled["category"] ?? "category" ?>
+                                    </span>
                                 </div>
-                                <span>•</span>
-                                <div class="flex items-center gap-2">
-                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                    </svg>
-                                    John Doe
+                                <h3 class="font-bold text-lg mb-2 text-gray-900"><?= $enrolled["title"] ?? "title" ?></h3>
+                                <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                                    <?= $enrolled["description"] ?? "description" ?>
+                                </p>
+                                <div class="flex items-center gap-3 text-sm text-gray-500">
+                
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                        </svg>
+                                        Teacher
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+
+                <?php endforeach ?>
 
                 <!-- Course Card -->
                 <div
