@@ -8,17 +8,25 @@
     require_once "../Classes/Text.php";
     require_once "../Classes/Category.php";
 
-    $tag_msg = "";
-    $cat_msg = "";
+    if(isset($_POST["delete"])){
+        $id = $_POST["course_id"] ?? "";
+        Course::deleteCourse($id);
+    }
 
     if($_SESSION["role"] === 'teacher'){
         $teacher = new Teacher(null, null, null, "teacher");
+        $teacher_id = $_SESSION["user_id"];
+
+        $teacher->courseCount($teacher_id);
+        $teacher->studentsCount($teacher_id);
 
         $tags = new Tag();
-        $tags = $tags->getTags();
+        $tags = $tags->getTags() ?? [];
 
         $category = new Category();
         $categories = $category->getcategories() ?? [];
+
+        $courses = Course::getCourses() ?? [];
     }
 
     if(isset($_POST['addCourse'])){
@@ -37,6 +45,7 @@
 
             $file = new File($filename, $tmpPath, $size, $error);
             $return = $file->manageFile();
+            $return["message"] = $return["message"] ?? "";
             print_r($return["message"]);
 
             if($return["success"] == true){
@@ -53,12 +62,3 @@
         }
 
     }
-
-    
-
-    if(isset($_POST["delete"])){
-        $id = $_POST["user_id"] ?? "";
-        $admin = new Admin(null, null, null, null);
-        $admin->removeUser($id);
-    }
-
