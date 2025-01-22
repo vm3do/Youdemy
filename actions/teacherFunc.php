@@ -12,9 +12,6 @@
 
     if($_SESSION["role"] === 'teacher'){
         $teacher = new Teacher(null, null, null, "teacher");
-        // $teachers = $admin->threePending() ?? [];
-        // $users = $admin->threeUsers() ?? [];
-        // $courses = $admin->threeCourses() ?? [];
 
         $tags = new Tag();
         $tags = $tags->getTags();
@@ -23,7 +20,7 @@
         $categories = $category->getcategories() ?? [];
     }
 
-    if(isset($_POST['addcourse'])){
+    if(isset($_POST['addCourse'])){
 
         $title = $_POST["title"];
         $description = $_POST["description"];
@@ -39,18 +36,19 @@
 
             $file = new File($filename, $tmpPath, $size, $error);
             $return = $file->manageFile();
+            print_r($return["message"]);
 
             if($return["success"] == true){
-                // $video = new Video($title, $description, $teacher_id, $category_id, $course_tags, "video", $return["filepath"]);
-                $video = new Video("hhbhbj", "khjhbjh", "video", "jhbjhbjh", 2, 7, "video", "C:\xampp\htdocs\Youdemy\Classes/videos/video_67900d4c01c514.00364338.mp4");
-                print_r($return["filepath"]);
-                // $addError = $video->addCourse();
+                $content = $return["filepath"];
+                $video = new Video($title, $description, $teacher_id,$course_tags, $category_id, "video", $content);
+                $addError = $video->addCourse();
             } else {
                 return["message"];
             }
+        } elseif($_POST["contentType"] == "text"){
+            
         }
 
-        // $tag_msg = $return["message"] ??;
     }
 
     
