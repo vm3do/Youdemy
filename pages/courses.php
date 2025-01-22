@@ -1,8 +1,11 @@
 <?php
     require __DIR__ . "/../actions/auth.php";
     require __DIR__ . "/../Classes/Auth.php";
+    require __DIR__ . "/../Classes/Course.php";
 
     Auth::redirect();
+
+    $courses = Course::getCourses() ?? [];
     
 ?>
 
@@ -26,12 +29,20 @@
             <nav class="flex items-center gap-8">
                 <a href="index.php" class="text-gray-800 hover:text-purple-800">Home</a>
                 <a href="courses.php" class="text-purple-800 font-medium">Courses</a>
-                <a href="login.php"
-                    class="inline-flex items-center justify-center h-10 border border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white px-6 rounded-lg transition-colors">Log
-                    In</a>
-                <a href="signup.php"
-                    class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">Sign
-                    Up</a>
+                <?php if(isset($_SESSION["user_id"])): ?>
+                    <a href="mycourses.php?"
+                        class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">My Courses</a>
+
+                    <a href="logout.php"
+                        class="inline-flex items-center justify-center h-10 border border-red-800 text-red-800 hover:bg-red-800 hover:text-white px-6 rounded-lg transition-colors">Log
+                        Out</a>
+                <?php else: ?>
+                    <a href="login.php"
+                        class="inline-flex items-center justify-center h-10 border border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white px-6 rounded-lg transition-colors">Log
+                        In</a>
+                    <a href="login.php"
+                        class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">Sign up</a>
+                <?php endif ?>
             </nav>
         </div>
     </header>
@@ -55,48 +66,54 @@
         <!-- Courses Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <!-- Course Card -->
-            <div
+            <?php foreach($courses as $course): ?>
+
+                <div
                 class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
-                <div class="relative">
-                    <img src="https://placehold.co/600x400" alt="Course thumbnail" class="w-full h-48 object-cover">
-                    <span class="absolute top-4 right-4 px-2 py-1 bg-purple-800 text-white text-xs font-medium rounded">
-                        Programming
-                    </span>
-                </div>
-                <div class="p-5">
-                    <h3 class="font-bold text-lg mb-2 text-gray-800">Web Development Masterclass</h3>
-                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">
-                        Learn web development from scratch with this comprehensive course covering HTML, CSS,
-                        JavaScript, and more.
-                    </p>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                                <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                </svg>
+                    <div class="relative">
+                        <img src="../assets/cover.jpeg" alt="Course thumbnail" class="w-full h-48 object-cover">
+                        <span class="absolute top-4 right-4 px-2 py-1 bg-purple-800 text-white text-xs font-medium rounded">
+                            Free
+                        </span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-2 text-gray-800"><?= $course["title"]?></h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                            <?= $course["description"]?>
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-600"><?= $course["teacher_name"] ?? "Empty"?></span>
                             </div>
-                            <span class="text-sm text-gray-600">John Doe</span>
+                            <div class="flex items-center gap-1">
+                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <span class="text-sm font-medium text-gray-600">4.8</span>
+                            </div>
                         </div>
-                        <div class="flex items-center gap-1">
-                            <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <span class="text-sm font-medium text-gray-600">4.8</span>
+                        <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-purple-800 font-bold">$00.00</span>
+                            <form action="coursedetails.php" method="POST">
+                                <input type="hidden" name="course_id" value="<?= $course["id"]?>">
+                                <button <?php if(!isset($_SESSION["user_id"])){echo "disabled";} ?>
+                                    class="px-4 py-2 bg-purple-800/10 text-purple-800 font-medium rounded-lg 
+                                    hover:bg-purple-800 hover:text-white transition-colors">
+                                    View Course
+                                </button>
+                            </form>
                         </div>
-                    </div>
-                    <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
-                        <span class="text-purple-800 font-bold">$49.99</span>
-                        <button class="px-4 py-2 bg-purple-800/10 text-purple-800 font-medium rounded-lg 
-                            hover:bg-purple-800 hover:text-white transition-colors">
-                            View Course
-                        </button>
                     </div>
                 </div>
-            </div>
+            <?php endforeach ?>
         </div>
 
         <!-- Pagination -->

@@ -18,7 +18,7 @@
         $teacher_id = $_SESSION["user_id"];
 
         $teacher->courseCount($teacher_id);
-        $teacher->studentsCount($teacher_id);
+        // $teacher->studentsCount($teacher_id);
 
         $tags = new Tag();
         $tags = $tags->getTags() ?? [];
