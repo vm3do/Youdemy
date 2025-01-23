@@ -17,32 +17,29 @@
 </head>
 
 <body class="overflow-x-hidden">
-    <header class="fixed top-0 w-full bg-white z-50 px-10 py-4 shadow-sm w-full mx-auto">
+
+    <header class="fixed top-0 w-full bg-white z-50 px-10 py-4 shadow-sm">
         <div class="max-w-8xl mx-auto flex justify-between items-center">
             <div class="text-2xl font-bold">
                 <span class="text-purple-800">You</span>Demy
             </div>
+            <nav class="flex items-center gap-8">
+                <a href="index.php" class="text-gray-800 hover:text-purple-800">Home</a>
+                <a href="courses.php" class="text-purple-800 font-medium">Courses</a>
+                <?php if(isset($_SESSION["user_id"])): ?>
+                    <a href="mycourses.php?"
+                        class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">My Courses</a>
 
-            <!-- Hamburger -->
-            <button class="lg:hidden z-50 relative" id="hamburger">
-                <span class="block w-6 h-0.5 bg-purple-800 mb-1.5 transition-all"></span>
-                <span class="block w-6 h-0.5 bg-purple-800 mb-1.5 transition-all"></span>
-                <span class="block w-6 h-0.5 bg-purple-800 transition-all"></span>
-            </button>
-
-            <!-- Nav Links -->
-            <nav class="fixed lg:relative top-0 right-[-100%] lg:right-0 h-screen lg:h-auto w-full lg:w-auto 
-                        bg-white lg:bg-transparent transition-all duration-300 ease-in-out" id="nav-links">
-                <ul class="flex flex-col lg:flex-row items-center justify-center h-full lg:h-auto gap-8">
-                    <li><a href="index.php" class="text-purple-800 font-medium">Home</a></li>
-                    <li><a href="courses.php" class="text-gray-800 hover:text-purple-800">Courses</a></li>
-                    <li><a href="login.php"
-                            class="inline-flex items-center justify-center h-10 border border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white px-6 rounded-lg transition-colors">Log
-                            In</a></li>
-                    <li><a href="signup.php"
-                            class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">Sign
-                            Up</a></li>
-                </ul>
+                    <a href="../actions/logout.php"
+                        class="inline-flex items-center justify-center h-10 border border-red-800 text-red-800 hover:bg-red-800 hover:text-white px-6 rounded-lg transition-colors">Log
+                        Out</a>
+                <?php else: ?>
+                    <a href="login.php"
+                        class="inline-flex items-center justify-center h-10 border border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white px-6 rounded-lg transition-colors">Log
+                        In</a>
+                    <a href="signup.php"
+                        class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">Sign up</a>
+                <?php endif ?>
             </nav>
         </div>
     </header>

@@ -18,8 +18,10 @@
             $this->pass = $pass;
             $this->role = $role;
             $this->status = "active";
+
             $instance = Database::getinstance();
             $this->pdo = $instance->getconn();
+            
         }
 
         public function signup(){
