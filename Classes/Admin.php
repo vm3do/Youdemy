@@ -36,6 +36,7 @@
 
         public function getCourses(){
             $sql = "SELECT * FROM courses";
+            $sql = "SELECT c. FROM courses";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -43,10 +44,45 @@
 
         public function threeCourses(){
             $sql = "SELECT * FROM courses LIMIT 3";
+            $sql = "SELECT c.*, u.name FROM courses c INNER JOIN users u ON c.teacher_id = u.id LIMIT 3";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
         }
+
+        public function topCourse(){
+
+            try{
+                $sql = "SELECT COUNT(e.course_id) AS enrolls, c.*, u.name FROM enrollments e
+                        INNER JOIN courses c ON c.id = e.course_id INNER JOIN users u ON c.teacher_id = u.id
+                        GROUP BY e.course_id ORDER BY e.course_id LIMIT 1";
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->execute();
+                return $stmt->fetch(PDO::FETCH_ASSOC);
+            } catch (PDOException $e){
+                error_log("error fetching top courses : " . $e->getMessage());
+                return false;
+            }
+        }
+
+        public function topTeachers(){
+
+            try{
+                $sql = "SELECT COUNT(e.course_id) AS total_students ,c.title, u.name
+                        FROM enrollments e INNER JOIN courses c ON c.id = e.course_id
+                        INNER JOIN users u ON u.id = c.teacher_id GROUP BY u.id
+                        ORDER BY total_students DESC LIMIT 3";
+
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->execute();
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } catch (PDOException $e){
+                error_log("error fetching top courses : " . $e->getMessage());
+                return false;
+            }
+        }
+
+
 
         public function removeUser($id){
             try {

@@ -62,6 +62,8 @@
         $teachers = $admin->threePending() ?? [];
         $users = $admin->threeUsers() ?? [];
         $courses = $admin->threeCourses() ?? [];
+        $topcourse = $admin->topCourse() ?? [];
+        $topteachers = $admin->topTeachers() ?? [];
 
         $tags = new Tag();
         $tags = $tags->getTags();

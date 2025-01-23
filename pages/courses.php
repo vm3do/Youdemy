@@ -33,14 +33,14 @@
                     <a href="mycourses.php?"
                         class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">My Courses</a>
 
-                    <a href="logout.php"
+                    <a href="../actions/logout.php"
                         class="inline-flex items-center justify-center h-10 border border-red-800 text-red-800 hover:bg-red-800 hover:text-white px-6 rounded-lg transition-colors">Log
                         Out</a>
                 <?php else: ?>
                     <a href="login.php"
                         class="inline-flex items-center justify-center h-10 border border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white px-6 rounded-lg transition-colors">Log
                         In</a>
-                    <a href="login.php"
+                    <a href="signup.php"
                         class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">Sign up</a>
                 <?php endif ?>
             </nav>
