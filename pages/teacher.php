@@ -99,7 +99,7 @@
                     </span>
                 </div>
                 <div class="flex items-center">
-                    <h2 class="text-3xl font-bold text-gray-800">847</h2>
+                    <h2 class="text-3xl font-bold text-gray-800"><?= $students["students"] ?></h2>
                 </div>
             </div>
         </div>
@@ -458,7 +458,7 @@
                                 <?php foreach($categories as $category): ?>
 
                                     <div>
-                                        <input type="checkbox" id="<?= $category["id"] ?>" name="category" value="<?= $category["id"] ?>"
+                                        <input type="radio" id="<?= $category["id"] ?>" name="category" value="<?= $category["id"] ?>"
                                             class="sr-only peer">
                                         <label for="<?= $category["id"] ?>" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
                                             text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50

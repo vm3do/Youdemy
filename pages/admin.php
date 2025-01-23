@@ -354,7 +354,7 @@
                             <h2 class="text-xl font-bold">Manage Users</h2>
                             <p class="text-sm text-gray-500 mt-1">Monitor and manage user accounts</p>
                         </div>
-                        <a href="#" class="text-purple-800 hover:text-purple-900 flex items-center gap-2">
+                        <a href="manageusers.php" class="text-purple-800 hover:text-purple-900 flex items-center gap-2">
                             View All
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -485,7 +485,7 @@
                     <div class="bg-white rounded-xl shadow-sm">
                         <div class="p-6 border-b flex justify-between items-center">
                             <h2 class="text-xl font-bold">Recent Courses</h2>
-                            <a href="#" class="text-purple-800 hover:text-purple-900">View More</a>
+                            <a href="managecourses.php" class="text-purple-800 hover:text-purple-900">View More</a>
                         </div>
                         <div class="p-6">
                             <div class="space-y-4">
@@ -553,7 +553,7 @@
                                 <h2 class="text-xl font-bold text-purple-800">Tags Management</h2>
                                 <p class="text-sm text-gray-500 mt-1">Manage and organize course tags</p>
                             </div>
-                            <span class="bg-purple-800/10 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">24
+                            <span class="bg-purple-800/10 text-purple-800 px-3 py-1 rounded-full text-sm font-medium"><?= $tags[0]["total_tags"] ?? "0" ?>
                                 Tags</span>
                         </div>
                     </div>
@@ -628,7 +628,7 @@
                                 <h2 class="text-xl font-bold text-purple-800">Categories Management</h2>
                                 <p class="text-sm text-gray-500 mt-1">Manage course categories</p>
                             </div>
-                            <span class="bg-purple-800/10 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">12
+                            <span class="bg-purple-800/10 text-purple-800 px-3 py-1 rounded-full text-sm font-medium"><?= $categories[0]["total_cats"] ?? "0" ?>
                                 Categories</span>
                         </div>
                     </div>
@@ -637,6 +637,16 @@
                         <form action="admin.php" method="POST" class="mb-6">
                             <label for="newCategory" class="block text-sm font-medium text-gray-700 mb-2">Add New
                                 Category</label>
+                                <div>
+                                    <p class="text-sm text-red-500">
+                                        <?php if(isset($return1) && !$return1["verify"]){ echo $cat_msg; } ?>
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-green-500">
+                                    <?php if(isset($return1) && $return1["verify"]){ echo $cat_msg; } ?>
+                                    </p>
+                                </div>
                             <div class="relative">
                                 <input type="text" id="newCategory" name="categories"
                                     class="w-full rounded-lg border-gray-300 focus:border-purple-800 focus:ring-purple-800 outline-violet-600 pl-12 pr-4 py-3"
@@ -661,12 +671,10 @@
                         <div>
                             <h3 class="text-lg font-semibold text-gray-700 mb-4">Existing Categories</h3>
                             <div class="flex flex-wrap gap-2">
-
                                 <?php foreach($categories as $category): ?>
                                     <span
                                         class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-purple-800/10 text-purple-800 group hover:bg-purple-800/20 transition-colors">
                                         <?= $category["name"] ?>
-                                        <span class="text-xs text-purple-800/75 ml-2">(24)</span>
                                         <form action="admin.php" method="POST" class="inline-block">
                                             <input type="hidden" name="cat_id" value="<?= $category["id"] ?>">
                                             <button type="submit" name="del_cat" class="ml-2 opacity-75 hover:opacity-100 flex items-center transition-opacity">

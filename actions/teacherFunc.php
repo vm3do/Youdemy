@@ -15,10 +15,9 @@
 
     if($_SESSION["role"] === 'teacher'){
         $teacher = new Teacher(null, null, null, "teacher");
-        $teacher_id = $_SESSION["user_id"];
+        $teacher_id = htmlspecialchars($_SESSION["user_id"]);
 
         $teacher->courseCount($teacher_id);
-        // $teacher->studentsCount($teacher_id);
 
         $tags = new Tag();
         $tags = $tags->getTags() ?? [];
@@ -27,6 +26,8 @@
         $categories = $category->getcategories() ?? [];
 
         $courses = Course::getCourses() ?? [];
+
+        $students = $teacher->getstudents($teacher_id);
     }
 
     if(isset($_POST['addCourse'])){

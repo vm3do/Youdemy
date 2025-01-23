@@ -72,22 +72,21 @@
             }
         }
 
-        // public function courseCount($id){
+        public function getstudents($id){
+            try{
 
-        //     try{
+                $sql = "SELECT COUNT(e.id) AS students FROM enrollments e
+                        INNER JOIN courses c ON c.id = e.course_id
+                        INNER JOIN users u ON u.id = c.teacher_id GROUP BY u.id
+                        HAVING u.id = :id";
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->execute(["id" => $id]);
 
-        //         $sql = " SELECT COUNT(*) FROM courses WHERE teacher_id = :id ";
-        //         $stmt = $this->pdo->prepare($sql);
-        //         $stmt->execute(["id" => $id]);
+                return $stmt->fetch(PDO::FETCH_ASSOC);
 
-        //         return true;
-
-
-        //     } catch (PDOException $e) {
-        //         error_log("error fetching the count :" . $e->getMessage());
-        //         return false;
-        //     }
-        // }
-
-        
+            } catch (PDOException $e) {
+                error_log("error fetching the students :" . $e->getMessage());
+                return false;
+            }
+        }
     }
