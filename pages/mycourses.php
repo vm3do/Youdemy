@@ -93,47 +93,8 @@
 
                 <?php endforeach ?>
 
-                <!-- Course Card -->
-                <div
-                    class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
-                    <a href="enrolledcourse.html" class="block">
-                        <img src="https://placehold.co/600x400" alt="Course thumbnail" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <div class="flex items-center gap-2 mb-3">
-                                <span class="px-2.5 py-0.5 bg-blue-100 text-blue-700 text-sm font-medium rounded-full">
-                                    Design
-                                </span>
-                            </div>
-                            <h3 class="font-bold text-lg mb-2 text-gray-900">UI/UX Design Principles</h3>
-                            <p class="text-gray-600 text-sm mb-4 line-clamp-2">
-                                Learn the fundamentals of user interface and user experience design with practical
-                                examples.
-                            </p>
-                            <div class="flex items-center gap-3 text-sm text-gray-500">
-                                <div class="flex items-center gap-2">
-                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    15 hours
-                                </div>
-                                <span>•</span>
-                                <div class="flex items-center gap-2">
-                                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                    </svg>
-                                    Jane Smith
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
                 <!-- No Courses -->
-                <div class="col-span-full hidden">
+                <div class="col-span-full">
                     <div class="text-center py-12">
                         <div class="w-16 h-16 bg-purple-800/10 rounded-full flex items-center justify-center mx-auto mb-4">
                             <svg class="w-8 h-8 text-purple-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">

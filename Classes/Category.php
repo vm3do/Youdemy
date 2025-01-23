@@ -55,7 +55,7 @@ class Category {
 
     public function getcategories(){
         try{
-            $sql = "SELECT * FROM categories";
+            $sql = "SELECT (SELECT COUNT(c.id) FROM categories c) AS total_cats, c.* FROM categories c";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
 

@@ -24,9 +24,9 @@
     if(isset($_POST['add_cat'])){
 
         $Category = new Category();
-        $return = $Category->addCategory($_POST['categories']) ;
+        $return1 = $Category->addCategory($_POST['categories']) ;
 
-        $cat_msg = $return["message"];
+        $cat_msg = $return1["message"];
     }
 
     if(isset($_POST['del_cat'])){

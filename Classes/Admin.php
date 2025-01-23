@@ -35,8 +35,7 @@
         }
 
         public function getCourses(){
-            $sql = "SELECT * FROM courses";
-            $sql = "SELECT c. FROM courses";
+            $sql = "SELECT * FROM courses c";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();

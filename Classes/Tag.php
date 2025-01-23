@@ -55,7 +55,7 @@ class Tag {
 
     public function getTags(){
         try{
-            $sql = "SELECT * FROM tags";
+            $sql = "SELECT (SELECT COUNT(t.id) FROM tags t) AS total_tags, t.* FROM tags t";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
 
