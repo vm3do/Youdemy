@@ -145,7 +145,7 @@
                                 </span>
                             </div>
                             <div class="flex items-center">
-                                <h2 class="text-4xl font-bold text-violet-600">1,432</h2>
+                                <h2 class="text-4xl font-bold text-violet-600"><?= $totalcourses["total"] ?> Courses</h2>
                             </div>
                             <div class="mt-6 bg-violet-50 rounded-xl p-4">
                                 <div class="flex items-center gap-2 text-violet-600">

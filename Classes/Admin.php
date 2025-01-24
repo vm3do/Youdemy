@@ -28,17 +28,34 @@
         }
 
         public function threeUsers(){
-            $sql = "SELECT * FROM users WHERE role != 'admin' AND status != 'pending' LIMIT 3";
+            $sql = "SELECT * FROM users WHERE role != 'admin'
+                    AND status != 'pending' LIMIT 3";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
         }
 
-        public function getCourses(){
-            $sql = "SELECT * FROM courses c";
-            $stmt = $this->pdo->prepare($sql);
+        public static function getCourses(){
+            $instance = Database::getinstance();
+            $pdo = $instance->getconn();
+            $sql = "SELECT c.*, t.name, ca.name AS cname FROM courses c
+                    INNER JOIN users t ON t.id = c.teacher_id
+                    INNER JOIN categories ca ON ca.id = c.category_id";
+            $stmt = $pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
+        }
+
+        public function totalcourses(){
+            try{
+                $sql = "SELECT COUNT(id) AS total FROM courses";
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->execute();
+                return $stmt->fetch();
+            } catch(PDOException $e){
+                error_log("error fetching total N courses: " . $e->getMessage());
+                return false;
+            }
         }
 
         public function threeCourses(){

@@ -1,8 +1,10 @@
 <?php
-    require "../actions/auth.php";
-    require "../Classes/Auth.php";
-
+    require_once "../actions/auth.php";
+    require_once "../Classes/Auth.php";
+    
     Auth::checkRole("admin");
+    
+    require_once "../actions/managecourses.php"
 
 ?>
 
@@ -163,106 +165,59 @@
                                 </thead>
                                 <tbody class="divide-y divide-gray-200">
 
-                                    <tr class="hover:bg-gray-100">
-                                        <td class="px-6 py-4">
-                                            <div class="flex items-center gap-4">
-                                                <img src="https://placehold.co/100x70" alt="Course thumbnail"
-                                                    class="w-[100px] h-[70px] object-cover rounded-lg">
-                                                <div>
-                                                    <h3 class="font-medium text-gray-900">Web Development Masterclass
-                                                    </h3>
-                                                    <p class="text-sm text-gray-500">Master the fundamentals of web
-                                                        development
-                                                    </p>
+                                    <?php foreach($courses as $course): ?>
+                                        <tr class="hover:bg-gray-100">
+                                            <td class="px-6 py-4">
+                                                <div class="flex items-center gap-4">
+                                                    <img src="https://placehold.co/100x70" alt="Course thumbnail"
+                                                        class="w-[100px] h-[70px] object-cover rounded-lg">
+                                                    <div>
+                                                        <h3 class="font-medium text-gray-900"><?= $course["title"] ?? "title" ?>
+                                                        </h3>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <div class="flex items-center gap-2">
-                                                <div
-                                                    class="w-8 h-8 rounded-full bg-purple-800/10 flex items-center justify-center">
-                                                    <svg class="w-4 h-4 text-purple-800" fill="none" stroke="currentColor"
-                                                        viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                                    </svg>
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                <div class="flex items-center gap-2">
+                                                    <div
+                                                        class="w-8 h-8 rounded-full bg-purple-800/10 flex items-center justify-center">
+                                                        <svg class="w-4 h-4 text-purple-800" fill="none" stroke="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                                        </svg>
+                                                    </div>
+                                                    <span class="text-sm text-gray-600"><?= $course["name"] ?? "name" ?></span>
                                                 </div>
-                                                <span class="text-sm text-gray-600">John Doe</span>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <span
-                                                class="px-2.5 py-0.5 bg-purple-800/10 text-purple-800 text-sm font-medium rounded-full">
-                                                Programming
-                                            </span>
-                                        </td>
-                                        <td class="px-6 py-4 text-sm text-gray-600">
-                                            Jan 15, 2024
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <div class="flex justify-end gap-3">
-                                                <button class="text-red-600 hover:text-red-800">
-                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor"
-                                                        viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                <span
+                                                    class="px-2.5 py-0.5 bg-purple-800/10 text-purple-800 text-sm font-medium rounded-full">
+                                                    <?= $course["cname"] ?>
+                                                </span>
+                                            </td>
+                                            <td class="px-6 py-4 text-sm text-gray-600">
+                                                <?= explode(" ", $course["created_at"])[0] ?>
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                <div class="flex justify-end gap-3">
+                                                    <form name="delete" action="managecourses.php" method="post">
+                                                        <input type="hidden" name="c_id" value="<?= $course["id"] ?>">
+                                                        <button name="delete" type="submit" class="text-red-600 hover:text-red-800">
+                                                            <svg class="w-5 h-5" fill="none" stroke="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                            </svg>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
 
-                                    <!-- Course Row -->
-                                    <tr class="hover:bg-gray-100">
-                                        <td class="px-6 py-4">
-                                            <div class="flex items-center gap-4">
-                                                <img src="https://placehold.co/100x70" alt="Course thumbnail"
-                                                    class="w-[100px] h-[70px] object-cover rounded-lg">
-                                                <div>
-                                                    <h3 class="font-medium text-gray-900">UI/UX Design Principles</h3>
-                                                    <p class="text-sm text-gray-500">Learn the fundamentals of design
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <div class="flex items-center gap-2">
-                                                <div
-                                                    class="w-8 h-8 rounded-full bg-purple-800/10 flex items-center justify-center">
-                                                    <svg class="w-4 h-4 text-purple-800" fill="none" stroke="currentColor"
-                                                        viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                                    </svg>
-                                                </div>
-                                                <span class="text-sm text-gray-600">Jane Smith</span>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <span
-                                                class="px-2.5 py-0.5 bg-blue-100 text-blue-700 text-sm font-medium rounded-full">
-                                                Design
-                                            </span>
-                                        </td>
-                                        <td class="px-6 py-4 text-sm text-gray-600">
-                                            Jan 15, 2024
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <div class="flex justify-end gap-3">
-                                                <button class="text-red-600 hover:text-red-800">
-                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor"
-                                                        viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
