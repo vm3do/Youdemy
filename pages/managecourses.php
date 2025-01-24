@@ -169,7 +169,7 @@
                                         <tr class="hover:bg-gray-100">
                                             <td class="px-6 py-4">
                                                 <div class="flex items-center gap-4">
-                                                    <img src="https://placehold.co/100x70" alt="Course thumbnail"
+                                                    <img src="../assets/cover.jpeg" alt="Course thumbnail"
                                                         class="w-[100px] h-[70px] object-cover rounded-lg">
                                                     <div>
                                                         <h3 class="font-medium text-gray-900"><?= $course["title"] ?? "title" ?>
