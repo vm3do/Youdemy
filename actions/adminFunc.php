@@ -64,6 +64,7 @@
         $courses = $admin->threeCourses() ?? [];
         $topcourse = $admin->topCourse() ?? [];
         $topteachers = $admin->topTeachers() ?? [];
+        $totalcourses = $admin->totalcourses() ?? [];
 
         $tags = new Tag();
         $tags = $tags->getTags();
