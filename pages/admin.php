@@ -532,7 +532,7 @@
                                         </div>
                                         <div>
                                             <p class="font-semibold"><?= $topteacher["name"]?></p>
-                                            <p class="text-sm text-gray-500">(<?= $topteacher["total_students"] ?>students)</p>
+                                            <p class="text-sm text-gray-500">(<?= $topteacher["total_students"] ?> students)</p>
                                         </div>
                                     </div>
                                     <span class="text-purple-800 font-semibold">#<?= $i ?></span>

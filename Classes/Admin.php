@@ -21,7 +21,7 @@
         }
 
         public function getUsers(){
-            $sql = "SELECT * FROM users WHERE role != 'admin'";
+            $sql = "SELECT * FROM users WHERE role != 'admin' AND status != 'pending'";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
