@@ -28,7 +28,7 @@ class Tag {
             $sql = "INSERT INTO tags(name) VALUES (:tag)";
             $stmt = $this->pdo->prepare($sql);
             foreach($tags as $tag){
-                $stmt->execute(["tag" => $tag]);
+                $stmt->execute(["tag" => str_replace(" ", "_", $tag)]);
             }
             return ["verify" => true, "message" => "Tags added succesfully"];
         } catch(PDOException $e){

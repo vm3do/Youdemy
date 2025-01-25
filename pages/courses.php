@@ -71,7 +71,7 @@
                 <div
                 class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
                     <div class="relative">
-                        <img src="../assets/cover.jpeg" alt="Course thumbnail" class="w-full h-48 object-cover">
+                        <img src="../<?= $course["background"] ?>" alt="Course thumbnail" class="w-full h-48 object-cover">
                         <span class="absolute top-4 right-4 px-2 py-1 bg-purple-800 text-white text-xs font-medium rounded">
                             Free
                         </span>

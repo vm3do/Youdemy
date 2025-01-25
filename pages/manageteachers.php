@@ -1,8 +1,10 @@
 <?php
-    require "../actions/auth.php";
-    require "../Classes/Auth.php";
+require_once "../actions/auth.php";
+require_once "../Classes/Auth.php";
 
-    Auth::checkRole("admin");
+Auth::checkRole("admin");
+
+require_once "../actions/manageteachers.php";
 
 ?>
 
@@ -163,90 +165,71 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="border-b hover:bg-gray-100 transition-colors">
-                                        <td class="p-4">
-                                            <div class="flex items-center gap-3">
-                                                <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center">
-                                                    <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                                                    </svg>
+                                    <?php foreach ($teachers as $teacher): ?>
+
+                                        <tr class="border-b hover:bg-gray-100 transition-colors">
+                                            <td class="p-4">
+                                                <div class="flex items-center gap-3">
+                                                    <div
+                                                        class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center">
+                                                        <svg class="w-5 h-5 text-yellow-600" fill="none"
+                                                            stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="1.5"
+                                                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                                        </svg>
+                                                    </div>
+                                                    <div>
+                                                        <p class="font-semibold"><?= $teacher['name'] ?></p>
+                                                        <p class="text-sm text-gray-500"><?= $teacher['email'] ?></p>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <p class="font-semibold">John Doe</p>
-                                                    <p class="text-sm text-gray-500">john@example.com</p>
+                                            </td>
+                                            <td class="p-4">
+                                                <div class="flex items-center gap-2">
+                                                    <p class="font-medium"><?= explode(" ", $teacher['created_at'])[0] ?></p>
+                                                    <p class="text-sm text-gray-500"><?= explode(" ", $teacher['created_at'])[1] ?></p>
+                                                    </p>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="p-4">
-                                            <div class="flex items-center gap-2">
-                                                <p class="font-medium">Dec 15, 2023</p>
-                                                <p class="text-sm text-gray-500">2:30 PM</p>
-                                            </div>
-                                        </td>
-                                        <td class="p-4">
-                                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">
-                                                Pending Review
-                                            </span>
-                                        </td>
-                                        <td class="p-4">
-                                            <div class="flex gap-2">
-                                                <button class="px-4 py-2 bg-purple-800 hover:bg-purple-900 text-white rounded-lg transition-colors flex items-center gap-1">
-                                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                    </svg>
-                                                    Approve
-                                                </button>
-                                                <button class="px-4 py-2 bg-white border border-red-500 text-red-500 hover:bg-red-50 rounded-lg transition-colors flex items-center gap-1">
-                                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                                    </svg>
-                                                    Reject
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b hover:bg-gray-100 transition-colors">
-                                        <td class="p-4">
-                                            <div class="flex items-center gap-3">
-                                                <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center">
-                                                    <svg class="w-5 h-5 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                                                    </svg>
+                                            </td>
+                                            <td class="p-4">
+                                                <span
+                                                    class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">
+                                                    Pending
+                                                </span>
+                                            </td>
+                                            <td class="p-4">
+                                                <div class="flex gap-2">
+                                                    <form action="manageteachers.php" method="post">
+                                                        <input type="hidden" name="teacher_id" value="<?= $teacher['id'] ?>">
+                                                        <button type="submit" name="activate" id="activate"
+                                                            class="px-4 py-2 bg-purple-800 hover:bg-purple-900 text-white rounded-lg transition-colors flex items-center gap-1">
+                                                            <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2" d="M5 13l4 4L19 7" />
+                                                            </svg>
+                                                            Approve
+                                                        </button>
+                                                    </form>
+
+                                                    <form action="manageteachers.php" method="post">
+                                                        <input type="hidden" name="teacher_id" value="<?= $teacher['id'] ?>">
+                                                        <button type="submit" name="reject" id="reject"
+                                                            class="px-4 py-2 bg-white border border-red-500 text-red-500 hover:bg-red-50 rounded-lg transition-colors flex items-center gap-1">
+                                                            <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                            </svg>
+                                                            Reject
+                                                        </button>
+                                                    </form>
                                                 </div>
-                                                <div>
-                                                    <p class="font-semibold">Maria Garcia</p>
-                                                    <p class="text-sm text-gray-500">maria@example.com</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="p-4">
-                                            <div class="flex items-center gap-2">
-                                                <p class="font-medium">Dec 14, 2023</p>
-                                                <p class="text-sm text-gray-500">4:15 PM</p>
-                                            </div>
-                                        </td>
-                                        <td class="p-4">
-                                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">
-                                                Pending Review
-                                            </span>
-                                        </td>
-                                        <td class="p-4">
-                                            <div class="flex gap-2">
-                                                <button class="px-4 py-2 bg-purple-800 hover:bg-purple-900 text-white rounded-lg transition-colors flex items-center gap-1">
-                                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                    </svg>
-                                                    Approve
-                                                </button>
-                                                <button class="px-4 py-2 bg-white border border-red-500 text-red-500 hover:bg-red-50 rounded-lg transition-colors flex items-center gap-1">
-                                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                                    </svg>
-                                                    Reject
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+
+                                    <?php endforeach ?>
                                 </tbody>
                             </table>
                         </div>

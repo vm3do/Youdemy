@@ -87,7 +87,8 @@
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                     <div class="aspect-w-16 aspect-h-9 bg-gray-800">
                         <video class="w-full h-full object-cover" controls>
-                            <source src="../Classes/<?php echo explode("Classes/", $course["content"])[1] ?? "" ?>" type="video/mp4">
+                            <!-- <source src="../Classes/<?php echo explode("Classes/", $course["content"])[1] ?? "" ?>" type="video/mp4"> -->
+                            <source src="../<?= $course["content"] ?? "" ?>" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>

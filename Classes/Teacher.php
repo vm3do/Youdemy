@@ -48,7 +48,6 @@
 
                 return true;
 
-
             } catch (PDOException $e) {
                 error_log("error rejecting the teacher :" . $e->getMessage());
                 return false;
@@ -59,11 +58,11 @@
 
             try{
 
-                $sql = " SELECT COUNT(*) FROM courses WHERE teacher_id = :id ";
+                $sql = " SELECT COUNT(*) as total_courses FROM courses WHERE teacher_id = :id ";
                 $stmt = $this->pdo->prepare($sql);
                 $stmt->execute(["id" => $id]);
 
-                return true;
+                return $stmt->fetch();
 
 
             } catch (PDOException $e) {
@@ -86,6 +85,21 @@
 
             } catch (PDOException $e) {
                 error_log("error fetching the students :" . $e->getMessage());
+                return false;
+            }
+        }
+
+        public function courses($id){
+            try{
+
+                $sql = "SELECT * FROM courses WHERE teacher_id = :id";
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->execute(["id" => $id]);
+
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            } catch (PDOException $e) {
+                die("error fetching the courses :" . $e->getMessage());
                 return false;
             }
         }

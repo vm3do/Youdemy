@@ -17,6 +17,10 @@ class File
 
     public function manageFile()
     {
+        if(empty($this->filename)){
+            return ["success" => false, "message" => "File cannot be empty"];
+        }
+
         $tmp_extension = explode(".", $this->filename);
         $extension = strtolower(end($tmp_extension));
 
@@ -24,15 +28,20 @@ class File
             return ["success" => false, "message" => "File size must be less than 8 MB"];
         }
 
-        if ($extension != "mp4") {
-            return ["success" => false, "message" => "File must be a video type mp4"];
+        $allowed = ["mp4", "gif", "jpeg", "jpg", "png", "webp"];
+
+        if (!in_array($extension, $allowed)) {
+            return ["success" => false, "message" => "File must be a video or image type only"];
         }
 
         if ($this->error !== UPLOAD_ERR_OK) {
             return ["success" => false, "message" => "Error uploading the file. Try again."];
         }
 
-        $uploadDir = __DIR__ . "/videos/";
+        $imgextension = ["jpg", "jpeg", "gif", "png", "webp"];
+
+        $uploadDir = in_array($extension, $imgextension) ? "../covers/" : "../videos/";
+
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }

@@ -6,8 +6,8 @@ class Text extends Course {
     private $content_type;
     private $content;
 
-    public function __construct($title, $description, $teacher_id, $tags, $category_id, $content_type = "text", $content) {
-        parent::__construct($title, $description, $teacher_id, $tags, $category_id);
+    public function __construct($title, $description, $background, $teacher_id, $tags, $category_id, $content_type = "text", $content) {
+        parent::__construct($title, $description,$background, $teacher_id, $tags, $category_id);
         $this->content_type = $content_type;
         $this->content = $content;
     }
@@ -15,20 +15,22 @@ class Text extends Course {
     public function addCourse() {
         try {
 
-            if (empty($this->title) || empty($this->description) || empty($this->teacher_id)) {
+            if (empty($this->title) || empty($this->description) || empty($this->teacher_id) || empty($this->tags) || empty($this->category_id) || empty($this->content)) {
+                die($this->title . "," . $this->description . "," . $this->teacher_id . "," . print_r($this->tags) . "," . $this->category_id . "," . $this->content);
                 return ["success" => false, "message" => "All inputs are required!"];
             }
 
-            $sql = "INSERT INTO courses(title, description, content_type, content, teacher_id, category_id)
-                    VALUES (:title, :description, :content_type, :content, :teacher_id, :category_id)";
+            $sql = "INSERT INTO courses(title, description, background, content_type, content, teacher_id, category_id)
+                    VALUES (:title, :description, :background, :content_type, :content, :teacher_id, :category_id)";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([
                 "title" => $this->title,
                 "description" => $this->description,
+                "background" => $this->background,
                 "content_type" => $this->content_type,
                 "content" => $this->content,
                 "teacher_id" => $this->teacher_id,
-                "category_id" => $this->category_id
+                "category_id" => $this->category_id,
             ]);
 
             $course_id = $this->pdo->lastInsertId();
@@ -50,8 +52,9 @@ class Text extends Course {
             return ["success" => true, "message" => "course added successfully!"];
 
         } catch (PDOException $e) {
-            error_log("Error uploading a video: " . $e->getMessage());
-            return ["success" => false, "message" => "Error creating the course"];
+            // error_log("Error uploading a video: " . $e->getMessage());
+            // return ["success" => false, "message" => "Error creating the course"];
+            die($e->getMessage());
         }
     }
 }

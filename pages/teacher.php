@@ -80,7 +80,7 @@
                     </span>
                 </div>
                 <div class="flex items-center">
-                    <h2 class="text-3xl font-bold text-gray-800">12</h2>
+                    <h2 class="text-3xl font-bold text-gray-800"><?= $coursesCount["total_courses"] ?? "0" ?></h2>
                 </div>
             </div>
 
@@ -99,7 +99,7 @@
                     </span>
                 </div>
                 <div class="flex items-center">
-                    <h2 class="text-3xl font-bold text-gray-800"><?= $students["students"] ?></h2>
+                    <h2 class="text-3xl font-bold text-gray-800"><?= $students["students"] ?? "0" ?></h2>
                 </div>
             </div>
         </div>
@@ -251,7 +251,7 @@
         </div>
 
     <!-- Add Course Modal -->
-    <div id="addCourseModal" class="fixed inset-0 bg-gray-900/50 z-50 ">
+    <div id="addCourseModal" class="fixed inset-0 bg-gray-900/50 z-50 hidden">
         <div class="min-h-screen px-4 text-center flex items-center justify-center">
 
             
@@ -273,7 +273,11 @@
 
                 <!-- Modal Content -->
                 <div class="px-6 py-4 max-h-[calc(100vh-180px)] overflow-y-auto scrollbar-hide">
-                    <div class="font-red-500" ><?= $return["message"] ?? $addError["message"] ?? ""?></div>
+                    <?php if(!$addError["success"]): ?>
+                    <div class="text-red-500" ><?= $return["message"] ?? $addError["message"] ?? "" ?></div>
+                    <?php else: ?>
+                    <div class="text-green-500" ><?= $return["message"] ?? $addError["message"] ?? "" ?></div>
+                    <?php endif; ?>
                     <form id="addCourse" action="teacher.php" method="POST" name="addCourse" enctype="multipart/form-data" class="space-y-6">
                         
                         <!-- Title -->
@@ -306,6 +310,34 @@
                                     focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 
                                     hover:border-violet-300 outline-violet-600 transition-colors"
                                     placeholder="Describe your course"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Course Background Image -->
+                        <div class="space-y-1">
+                            <label class="block text-base font-semibold text-gray-800 mb-2">
+                                Course Background Image
+                            </label>
+                            <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-violet-500 transition-colors">
+                                <div class="space-y-1 text-center">
+                                    <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                                        <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <div class="flex text-sm text-gray-600">
+                                        <label for="background" class="relative cursor-pointer bg-white rounded-md font-medium text-violet-600 hover:text-violet-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-violet-500">
+                                            <span>Upload a file</span>
+                                            <input id="background" name="background" type="file" class="sr-only" accept="image/*" required>
+                                        </label>
+                                    </div>
+                                    <p class="text-xs text-gray-500">
+                                        PNG, JPG, GIF up to 2MB
+                                    </p>
+                                    <!-- Preview -->
+                                    <div id="imagePreview" class="hidden mt-4">
+                                        <img id="preview" src="#" alt="Preview" class="mx-auto max-h-40 rounded-lg">
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -458,9 +490,9 @@
                                 <?php foreach($categories as $category): ?>
 
                                     <div>
-                                        <input type="radio" id="<?= $category["id"] ?>" name="category" value="<?= $category["id"] ?>"
+                                        <input type="radio" id="cat<?=$category["id"] ?>" name="category" value="<?= $category["id"] ?>"
                                             class="sr-only peer">
-                                        <label for="<?= $category["id"] ?>" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
+                                        <label for="cat<?=$category["id"] ?>" class="inline-flex px-3 py-1.5 rounded-lg border-2 cursor-pointer
                                             text-gray-600 border-gray-200 hover:border-violet-500 hover:bg-violet-50
                                             peer-checked:border-violet-500 peer-checked:bg-violet-50 peer-checked:text-violet-600
                                             transition-colors">
@@ -516,6 +548,16 @@
             } else {
                 videoInput.classList.add('hidden');
                 textInput.classList.remove('hidden');
+            }
+        }
+
+        document.getElementById('background').onchange = function(evt) {
+            const [file] = this.files;
+            if (file) {
+                const preview = document.getElementById('preview');
+                const previewContainer = document.getElementById('imagePreview');
+                preview.src = URL.createObjectURL(file);
+                previewContainer.classList.remove('hidden');
             }
         }
 
