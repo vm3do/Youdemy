@@ -41,7 +41,7 @@
                     $stmt->execute(["id" => $id]);
                     return true;
                 } catch (PDOException $e) {
-                    error_log("error removing course ." . $e->getMessage());
+                    die("error removing course ." . $e->getMessage());
                     return false;
                 }
 
@@ -53,13 +53,13 @@
             $pdo = $instance->getconn();
 
             try{
-                $sql = "SELECT * FROM courses";
+                $sql = "SELECT c.*, u.name FROM courses c INNER JOIN users u ON u.id = c.teacher_id";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute();
                 return $stmt->fetchAll();
 
             } catch(PDOException $e){
-                error_log("error fetching courses : " . $e->getMessage());
+                die("error fetching courses : " . $e->getMessage());
                 return false;
             }
         }
@@ -69,12 +69,12 @@
             $pdo = $instance->getconn();
 
             try{
-                $sql = "SELECT * FROM courses WHERE id = :id";
+                $sql = "SELECT c.*, u.name FROM courses c INNER JOIN users u ON u.id = c.teacher_id WHERE c.id = :id";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute(["id" => $id]);
                 return $stmt->fetch();
             } catch(PDOException $e){
-                error_log("Error fetching the course by id : " . $e->getMessage());
+                die("Error fetching the course by id : " . $e->getMessage());
                 return false;
             }
         }

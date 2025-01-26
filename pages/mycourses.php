@@ -146,7 +146,7 @@
                     <h3 class="font-semibold text-gray-800 mb-4">Contact</h3>
                     <ul class="space-y-2">
                         <li class="text-gray-600">support@youdemy.com</li>
-                        <li class="text-gray-600">+1 (555) 123-4567</li>
+                        <li class="text-gray-600">+212777591881</li>
                     </ul>
                 </div>
             </div>

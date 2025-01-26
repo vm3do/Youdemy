@@ -15,29 +15,9 @@
         Course::deleteCourse($id);
     }
 
-    if($_SESSION["role"] === 'teacher'){
-        $teacher = new Teacher(null, null, null, "teacher");
-        $teacher_id = ($_SESSION["user_id"]);
-
-        $teacher->courseCount($teacher_id);
-
-        $tags = new Tag();
-        $tags = $tags->getTags() ?? [];
-
-        $category = new Category();
-        $categories = $category->getcategories() ?? [];
-
-        $courses = $teacher->courses($teacher_id) ?? [];
-
-        $coursesCount = $teacher->courseCount($teacher_id) ?? [];
-
-        $students = $teacher->getstudents($teacher_id) ?? [];
-    }
-
     $bgreturn["success"] = "";
     $return["success"] = "";
     $addError["success"] = "";
-
 
     if(isset($_POST['addCourse'])){
 
@@ -88,3 +68,25 @@
         }
 
     }
+
+    if($_SESSION["role"] === 'teacher'){
+        $teacher = new Teacher(null, null, null, "teacher");
+        $teacher_id = ($_SESSION["user_id"]);
+
+        $teacher->courseCount($teacher_id);
+
+        $tags = new Tag();
+        $tags = $tags->getTags() ?? [];
+
+        $category = new Category();
+        $categories = $category->getcategories() ?? [];
+
+        $courses = $teacher->courses($teacher_id) ?? [];
+
+        $coursesCount = $teacher->courseCount($teacher_id) ?? [];
+
+        $students = $teacher->getstudents($teacher_id) ?? [];
+    }
+
+
+    

@@ -195,7 +195,7 @@
                                                 </svg>
                                             </div>
                                             <div>
-                                                <span class="font-semibold text-gray-900">234</span>
+                                                <span class="font-semibold text-gray-900">0</span>
                                                 <span class="text-gray-500 text-sm ml-1">students</span>
                                             </div>
                                         </div>

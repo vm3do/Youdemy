@@ -24,8 +24,8 @@
                 <span class="text-purple-800">You</span>Demy
             </div>
             <nav class="flex items-center gap-8">
-                <a href="index.php" class="text-gray-800 hover:text-purple-800">Home</a>
-                <a href="courses.php" class="text-purple-800 font-medium">Courses</a>
+                <a href="index.php" class="text-purple-800 font-medium">Home</a>
+                <a href="courses.php" class="text-gray-800 hover:text-purple-800">Courses</a>
                 <?php if(isset($_SESSION["user_id"])): ?>
                     <a href="mycourses.php?"
                         class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">My Courses</a>
@@ -181,7 +181,7 @@
                     <h3 class="font-semibold text-gray-800 mb-4">Contact</h3>
                     <ul class="space-y-2">
                         <li class="text-gray-600">support@youdemy.com</li>
-                        <li class="text-gray-600">+1 (555) 123-4567</li>
+                        <li class="text-gray-600">+212777591881</li>
                     </ul>
                 </div>
             </div>

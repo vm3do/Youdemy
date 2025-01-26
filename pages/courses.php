@@ -71,7 +71,7 @@
                 <div
                 class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
                     <div class="relative">
-                        <img src="../<?= $course["background"] ?>" alt="Course thumbnail" class="w-full h-48 object-cover">
+                        <img src="<?= $course["background"] ?? "../assets/cover.jpeg"?>" alt="Course thumbnail" class="w-full h-48 object-cover">
                         <span class="absolute top-4 right-4 px-2 py-1 bg-purple-800 text-white text-xs font-medium rounded">
                             Free
                         </span>
@@ -90,7 +90,7 @@
                                             d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                     </svg>
                                 </div>
-                                <span class="text-sm text-gray-600"><?= $course["teacher_name"] ?? "Empty"?></span>
+                                <span class="text-sm text-gray-600"><?= $course["name"] ?? "Empty"?></span>
                             </div>
                             <div class="flex items-center gap-1">
                                 <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -183,7 +183,7 @@
                     <h3 class="font-semibold text-gray-800 mb-4">Contact</h3>
                     <ul class="space-y-2">
                         <li class="text-gray-600">support@youdemy.com</li>
-                        <li class="text-gray-600">+1 (555) 123-4567</li>
+                        <li class="text-gray-600">+212777591881/li>
                     </ul>
                 </div>
             </div>
