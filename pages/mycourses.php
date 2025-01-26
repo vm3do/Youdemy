@@ -47,7 +47,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="pt-24 pb-12">
+    <main class="pb-12">
         <!-- Page Header -->
         <div class="bg-gradient-to-br from-violet-50 to-white border-b">
             <div class="max-w-7xl mx-auto px-4 py-8">

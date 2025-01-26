@@ -48,7 +48,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-8xl mx-auto px-4 pt-24 pb-12">
+    <main class="max-w-8xl mx-auto px-4 pb-12">
         <!-- Search -->
         <div class="mb-8 flex flex-col md:flex-row gap-4 items-center justify-between">
             <h1 class="text-2xl font-bold text-gray-800">Available Courses</h1>
