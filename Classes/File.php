@@ -24,7 +24,7 @@ class File
         $tmp_extension = explode(".", $this->filename);
         $extension = strtolower(end($tmp_extension));
 
-        if ($this->size > 8000000) {
+        if ($this->size > 20000000) {
             return ["success" => false, "message" => "File size must be less than 8 MB"];
         }
 

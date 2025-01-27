@@ -49,7 +49,7 @@ require_once "../actions/manageteachers.php";
                             </svg>
                             Dashboard
                         </a>
-                        <a href=""
+                        <a href="manageusers.php"
                             class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-purple-800/10 hover:text-purple-800 rounded-lg transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -58,7 +58,7 @@ require_once "../actions/manageteachers.php";
                             </svg>
                             User Management
                         </a>
-                        <a href="manageusers.html"
+                        <a href="manageteachers.php"
                             class="flex items-center gap-3 px-4 py-2.5 text-purple-800 bg-purple-800/10 rounded-lg transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -66,7 +66,7 @@ require_once "../actions/manageteachers.php";
                             </svg>
                             Teachers Requests
                         </a>
-                        <a href="managecourses.html"
+                        <a href="managecourses.php"
                             class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-purple-800/10 hover:text-purple-800 rounded-lg transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -74,7 +74,7 @@ require_once "../actions/manageteachers.php";
                             </svg>
                             Courses Management
                         </a>
-                        <a href="#statistics"
+                        <a href="admin.php"
                             class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-purple-800/10 hover:text-purple-800 rounded-lg transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

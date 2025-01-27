@@ -93,6 +93,9 @@
             try{
 
                 $sql = "SELECT * FROM courses WHERE teacher_id = :id";
+                $sql = "SELECT c.*, 
+                        (SELECT COUNT(e.course_id) FROM enrollments e WHERE e.course_id = c.id) As students
+                        FROM courses c  WHERE teacher_id = :id";
                 $stmt = $this->pdo->prepare($sql);
                 $stmt->execute(["id" => $id]);
 

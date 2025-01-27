@@ -53,7 +53,7 @@ class Video extends Course {
 
         } catch (PDOException $e) {
 
-            error_log("Error uploading a video: " . $e->getMessage());
+            die("Error uploading a video: " . $e->getMessage());
             return ["success" => false, "message" => "Error creating the course."];
         }
     }

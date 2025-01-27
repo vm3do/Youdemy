@@ -21,7 +21,7 @@
             </div>
 
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 md:p-12">
-                <h1 class="text-3xl font-bold text-gray-900 mb-4">Access Denied</h1>
+                <h1 class="text-3xl font-bold text-gray-900 mb-4">403 - Forbidden</h1>
                 <p class="text-gray-600 mb-8">
                     Sorry, you don't have permission to access this page. Please make sure you're logged in with the correct account.
                 </p>

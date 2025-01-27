@@ -49,7 +49,7 @@
                             </svg>
                             Dashboard
                         </a>
-                        <a href=""
+                        <a href="manageusers.php"
                             class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-purple-800/10 hover:text-purple-800 rounded-lg transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -58,23 +58,23 @@
                             </svg>
                             User Management
                         </a>
-                        <a href="manageusers.html"
-                            class="flex items-center gap-3 px-4 py-2.5 text-purple-800 bg-purple-800/10 rounded-lg transition-colors">
+                        <a href="manageteachers.php"
+                            class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-purple-800/10 hover:text-purple-800 rounded-lg transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                             </svg>
                             Teachers Requests
                         </a>
-                        <a href="managecourses.html"
-                            class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-purple-800/10 hover:text-purple-800 rounded-lg transition-colors">
+                        <a href="managecourses.php"
+                            class="flex items-center gap-3 px-4 py-2.5 text-purple-800 bg-purple-800/10 rounded-lg transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                             </svg>
                             Courses Management
                         </a>
-                        <a href="#statistics"
+                        <a href="admin.php?statistics"
                             class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-purple-800/10 hover:text-purple-800 rounded-lg transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -92,10 +92,7 @@
         <div class="flex-1 lg:ml-64">
             <!-- Header -->
             <header class="w-full bg-white shadow-sm z-30 border-b">
-                <div class="w-full flex items-center justify-between px-6 py-4">
-                    <div class="text-2xl font-bold">
-                        <span class="text-purple-800">You</span>Demy
-                    </div>
+                <div class="w-full flex items-center justify-end px-6 py-4">
                     <div class="flex items-center gap-4">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-full bg-purple-800/10 flex items-center justify-center">
@@ -169,7 +166,7 @@
                                         <tr class="hover:bg-gray-100">
                                             <td class="px-6 py-4">
                                                 <div class="flex items-center gap-4">
-                                                    <img src="../assets/cover.jpeg" alt="Course thumbnail"
+                                                    <img src="<?= $course["background"] ?? "../assets/cover.jpeg" ?>" alt="Course thumbnail"
                                                         class="w-[100px] h-[70px] object-cover rounded-lg">
                                                     <div>
                                                         <h3 class="font-medium text-gray-900"><?= $course["title"] ?? "title" ?>

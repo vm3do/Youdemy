@@ -179,7 +179,7 @@
                                                 </svg>
                                             </div>
                                             <div>
-                                                <h4 class="font-medium text-gray-900"><?= $course["title"]?></h4>
+                                                <h4 class="font-medium text-gray-900"><?= $course["title"] ?? "empty"?></h4>
                                                 
                                             </div>
                                         </div>
@@ -195,8 +195,8 @@
                                                 </svg>
                                             </div>
                                             <div>
-                                                <span class="font-semibold text-gray-900">0</span>
-                                                <span class="text-gray-500 text-sm ml-1">students</span>
+                                                <span class="font-semibold text-gray-900"><?= $course["students"]?></span>
+                                                <span class="text-gray-500 text-sm ml-1"> students</span>
                                             </div>
                                         </div>
                                     </td>
@@ -273,7 +273,7 @@
 
                 <!-- Modal Content -->
                 <div class="px-6 py-4 max-h-[calc(100vh-180px)] overflow-y-auto scrollbar-hide">
-                    <?php if(!$addError["success"]): ?>
+                    <?php if(!$addError["success"] || !$return["success"]): ?>
                     <div class="text-red-500" ><?= $return["message"] ?? $addError["message"] ?? "" ?></div>
                     <?php else: ?>
                     <div class="text-green-500" ><?= $return["message"] ?? $addError["message"] ?? "" ?></div>

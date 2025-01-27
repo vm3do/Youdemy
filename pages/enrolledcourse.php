@@ -56,7 +56,7 @@
             <div class="max-w-7xl mx-auto px-4 py-8">
                 <div class="flex items-center gap-2 mb-4">
                     <span class="px-3 py-1 bg-purple-800/10 text-purple-800 text-sm font-medium rounded-full">
-                        Category
+                        <?= $course["category"] ?? "category" ?>
                     </span>
                 </div>
                 <h1 class="text-3xl lg:text-4xl font-bold mb-4"><?= $course["title"] ?? "" ?></h1>
@@ -73,7 +73,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h3 class="font-medium text-gray-900">Teacher</h3>
+                        <h3 class="font-medium text-gray-900"><?= $course["name"] ?? "teacher" ?></h3>
                         <p class="text-gray-500 text-sm">Certified Teacher</p>
                     </div>
                 </div>
@@ -83,8 +83,9 @@
         <!-- Course Content Section -->
         <div class="max-w-7xl mx-auto px-4 py-8">
             <!-- Video Template -->
-             <?php if(isset($course)){ echo "yes"; print_r($course);} else { echo "no";} ?>
-            <?php if($course["content_type"] == "video"): ?>
+             <?= $return ?? "" ?>
+            <?php if($course == false): echo $return; ?>
+            <?php elseif($course["content_type"] == "video"): ?>
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                     <div class="aspect-w-16 aspect-h-9 bg-gray-800">
                         <video class="w-full h-full object-cover" controls>
@@ -97,10 +98,7 @@
                         <h2 class="text-xl font-bold text-gray-900 mb-4"><?= $course["title"] ?? "" ?></h2>
                         <p class="text-gray-600">
                             <?= $course["description"] ?? "" ?>
-                        </p>
-                        <div class="mt-4 flex items-center gap-4">
-                            <span class="text-sm text-gray-500">Duration: 15:30</span>
-                        </div>
+                        </p> 
                     </div>
                 </div>
             <?php endif ?>

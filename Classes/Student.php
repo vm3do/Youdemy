@@ -7,7 +7,7 @@
         public function getEnrolled($id){
             try {
                 
-                $sql = "SELECT c.*,u.id, t.name as teacher, ca.name as category FROM users u
+                $sql = "SELECT c.*, t.name as teacher, ca.name as category FROM users u
                         INNER JOIN enrollments e ON e.student_id = u.id
                         INNER JOIN courses c ON c.id = e.course_id
                         INNER JOIN categories ca ON ca.id = c.category_id

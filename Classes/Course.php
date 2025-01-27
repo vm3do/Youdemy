@@ -72,11 +72,7 @@
                 $sql = "SELECT c.*, u.name, ca.name as category FROM courses c INNER JOIN users u ON u.id = c.teacher_id INNER JOIN categories ca ON ca.id = c.category_id WHERE c.id = :id";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute(["id" => $id]);
-                $return = $stmt->fetch();
-                if ($return === false) {
-                    throw new Exception("Error Processing Request", 1);
-                     // Or throw an exception, depending on your use case
-                }
+                return $stmt->fetch();
             } catch(PDOException $e){
                 die("Error fetching the course by id : " . $e->getMessage());
             }

@@ -3,7 +3,7 @@
     require "../actions/auth.php";
     require "../Classes/Auth.php";
 
-    Auth::checkRole("admin");
+    Auth::checkRole("teacher");
 
 ?>
 
