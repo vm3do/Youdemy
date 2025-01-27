@@ -47,7 +47,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="pb-12">
+    <main class="pt-12 pb-12">
         <!-- Page Header -->
         <div class="bg-gradient-to-br from-violet-50 to-white border-b">
             <div class="max-w-7xl mx-auto px-4 py-8">
@@ -64,8 +64,8 @@
 
                     <div
                         class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
-                        <a href="enrolledcourse.php?id=<?= $enrolled["course_id"] ?? "" ?>" class="block">
-                            <img src="../assets/cover.jpeg" alt="Course thumbnail" class="w-full h-48 object-cover">
+                        <a href="enrolledcourse.php?id=<?= $enrolled["id"] ?? "" ?>" class="block">
+                            <img src="<?= $enrolled["background"] ?? "../assets/cover.jpeg" ?>" alt="Course thumbnail" class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <div class="flex items-center gap-2 mb-3">
                                     <span class="px-2.5 py-0.5 bg-purple-800/10 text-purple-800 text-sm font-medium rounded-full">
@@ -84,7 +84,7 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                         </svg>
-                                        Teacher
+                                        <?= $enrolled["teacher"] ?? "teacher" ?>
                                     </div>
                                 </div>
                             </div>

@@ -48,7 +48,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-8xl mx-auto px-4 pb-12">
+    <main class="max-w-8xl mx-auto px-4 pt-24 pb-12">
         <!-- Search -->
         <div class="mb-8 flex flex-col md:flex-row gap-4 items-center justify-between">
             <h1 class="text-2xl font-bold text-gray-800">Available Courses</h1>
@@ -73,7 +73,7 @@
                     <div class="relative">
                         <img src="<?= $course["background"] ?? "../assets/cover.jpeg"?>" alt="Course thumbnail" class="w-full h-48 object-cover">
                         <span class="absolute top-4 right-4 px-2 py-1 bg-purple-800 text-white text-xs font-medium rounded">
-                            Free
+                            <?= $course["category"] ?? "Free"?>
                         </span>
                     </div>
                     <div class="p-5">

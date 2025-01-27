@@ -47,7 +47,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class=" pb-12">
+    <main class="pt-12 pb-12">
         <!-- Course Header -->
         <?php if(isset($_POST["course_id"])): ?>
             <div class="bg-gradient-to-br from-violet-50 to-white border-b">

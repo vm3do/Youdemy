@@ -50,7 +50,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class=" pb-12">
+    <main class="pt-12 pb-12">
         <!-- Course Header -->
         <div class="bg-gradient-to-br from-violet-50 to-white border-b">
             <div class="max-w-7xl mx-auto px-4 py-8">
@@ -83,12 +83,13 @@
         <!-- Course Content Section -->
         <div class="max-w-7xl mx-auto px-4 py-8">
             <!-- Video Template -->
+             <?php if(isset($course)){ echo "yes"; print_r($course);} else { echo "no";} ?>
             <?php if($course["content_type"] == "video"): ?>
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                     <div class="aspect-w-16 aspect-h-9 bg-gray-800">
                         <video class="w-full h-full object-cover" controls>
                             <!-- <source src="../Classes/<?php echo explode("Classes/", $course["content"])[1] ?? "" ?>" type="video/mp4"> -->
-                            <source src="../<?= $course["content"] ?? "" ?>" type="video/mp4">
+                            <source src="<?= $course["content"] ?? "" ?>" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
