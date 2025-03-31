@@ -1,6 +1,6 @@
 <?php
 
-require_once "C:/xampp/htdocs/Youdemy/Classes/User.php";
+require_once __DIR__ . "/../Classes/User.php";
 
 require_once __DIR__ . "/../Classes/Admin.php";
 require_once __DIR__ . "/../Classes/Student.php";
