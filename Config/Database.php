@@ -1,5 +1,9 @@
 <?php
 
+    require_once  __DIR__ . '/../vendor/autoload.php';
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+    $dotenv->load();
+
     class Database {
         
         private static $instance = NULL;
@@ -7,9 +11,9 @@
 
         private function __construct()
         {
-            $dsn = "mysql:host=localhost;dbname=youdemy";
-            $user = "root";
-            $pass = "";
+            $dsn = "mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}";
+            $user = $_ENV['DB_USER'];
+            $pass = $_ENV['DB_PASS'];
 
             try{
 

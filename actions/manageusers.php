@@ -1,8 +1,8 @@
 <?php
 
-    require_once "../Config/Database.php";
-    require "../Classes/Tag.php";
-    require "../Classes/Category.php";
+    require_once __DIR__ .  "/../Config/Database.php";
+    require __DIR__ .  "/../Classes/Tag.php";
+    require __DIR__ .  "/../Classes/Category.php";
 
     if($_SESSION["role"] === 'admin'){
 
