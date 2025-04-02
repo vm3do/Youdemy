@@ -16,9 +16,19 @@ $request = rtrim($request, '/');
 $routes = [
     '' => 'pages/index.php',
     'homepage' => 'pages/index.php',
+    'login' => 'pages/login.php',
+    'register' => 'pages/signup.php',
     'courses' => 'pages/courses.php',
-    'manage' => 'pages/manageusers.php',
-    // Add all your other pages here
+    'course/details' => 'pages/coursedetails.php',
+    'mycourses' => 'pages/mycourses.php',
+    'course/enrolled' => 'pages/enrolledcourse.php',
+    'teacher/dashboard' => 'pages/teacher.php',
+    'course/edit' => 'pages/manageusers.php',
+    'dashboard' => 'pages/admin.php',
+    'manage/users' => 'pages/manageusers.php',
+    'pending' => 'pages/manageteachers.php',
+    'manage/courses' => 'pages/managecourses.php',
+    'invalid' => 'pages/invalid.php',
 ];
 
 // Check if the route exists

@@ -25,12 +25,12 @@
             </div>
             <nav>
                 <ul class="flex items-center gap-6">
-                    <li><a href="index.php" class="text-gray-600 hover:text-purple-800">Home</a></li>
-                    <li><a href="courses.php" class="text-gray-600 hover:text-purple-800">Courses</a></li>
-                    <li><a href="login.php"
+                    <li><a href="homepage" class="text-gray-600 hover:text-purple-800">Home</a></li>
+                    <li><a href="courses" class="text-gray-600 hover:text-purple-800">Courses</a></li>
+                    <li><a href="login"
                             class="inline-flex items-center justify-center h-10 border border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white px-6 rounded-lg transition-colors">Log
                             In</a></li>
-                    <li><a href="signup.php"
+                    <li><a href="register"
                             class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">Sign
                             Up</a></li>
                 </ul>
@@ -64,7 +64,7 @@
                 <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Welcome Back!</h2>
 
                 <div class="bg-white py-8 px-6 shadow-sm rounded-xl sm:px-10">
-                    <form class="space-y-6" action="signup.php" method="POST">
+                    <form class="space-y-6" action="register" method="POST">
                         <div>
                             <p class="text-red-500"><?= $error ?></p>
                         </div>
@@ -157,7 +157,7 @@
                     <!-- SU Message -->
                     <div class="mt-6 text-center text-sm text-gray-600">
                         Already have an account?
-                        <a href="login.php" class="font-medium text-purple-800 hover:text-purple-800/80">
+                        <a href="login" class="font-medium text-purple-800 hover:text-purple-800/80">
                             Log In
                         </a>
                     </div>
