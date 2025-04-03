@@ -1,7 +1,7 @@
 <?php
 
-    require_once "../Config/Database.php";
-    require_once "../Classes/Admin.php";
+    require_once __DIR__ . "/../Config/Database.php";
+    require_once __DIR__ . "/../Classes/Admin.php";
 
 
     if($_SESSION["role"] === 'admin'){

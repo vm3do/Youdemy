@@ -6,6 +6,8 @@
     
 // }
 
+define('BASE_URL', '/Youdemy');
+
 // Get the requested URL
 $request = $_GET['url'] ?? 'homepage';
 
@@ -23,12 +25,13 @@ $routes = [
     'mycourses' => 'pages/mycourses.php',
     'course/enrolled' => 'pages/enrolledcourse.php',
     'teacher/dashboard' => 'pages/teacher.php',
-    'course/edit' => 'pages/manageusers.php',
+    'course/edit' => 'pages/edit.php',
     'dashboard' => 'pages/admin.php',
     'manage/users' => 'pages/manageusers.php',
-    'pending' => 'pages/manageteachers.php',
+    'manage/pending' => 'pages/manageteachers.php',
     'manage/courses' => 'pages/managecourses.php',
     'invalid' => 'pages/invalid.php',
+    'logout' => 'actions/logout.php',
 ];
 
 // Check if the route exists

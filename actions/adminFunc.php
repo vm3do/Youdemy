@@ -1,8 +1,8 @@
 <?php
 
-    require_once "../Config/Database.php";
-    require "../Classes/Tag.php";
-    require "../Classes/Category.php";
+    require_once __DIR__ . "/../Config/Database.php";
+    require_once __DIR__ . "/../Classes/Tag.php";
+    require_once __DIR__ . "/../Classes/Category.php";
 
     $tag_msg = "";
     $cat_msg = "";

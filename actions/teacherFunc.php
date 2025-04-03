@@ -1,12 +1,11 @@
 <?php
 
-    require_once "../Classes/File.php";
-
-    require_once "../Config/Database.php";
-    require_once "../Classes/Tag.php";
-    require_once "../Classes/Video.php";
-    require_once "../Classes/Text.php";
-    require_once "../Classes/Category.php";
+    require_once __DIR__ . "/../Classes/File.php";
+    require_once __DIR__ . "/../Config/Database.php";
+    require_once __DIR__ . "/../Classes/Tag.php";
+    require_once __DIR__ . "/../Classes/Video.php";
+    require_once __DIR__ . "/../Classes/Text.php";
+    require_once __DIR__ . "/../Classes/Category.php";
 
     $teacher = new Teacher(null, null, null, "teacher");
 

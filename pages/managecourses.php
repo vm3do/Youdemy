@@ -1,10 +1,10 @@
 <?php
-    require_once "../actions/auth.php";
-    require_once "../Classes/Auth.php";
+    require_once __DIR__ . "/../actions/auth.php";
+    require_once __DIR__ . "/../Classes/Auth.php";
     
     Auth::checkRole("admin");
     
-    require_once "../actions/managecourses.php"
+    require_once __DIR__ . "/../actions/managecourses.php"
 
 ?>
 

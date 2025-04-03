@@ -27,20 +27,20 @@
                 <span class="text-purple-800">You</span>Demy
             </div>
             <nav class="flex items-center gap-8">
-                <a href="index.php" class="text-gray-800 hover:text-purple-800">Home</a>
-                <a href="courses.php" class="text-purple-800 font-medium">Courses</a>
+                <a href="homepage" class="text-gray-800 hover:text-purple-800">Home</a>
+                <a href="courses" class="text-purple-800 font-medium">Courses</a>
                 <?php if(isset($_SESSION["user_id"])): ?>
-                    <a href="mycourses.php?"
+                    <a href="mycourses?"
                         class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">My Courses</a>
 
-                    <a href="../actions/logout.php"
+                    <a href="actions/logout.php"
                         class="inline-flex items-center justify-center h-10 border border-red-800 text-red-800 hover:bg-red-800 hover:text-white px-6 rounded-lg transition-colors">Log
                         Out</a>
                 <?php else: ?>
-                    <a href="login.php"
+                    <a href="login"
                         class="inline-flex items-center justify-center h-10 border border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white px-6 rounded-lg transition-colors">Log
                         In</a>
-                    <a href="signup.php"
+                    <a href="register"
                         class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">Sign up</a>
                 <?php endif ?>
             </nav>
@@ -102,7 +102,7 @@
                         </div>
                         <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
                             <span class="text-purple-800 font-bold">$00.00</span>
-                            <form action="coursedetails.php" method="POST">
+                            <form action="course/details" method="POST">
                                 <input type="hidden" name="course_id" value="<?= $course["id"]?>">
                                 <button <?php if(!isset($_SESSION["user_id"])){echo "disabled";} ?>
                                     class="px-4 py-2 bg-purple-800/10 text-purple-800 font-medium rounded-lg 

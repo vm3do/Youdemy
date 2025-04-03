@@ -33,13 +33,13 @@
             
             <!-- Desktop Navigation -->
             <nav class="hidden lg:flex items-center gap-8">
-                <a href="index.php" class="text-purple-800 font-medium">Home</a>
-                <a href="courses.php" class="text-gray-800 hover:text-purple-800">Courses</a>
+                <a href="homepage" class="text-purple-800 font-medium">Home</a>
+                <a href="courses" class="text-gray-800 hover:text-purple-800">Courses</a>
                 <?php if(isset($_SESSION["user_id"])): ?>
-                    <a href="mycourses.php"
+                    <a href="mycourses"
                         class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">My Courses</a>
 
-                    <a href="../actions/logout.php"
+                    <a href="logout"
                         class="inline-flex items-center justify-center h-10 border border-red-800 text-red-800 hover:bg-red-800 hover:text-white px-6 rounded-lg transition-colors">Log
                         Out</a>
                 <?php else: ?>
@@ -55,20 +55,20 @@
         <!-- Mobile Navigation -->
         <div id="mobile-menu" class="lg:hidden hidden mt-4 pb-4">
             <nav class="flex flex-col space-y-4">
-                <a href="index.php" class="text-purple-800 font-medium">Home</a>
-                <a href="courses.php" class="text-gray-800 hover:text-purple-800">Courses</a>
+                <a href="homepage" class="text-purple-800 font-medium">Home</a>
+                <a href="courses" class="text-gray-800 hover:text-purple-800">Courses</a>
                 <?php if(isset($_SESSION["user_id"])): ?>
-                    <a href="mycourses.php"
+                    <a href="mycourses"
                         class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">My Courses</a>
 
-                    <a href="../actions/logout.php"
+                    <a href="logout"
                         class="inline-flex items-center justify-center h-10 border border-red-800 text-red-800 hover:bg-red-800 hover:text-white px-6 rounded-lg transition-colors">Log
                         Out</a>
                 <?php else: ?>
-                    <a href="login.php"
+                    <a href="login"
                         class="inline-flex items-center justify-center h-10 border border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white px-6 rounded-lg transition-colors">Log
                         In</a>
-                    <a href="signup.php"
+                    <a href="signup"
                         class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">Sign up</a>
                 <?php endif ?>
             </nav>
@@ -104,7 +104,7 @@
 
             <!-- Hero Image -->
             <div class="flex-1 relative">
-                <img src="../assets/hero.webp" alt="Person using payment app" class="rounded-2xl w-full">
+                <img src="assets/hero.webp" alt="Person using payment app" class="rounded-2xl w-full">
                 <div class="absolute top-4 right-4 bg-white p-4 rounded-xl shadow-lg">
                     <p class="text-gray-600"></p>
                     <h4 class="text-2xl font-bold text-purple-800">Join Us</h4>

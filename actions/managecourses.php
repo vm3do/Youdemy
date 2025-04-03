@@ -1,7 +1,7 @@
 <?php
 
-    require_once "../Config/Database.php";
-    require_once "../Classes/Course.php";
+    require_once __DIR__ . "/../Config/Database.php";
+    require_once __DIR__ . "/../Classes/Course.php";
 
 
     if(isset($_POST["delete"])){

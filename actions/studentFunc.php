@@ -1,18 +1,18 @@
 <?php
 
-    require_once "../Config/Database.php";
-    require_once "../Classes/Tag.php";
-    require_once "../Classes/Video.php";
-    require_once "../Classes/Text.php";
-    require_once "../Classes/Student.php";
-    require_once "../Classes/Category.php";
+    require_once __DIR__ .  "/../Config/Database.php";
+    require_once __DIR__ .  "/../Classes/Tag.php";
+    require_once __DIR__ .  "/../Classes/Video.php";
+    require_once __DIR__ .  "/../Classes/Text.php";
+    require_once __DIR__ .  "/../Classes/Student.php";
+    require_once __DIR__ .  "/../Classes/Category.php";
 
     if(isset($_POST["enroll"])){
         $id = $_SESSION["user_id"] ?? "";
         $course = $_POST["course_id"] ?? "";
 
         Course::enroll($id, $course);
-        header("Location: mycourses.php");
+        header("Location: mycourses");
         exit();
     }
 
