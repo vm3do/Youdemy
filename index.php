@@ -6,7 +6,7 @@
     
 // }
 
-define('BASE_URL', '/Youdemy');
+define('BASE_URL', '/Youdemy//');
 
 // Get the requested URL
 $request = $_GET['url'] ?? 'homepage';

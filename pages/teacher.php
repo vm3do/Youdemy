@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="h-8 w-px bg-gray-200 mx-2"></div>
-                <a href="/actions/logout" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 
+                <a href="actions/logout" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 
                     transition-colors rounded-lg hover:bg-red-50">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
