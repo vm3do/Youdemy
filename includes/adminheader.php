@@ -4,7 +4,7 @@
                         <span class="text-purple-800">You</span>Demy
                     </div>
                     <div class="flex items-center gap-4">
-                        <div class="hidden md:block flex items-center gap-3">
+                        <div class="hidden md:flex items-center gap-3">
                             <div class="w-10 h-10 rounded-full bg-purple-800/10 flex items-center justify-center">
                                 <svg class="w-5 h-5 text-purple-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -16,7 +16,7 @@
                                 <p class="text-sm text-gray-500">Administrator</p>
                             </div>
                         </div>
-                        <div class="hidden md:hidden h-8 w-px bg-gray-200 mx-2"></div>
+                        <div class="hidden md:block h-8 w-px bg-gray-200 mx-2"></div>
                         <a href="<?= BASE_URL ?>logout" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 
                             transition-colors rounded-lg hover:bg-red-50">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
