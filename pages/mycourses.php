@@ -40,7 +40,7 @@
 
                     <div
                         class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
-                        <a href="course/enrolled?id=<?= $enrolled["id"] ?? "" ?>" class="block">
+                        <a href="<?= BASE_URL ?>/course/enrolled?id=<?= $enrolled["id"] ?? "" ?>" class="block">
                             <img src="<?= $enrolled["background"] ?? "../assets/cover.jpeg" ?>" alt="Course thumbnail" class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <div class="flex items-center gap-2 mb-3">
@@ -81,7 +81,7 @@
                         </div>
                         <h3 class="text-lg font-medium text-gray-900 mb-2">No enrolled courses yet</h3>
                         <p class="text-gray-600 mb-6">Start your learning journey by enrolling in a course</p>
-                        <a href="courses"
+                        <a href="<?= BASE_URL ?>/courses"
                             class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">
                             Browse Courses
                         </a>

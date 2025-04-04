@@ -19,7 +19,7 @@
         <!-- Navigation -->
         <nav class="flex-1 overflow-y-auto p-4">
             <div class="space-y-2">
-                <a href="<?= BASE_URL ?>dashboard"
+                <a href="<?= BASE_URL ?>/dashboard"
                     class="flex items-center gap-3 px-4 py-2.5 <?= basename($_SERVER['PHP_SELF']) === 'dashboard' ? 'text-purple-800 bg-purple-800/10' : 'text-gray-600 hover:bg-purple-800/10 hover:text-purple-800' ?> rounded-lg transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -27,7 +27,7 @@
                     </svg>
                     Dashboard
                 </a>
-                <a href="<?= BASE_URL ?>manage/users"
+                <a href="<?= BASE_URL ?>/manage/users"
                     class="flex items-center gap-3 px-4 py-2.5 <?= basename($_SERVER['PHP_SELF']) === 'manage/users' ? 'text-purple-800 bg-purple-800/10' : 'text-gray-600 hover:bg-purple-800/10 hover:text-purple-800' ?> rounded-lg transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -35,7 +35,7 @@
                     </svg>
                     User Management
                 </a>
-                <a href="<?= BASE_URL ?>manage/pending"
+                <a href="<?= BASE_URL ?>/manage/pending"
                     class="flex items-center gap-3 px-4 py-2.5 <?= basename($_SERVER['PHP_SELF']) === 'manage/pending' ? 'text-purple-800 bg-purple-800/10' : 'text-gray-600 hover:bg-purple-800/10 hover:text-purple-800' ?> rounded-lg transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -43,7 +43,7 @@
                     </svg>
                     Teachers Requests
                 </a>
-                <a href="<?= BASE_URL ?>manage/courses"
+                <a href="<?= BASE_URL ?>/manage/courses"
                     class="flex items-center gap-3 px-4 py-2.5 <?= basename($_SERVER['PHP_SELF']) === 'manage/courses' ? 'text-purple-800 bg-purple-800/10' : 'text-gray-600 hover:bg-purple-800/10 hover:text-purple-800' ?> rounded-lg transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -51,7 +51,7 @@
                     </svg>
                     Courses Management
                 </a>
-                <a href="<?= BASE_URL ?>dashboard?statistics"
+                <a href="<?= BASE_URL ?>/dashboard?statistics"
                     class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-purple-800/10 hover:text-purple-800 rounded-lg transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

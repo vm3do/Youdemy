@@ -95,6 +95,88 @@
             }
         }
 
+        public static function updateCourse($id, $title, $description, $background, $category_id, $content_type, $content) {
+            $instance = Database::getinstance();
+            $pdo = $instance->getconn();
 
+            try {
+                $sql = "UPDATE courses SET 
+                        title = :title, 
+                        description = :description, 
+                        background = :background, 
+                        category_id = :category_id, 
+                        content_type = :content_type, 
+                        content = :content 
+                        WHERE id = :id";
+                
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([
+                    "id" => $id,
+                    "title" => $title,
+                    "description" => $description,
+                    "background" => $background,
+                    "category_id" => $category_id,
+                    "content_type" => $content_type,
+                    "content" => $content
+                ]);
+                
+                return ["success" => true, "message" => "Course updated successfully!"];
+            } catch(PDOException $e) {
+                error_log("Error updating course: " . $e->getMessage());
+                return ["success" => false, "message" => "Error updating the course."];
+            }
+        }
+
+        public static function updateCourseTags($course_id, $tags) {
+            $instance = Database::getinstance();
+            $pdo = $instance->getconn();
+
+            try {
+                // delete existing tags
+                $sql = "DELETE FROM course_tags WHERE course_id = :course_id";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute(["course_id" => $course_id]);
+                
+                //  add new tags
+                if (!empty($tags) && is_array($tags)) {
+                    $sql = "INSERT INTO course_tags(tag_id, course_id) VALUES (:tag_id, :course_id)";
+                    $stmt = $pdo->prepare($sql);
+                    
+                    foreach ($tags as $tag) {
+                        if (is_int($tag) || is_numeric($tag)) {
+                            $stmt->execute(["tag_id" => $tag, "course_id" => $course_id]);
+                        } else {
+                            error_log("Invalid tag ID: " . $tag);
+                        }
+                    }
+                }
+                
+                return ["success" => true, "message" => "Course tags updated successfully!"];
+            } catch(PDOException $e) {
+                error_log("Error updating course tags: " . $e->getMessage());
+                return ["success" => false, "message" => "Error updating course tags."];
+            }
+        }
+
+        public static function getCourseTags($course_id) {
+            $instance = Database::getinstance();
+            $pdo = $instance->getconn();
+
+            try {
+                $sql = "SELECT tag_id FROM course_tags WHERE course_id = :course_id";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute(["course_id" => $course_id]);
+                
+                $tags = [];
+                while ($row = $stmt->fetch()) {
+                    $tags[] = $row['tag_id'];
+                }
+                
+                return $tags;
+            } catch(PDOException $e) {
+                error_log("Error getting course tags: " . $e->getMessage());
+                return [];
+            }
+        }
 
     }

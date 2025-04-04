@@ -127,7 +127,7 @@
                             <h2 class="text-xl font-bold">Pending Teacher Validations</h2>
                             <p class="text-sm text-gray-500 mt-1">Review and approve teacher applications</p>
                         </div>
-                        <a href="manage/teachers" class="text-purple-800 hover:text-purple-900 flex items-center gap-2">
+                        <a href="<?= BASE_URL ?>/manage/teachers" class="text-purple-800 hover:text-purple-900 flex items-center gap-2">
                             View All
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -255,7 +255,7 @@
                             <h2 class="text-xl font-bold">Manage Users</h2>
                             <p class="text-sm text-gray-500 mt-1">Monitor and manage user accounts</p>
                         </div>
-                        <a href="manage/users" class="text-purple-800 hover:text-purple-900 flex items-center gap-2">
+                        <a href="<?= BASE_URL ?>/manage/users" class="text-purple-800 hover:text-purple-900 flex items-center gap-2">
                             View All
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -386,7 +386,7 @@
                     <div class="bg-white rounded-xl shadow-sm">
                         <div class="p-6 border-b flex justify-between items-center">
                             <h2 class="text-xl font-bold">Recent Courses</h2>
-                            <a href="manage/courses" class="text-purple-800 hover:text-purple-900">View More</a>
+                            <a href="<?= BASE_URL ?>/manage/courses" class="text-purple-800 hover:text-purple-900">View More</a>
                         </div>
                         <div class="p-6">
                             <div class="space-y-4">

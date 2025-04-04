@@ -45,7 +45,9 @@ if(isset($_POST['login'])){
     if(!isset($return['verify']) || !$return['verify']){
         $error = $return['message'] ?? "Error logging in";
     } else {
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         $_SESSION['user_id'] = $return['user_id'];
         $_SESSION['status'] = $return['status'];
         $_SESSION['name'] = $return['name'];

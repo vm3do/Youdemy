@@ -84,7 +84,7 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
-                    Add New Course
+                    <span class="hidden md:inline">Add New Course</span>
                 </button>
             </div>
 
@@ -93,41 +93,41 @@
                 <div class="overflow-x-auto">
                     <table class="w-full">
                         <thead>
-                            <tr class="text-left bg-purple-800 rounded-lg">
-                                <th class="p-4 text-white font-semibold rounded-tl-lg">
+                            <tr class="text-center bg-purple-800 rounded-lg">
+                                <th class="p-4 text-white font-semibold rounded-tl-lg whitespace-nowrap">
                                     <div class="flex items-center gap-2">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                                         </svg>
-                                        Course Details
+                                        <span class="hidden sm:inline">Course Details</span>
                                     </div>
                                 </th>
-                                <th class="p-4 text-white font-semibold">
+                                <th class="p-4 text-white font-semibold whitespace-nowrap">
                                     <div class="flex items-center gap-2">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                                         </svg>
-                                        Students
+                                        <span class="hidden sm:inline">Students</span>
                                     </div>
                                 </th>
-                                <th class="p-4 text-white font-semibold">
+                                <th class="p-4 text-white font-semibold whitespace-nowrap">
                                     <div class="flex items-center gap-2">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                         </svg>
-                                        Created At
+                                        <span class="hidden sm:inline">Created At</span>
                                     </div>
                                 </th>
-                                <th class="p-4 text-white font-semibold rounded-tr-lg">
+                                <th class="p-4 text-white font-semibold rounded-tr-lg whitespace-nowrap">
                                     <div class="flex items-center gap-2">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                                         </svg>
-                                        Actions
+                                        <span class="hidden sm:inline">Actions</span>
                                     </div>
                                 </th>
                             </tr>
@@ -137,11 +137,11 @@
                             <?php foreach( $courses as $course): ?>
 
                                 <tr class="hover:bg-gray-100/50 transition-colors">
-                                    <td class="px-6 py-4">
-                                        <div class="flex items-center gap-4">
+                                    <td class="px-3 sm:px-6 py-4">
+                                        <div class="flex items-center gap-2 sm:gap-4">
                                             <div
-                                                class="w-12 h-12 rounded-xl bg-violet-100 flex items-center justify-center flex-shrink-0">
-                                                <svg class="w-6 h-6 text-violet-600" fill="none" stroke="currentColor"
+                                                class="w-8 sm:w-12 h-8 sm:h-12 rounded-xl bg-violet-100 flex items-center justify-center flex-shrink-0">
+                                                <svg class="w-4 sm:w-6 h-4 sm:h-6 text-violet-600" fill="none" stroke="currentColor"
                                                     viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                                         d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
@@ -150,61 +150,59 @@
                                                 </svg>
                                             </div>
                                             <div>
-                                                <h4 class="font-medium text-gray-900"><?= $course["title"] ?? "empty"?></h4>
-                                                
+                                                <h4 class="font-medium text-gray-900 text-sm sm:text-base truncate max-w-[150px] sm:max-w-none"><?= $course["title"] ?? "empty"?></h4>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-3 sm:px-6 py-4">
                                         <div class="flex items-center gap-2">
                                             <div
-                                                class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center">
-                                                <svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor"
+                                                class="w-6 sm:w-8 h-6 sm:h-8 rounded-full bg-violet-100 flex items-center justify-center">
+                                                <svg class="w-3 sm:w-4 h-3 sm:h-4 text-violet-600" fill="none" stroke="currentColor"
                                                     viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                         d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                                                 </svg>
                                             </div>
                                             <div>
-                                                <span class="font-semibold text-gray-900"><?= $course["students"]?></span>
-                                                <span class="text-gray-500 text-sm ml-1"> students</span>
+                                                <span class="font-semibold text-gray-900 text-sm sm:text-base"><?= $course["students"]?></span>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-3 sm:px-6 py-4">
                                         <div class="flex items-center gap-2">
                                             <div
-                                                class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center">
-                                                <svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor"
+                                                class="w-6 sm:w-8 h-6 sm:h-8 rounded-full bg-violet-100 flex items-center justify-center">
+                                                <svg class="w-3 sm:w-4 h-3 sm:h-4 text-violet-600" fill="none" stroke="currentColor"
                                                     viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                         d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                                 </svg>
                                             </div>
                                             <div>
-                                                <span class="text-gray-900"><?= explode(" ", $course['created_at'])[0]?></span>
-                                                <span class="block text-xs text-gray-500"><?= explode(" ", $course['created_at'])[1]?></span>
+                                                <span class="text-gray-900 text-sm sm:text-base"><?= explode(" ", $course['created_at'])[0]?></span>
+                                                <span class="block text-[10px] sm:text-xs text-gray-500"><?= explode(" ", $course['created_at'])[1]?></span>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="px-6 py-4">
-                                        <div class="flex gap-2">
-                                            <form action="course/edit" method="POST">
+                                    <td class="px-3 sm:px-6 py-4">
+                                        <div class="flex gap-1 sm:gap-2">
+                                            <form action="<?= BASE_URL ?>/course/edit" method="POST">
                                                 <input type="hidden" name="course_id" value="<?= $course["id"]?>">
                                                 <button
-                                                    class="p-2 text-violet-600 hover:bg-violet-600 hover:text-white rounded-lg transition-colors group relative">
-                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    class="p-1.5 sm:p-2 text-violet-600 hover:bg-violet-600 hover:text-white rounded-lg transition-colors group relative">
+                                                    <svg class="w-4 sm:w-5 h-4 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                             d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                                     </svg>
                                                 </button>
                                             </form>
 
-                                            <form action="/teacher/dashboard" method="POST">
+                                            <form action="<?= BASE_URL ?>/teacher/dashboard" method="POST">
                                                 <input type="hidden" name="course_id" value="<?= $course["id"]?>">
                                                 <button type="submit" name="delete"
-                                                    class="p-2 text-red-600 hover:bg-red-600 hover:text-white rounded-lg transition-colors group relative">
-                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    class="p-1.5 sm:p-2 text-red-600 hover:bg-red-600 hover:text-white rounded-lg transition-colors group relative">
+                                                    <svg class="w-4 sm:w-5 h-4 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                             d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                     </svg>

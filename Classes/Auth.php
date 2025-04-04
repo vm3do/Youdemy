@@ -4,51 +4,57 @@
 
         static function checkRole($role){
             
-            session_start();
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
 
             if(!isset($_SESSION['role'])){
-                header("Location: login");
+                header("Location: " . BASE_URL . "/login");
                 exit();
             }
 
             if($_SESSION['role'] != $role){
                 session_unset();
                 session_destroy();
-                header("Location: invalid");
+                header("Location: " . BASE_URL . "/invalid");
                 exit();
             }
         }
         static function redirect(){
-            session_start();
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
 
             if(isset($_SESSION['role'])){
                 if($_SESSION['role'] == "admin"){
-                    header("Location: dashboard");
+                    header("Location: " . BASE_URL . "/dashboard");
                     exit();
                 }
                 if($_SESSION['role'] == "teacher"){
-                    header("Location: teacher/dashboard");
+                    header("Location: " . BASE_URL . "/teacher/dashboard");
                     exit();
                 }
             }
         }
 
         static function checkLogin(){ 
-            session_start();
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
             if(isset($_SESSION['role'])){
                 switch($_SESSION['role']){
                     case "admin":
-                        header("Location: admin.php");
+                        header("Location: " . BASE_URL . "/dashboard");
                         exit();
                         break;
 
                     case "teacher":
-                        header("Location: teacher.php");
+                        header("Location: " . BASE_URL . "/teacher/dashboard");
                         exit();
                         break;
 
                     case "student":
-                        header("Location: index.php");
+                        header("Location: " . BASE_URL . "/homepage");
                         exit();
                         break;
                 }

@@ -78,7 +78,7 @@
                         </div>
                         <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
                             <span class="text-purple-800 font-bold">$00.00</span>
-                            <form action="course/details" method="POST">
+                            <form action="<?= BASE_URL ?>/course/details" method="POST">
                                 <input type="hidden" name="course_id" value="<?= $course["id"]?>">
                                 <button <?php if(!isset($_SESSION["user_id"])){echo "disabled";} ?>
                                     class="px-4 py-2 bg-purple-800/10 text-purple-800 font-medium rounded-lg 

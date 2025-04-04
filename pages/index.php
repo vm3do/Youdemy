@@ -119,7 +119,7 @@
 
             <!-- cta button -->
             <div class="mt-16 text-center">
-                <a href="#"
+                <a href="<?= BASE_URL ?>/register"
                     class="inline-block bg-purple-800 text-white px-8 py-3 rounded-lg hover:bg-purple-900 transition-all">
                     Start Learning Today - It's Free!
                 </a>

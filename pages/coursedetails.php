@@ -2,6 +2,8 @@
     require __DIR__ . "/../Classes/Auth.php";
     require_once __DIR__ . "/../Classes/Course.php";
 
+    Auth::checkRole('student');
+
     Auth::redirect();
 
     require_once __DIR__ . "/../actions/getCourse.php";
