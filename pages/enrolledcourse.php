@@ -1,12 +1,12 @@
 <?php
 
-    require "../actions/auth.php";
-    require "../Classes/Auth.php";
+    require __DIR__ . "/../actions/auth.php";
+    require __DIR__ . "/../Classes/Auth.php";
     
     Auth::checkRole("student");
     
-    require "../actions/studentFunc.php";
-    require "../actions/getCourse.php";
+    require __DIR__ . "/../actions/studentFunc.php";
+    require __DIR__ . "/../actions/getCourse.php";
 
 
 ?>
@@ -59,8 +59,8 @@
         <!-- Course Content Section -->
         <div class="max-w-7xl mx-auto px-4 py-8">
             <!-- Video Template -->
-             <?= $return ?? "" ?>
-            <?php if($course == false): echo $return; ?>
+            <?= $return ?? "" ?>
+            <?php if(!isset($course)): echo ""; ?>
             <?php elseif($course["content_type"] == "video"): ?>
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                     <div class="aspect-w-16 aspect-h-9 bg-gray-800">
@@ -77,9 +77,8 @@
                         </p> 
                     </div>
                 </div>
-            <?php endif ?>
 
-            <?php if($course["content_type"] == "text"): ?>
+            <?php elseif($course["content_type"] == "text"): ?>
             <!-- Text Template -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 <div class="p-8">
@@ -140,6 +139,9 @@
             </div>
         </div>
     </footer>
+
+    
 </body>
+<script src="../includes/script.js"></script>
 
 </html>

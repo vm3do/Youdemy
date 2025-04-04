@@ -2,8 +2,8 @@
 <aside id="sidebar"
     class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-40">
     <!-- Add toggle button that's attached to sidebar -->
-    <button id="menuBtn" class="lg:hidden absolute -right-8 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-r-lg shadow-lg border-t border-r border-b">
-        <svg id="menuIcon" class="w-4 h-4 text-gray-700 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <button id="menuBtn" class="lg:hidden absolute -right-8 top-1/4 transform -translate-y-1/2 bg-white p-2 rounded-r-lg shadow-lg ">
+        <svg id="menuIcon" class="w-4 h-4 text-purple-800 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
     </button>
