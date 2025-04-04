@@ -1,12 +1,12 @@
 <?php
 
-    require "../actions/auth.php";
-    require "../Classes/Auth.php";
+    require __DIR__ . "/../actions/auth.php";
+    require __DIR__ . "/../Classes/Auth.php";
     
     Auth::checkRole("student");
     
-    require "../actions/studentFunc.php";
-    require "../actions/getCourse.php";
+    require __DIR__ . "/../actions/studentFunc.php";
+    require __DIR__ . "/../actions/getCourse.php";
 
 
 ?>
@@ -23,31 +23,7 @@
 
 <body class="bg-gray-100">
     <!-- Header -->
-    <header class="fixed top-0 w-full bg-white z-50 px-10 py-4 shadow-sm">
-        <div class="max-w-8xl mx-auto flex justify-between items-center">
-            <div class="text-2xl font-bold">
-                <span class="text-purple-800">You</span>Demy
-            </div>
-            <nav class="flex items-center gap-8">
-                <a href="index.php" class="text-gray-800 hover:text-purple-800">Home</a>
-                <a href="courses.php" class="text-purple-800 font-medium">Courses</a>
-                <?php if(isset($_SESSION["user_id"])): ?>
-                    <a href="mycourses.php?"
-                        class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">My Courses</a>
-
-                    <a href="../actions/logout.php"
-                        class="inline-flex items-center justify-center h-10 border border-red-800 text-red-800 hover:bg-red-800 hover:text-white px-6 rounded-lg transition-colors">Log
-                        Out</a>
-                <?php else: ?>
-                    <a href="login.php"
-                        class="inline-flex items-center justify-center h-10 border border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white px-6 rounded-lg transition-colors">Log
-                        In</a>
-                    <a href="signup.php"
-                        class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">Sign up</a>
-                <?php endif ?>
-            </nav>
-        </div>
-    </header>
+    <?php include_once __DIR__ . "/../includes/header.php" ?>
 
     <!-- Main Content -->
     <main class="pt-12 pb-12">
@@ -83,8 +59,8 @@
         <!-- Course Content Section -->
         <div class="max-w-7xl mx-auto px-4 py-8">
             <!-- Video Template -->
-             <?= $return ?? "" ?>
-            <?php if($course == false): echo $return; ?>
+            <?= $return ?? "" ?>
+            <?php if(!isset($course)): echo ""; ?>
             <?php elseif($course["content_type"] == "video"): ?>
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                     <div class="aspect-w-16 aspect-h-9 bg-gray-800">
@@ -101,9 +77,8 @@
                         </p> 
                     </div>
                 </div>
-            <?php endif ?>
 
-            <?php if($course["content_type"] == "text"): ?>
+            <?php elseif($course["content_type"] == "text"): ?>
             <!-- Text Template -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 <div class="p-8">
@@ -164,6 +139,9 @@
             </div>
         </div>
     </footer>
+
+    
 </body>
+<script src="../includes/script.js"></script>
 
 </html>

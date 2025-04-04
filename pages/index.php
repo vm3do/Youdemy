@@ -18,31 +18,7 @@
 
 <body class="overflow-x-hidden">
 
-    <header class="fixed top-0 w-full bg-white z-50 px-10 py-4 shadow-sm">
-        <div class="max-w-8xl mx-auto flex justify-between items-center">
-            <div class="text-2xl font-bold">
-                <span class="text-purple-800">You</span>Demy
-            </div>
-            <nav class="flex items-center gap-8">
-                <a href="index.php" class="text-purple-800 font-medium">Home</a>
-                <a href="courses.php" class="text-gray-800 hover:text-purple-800">Courses</a>
-                <?php if(isset($_SESSION["user_id"])): ?>
-                    <a href="mycourses.php?"
-                        class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">My Courses</a>
-
-                    <a href="../actions/logout.php"
-                        class="inline-flex items-center justify-center h-10 border border-red-800 text-red-800 hover:bg-red-800 hover:text-white px-6 rounded-lg transition-colors">Log
-                        Out</a>
-                <?php else: ?>
-                    <a href="login.php"
-                        class="inline-flex items-center justify-center h-10 border border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white px-6 rounded-lg transition-colors">Log
-                        In</a>
-                    <a href="signup.php"
-                        class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">Sign up</a>
-                <?php endif ?>
-            </nav>
-        </div>
-    </header>
+    <?php include_once __DIR__ . "/../includes/header.php" ?>
 
     <main class="min-h-screen pt-24 px-8">
         <div
@@ -73,7 +49,7 @@
 
             <!-- Hero Image -->
             <div class="flex-1 relative">
-                <img src="../assets/hero.webp" alt="Person using payment app" class="rounded-2xl w-full">
+                <img src="assets/hero.webp" alt="Person using payment app" class="rounded-2xl w-full">
                 <div class="absolute top-4 right-4 bg-white p-4 rounded-xl shadow-lg">
                     <p class="text-gray-600"></p>
                     <h4 class="text-2xl font-bold text-purple-800">Join Us</h4>
@@ -193,6 +169,15 @@
         </div>
     </footer>
 
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 </body>
 
 </html>

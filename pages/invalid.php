@@ -27,7 +27,7 @@
                 </p>
 
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="login.php" 
+                    <a href="login" 
                         class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 border border-transparent 
                         text-base font-medium rounded-lg text-white bg-purple-800 hover:bg-purple-900 
                         transition-colors">
@@ -37,7 +37,7 @@
                         </svg>
                         Login
                     </a>
-                    <a href="index.php" 
+                    <a href="homepage" 
                         class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 border border-purple-800 
                         text-base font-medium rounded-lg text-purple-800 bg-transparent hover:bg-purple-50 
                         transition-colors">

@@ -1,10 +1,10 @@
 <?php
-    require "../actions/auth.php";
-    require "../Classes/Auth.php";
+    require __DIR__ . "/../actions/auth.php";
+    require __DIR__ . "/../Classes/Auth.php";
 
     Auth::checkRole("admin");
 
-    require "../actions/adminFunc.php";
+    require __DIR__ . "/../actions/adminFunc.php";
 
 ?>
 
@@ -19,111 +19,12 @@
 </head>
 
 <body class="bg-gray-100">
+<?php include_once __DIR__ . "/../includes/adminbar.php"; ?>
     <!-- Top Navigation -->
-    <header class="w-full bg-white shadow-sm z-30 border-b">
-        <div class="w-full flex items-center justify-between px-6 py-4">
-            <div class="text-2xl font-bold">
-                <span class="text-purple-800">You</span>Demy
-            </div>
-            <div class="flex items-center gap-4">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-purple-800/10 flex items-center justify-center">
-                        <svg class="w-5 h-5 text-purple-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <div class="hidden md:block">
-                        <p class="font-medium text-gray-700">Admin Panel</p>
-                        <p class="text-sm text-gray-500">Administrator</p>
-                    </div>
-                </div>
-                <div class="h-8 w-px bg-gray-200 mx-2"></div>
-                <a href="../actions/logout.php" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 
-                    transition-colors rounded-lg hover:bg-red-50">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                    </svg>
-                    <span>Logout</span>
-                </a>
-            </div>
-        </div>
-    </header>
-    <div class="flex h-screen">
-        <!-- Sidebar -->
-        <aside id="sidebar"
-            class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-50 lg:z-0">
-            <div class="flex flex-col h-full">
-                <!-- Logo and Close Button -->
-                <div class="p-6 flex items-center justify-between border-b">
-                    <div class="text-2xl font-bold">
-                        <span class="text-purple-800">You</span>Demy
-                    </div>
-                    <button class="lg:hidden text-gray-600 hover:text-purple-800 transition-colors" id="sidebarClose">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
-
-                <!-- Navigation -->
-                <nav class="flex-1 overflow-y-auto">
-                    <div class="px-4 py-6 space-y-2">
-                        <a href="admin.php"
-                            class="flex items-center gap-3 px-4 py-2.5 text-purple-800 bg-purple-800/10 rounded-lg transition-colors">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                            </svg>
-                            Dashboard
-                        </a>
-                        <a href="manageusers.php"
-                            class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-purple-800/10 hover:text-purple-800 rounded-lg transition-colors">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
-                                </path>
-                            </svg>
-                            User Management
-                        </a>
-                        <a href="manageteachers.php"
-                            class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-purple-800/10 hover:text-purple-800 rounded-lg transition-colors">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                            </svg>
-                            Teachers Requests
-                        </a>
-                        <a href="managecourses.php"
-                            class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-purple-800/10 hover:text-purple-800 rounded-lg transition-colors">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                            </svg>
-                            Courses Management
-                        </a>
-                        <a href="#statistics"
-                            class="flex items-center gap-3 px-4 py-2.5 text-gray-600 hover:bg-purple-800/10 hover:text-purple-800 rounded-lg transition-colors">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
-                                </path>
-                            </svg>
-                            Statistics
-                        </a>
-                    </div>
-                </nav>
-            </div>
-        </aside>
-
-        <!-- Mobile Sidebar Overlay -->
-        <div id="sidebarOverlay" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-40 lg:hidden hidden"
-            aria-hidden="true"></div>
-
+    <div class="flex-1 lg:ml-64">
+            <?php include_once __DIR__ . "/../includes/adminheader.php" ?>
         <!-- Main Content -->
-        <div class="lg:ml-64 flex-1">
+        
 
             <main class="p-6">
                 <!-- Stats Overview -->
@@ -226,7 +127,7 @@
                             <h2 class="text-xl font-bold">Pending Teacher Validations</h2>
                             <p class="text-sm text-gray-500 mt-1">Review and approve teacher applications</p>
                         </div>
-                        <a href="manageteachers.php" class="text-purple-800 hover:text-purple-900 flex items-center gap-2">
+                        <a href="manage/teachers" class="text-purple-800 hover:text-purple-900 flex items-center gap-2">
                             View All
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -238,7 +139,7 @@
                         <div class="overflow-x-auto">
                             <table class="w-full">
                                 <thead>
-                                    <tr class="text-left bg-purple-800 rounded-lg">
+                                    <tr class="text-center bg-purple-800 rounded-lg">
                                         <th class="p-4 text-white font-semibold rounded-tl-lg">
                                             <div class="flex items-center gap-2">
                                                 <svg class="w-5 h-5" fill="none" stroke="currentColor"
@@ -310,7 +211,7 @@
                                         </td>
                                         <td class="p-4">
                                             <div class="flex gap-2">
-                                                <form action="admin.php" method="post">
+                                                <form action="<?= BASE_URL ?>/dashboard" method="post">
                                                     <input type="hidden" name="teacher_id" value="<?= $teacher['id']?>">
                                                     <button type="submit" name="activate" id="activate"
                                                         class="px-4 py-2 bg-purple-800 hover:bg-purple-900 text-white rounded-lg transition-colors flex items-center gap-1">
@@ -323,7 +224,7 @@
                                                     </button>
                                                 </form>
 
-                                                <form action="admin.php" method="post">
+                                                <form action="<?= BASE_URL ?>/dashboard" method="post">
                                                     <input type="hidden" name="teacher_id" value="<?= $teacher['id']?>">
                                                     <button type="submit" name="reject" id="reject"
                                                         class="px-4 py-2 bg-white border border-red-500 text-red-500 hover:bg-red-50 rounded-lg transition-colors flex items-center gap-1">
@@ -354,7 +255,7 @@
                             <h2 class="text-xl font-bold">Manage Users</h2>
                             <p class="text-sm text-gray-500 mt-1">Monitor and manage user accounts</p>
                         </div>
-                        <a href="manageusers.php" class="text-purple-800 hover:text-purple-900 flex items-center gap-2">
+                        <a href="manage/users" class="text-purple-800 hover:text-purple-900 flex items-center gap-2">
                             View All
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -366,9 +267,9 @@
                         <div class="overflow-x-auto">
                             <table class="w-full">
                                 <thead>
-                                    <tr class="text-left bg-purple-800 rounded-lg">
-                                        <th class="p-4 text-white font-semibold rounded-tl-lg">
-                                            <div class="flex items-center gap-2">
+                                    <tr class="text-center bg-purple-800 rounded-lg">
+                                        <th class="text-center p-4 text-white font-semibold rounded-tl-lg">
+                                            <div class="flex justify-center items-center gap-2">
                                                 <svg class="w-5 h-5" fill="none" stroke="currentColor"
                                                     viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -379,7 +280,7 @@
                                             </div>
                                         </th>
                                         <th class="p-4 text-white font-semibold">
-                                            <div class="flex items-center gap-2">
+                                            <div class="flex justify-center items-center gap-2">
                                                 <svg class="w-5 h-5" fill="none" stroke="currentColor"
                                                     viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -390,7 +291,7 @@
                                             </div>
                                         </th>
                                         <th class="p-4 text-white font-semibold">
-                                            <div class="flex items-center gap-2">
+                                            <div class="flex justify-center items-center gap-2">
                                                 <svg class="w-5 h-5" fill="none" stroke="currentColor"
                                                     viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -406,7 +307,7 @@
                                 <tbody>
                                     <?php foreach($users as $user):?>
 
-                                        <tr class="border-b hover:bg-gray-100 transition-colors">
+                                        <tr class="text-center border-b hover:bg-gray-100 transition-colors">
                                         <td class="p-4">
                                             <div class="flex items-center gap-3">
                                                 <div
@@ -439,8 +340,8 @@
                                             </span>
                                         </td>
                                         <td class="p-4">
-                                            <div class="flex gap-2">
-                                                <form action="admin.php" method="post">
+                                            <div class="flex justify-center gap-2">
+                                                <form action="<?= BASE_URL ?>/dashboard" method="post">
                                                     <input type="hidden" name="user_id" value="<?= $user["id"]?>">
                                                     <button type="submit" name="<?php echo $user["status"] == "active" ? "ban" : "unban"; ?>"
                                                         class="w-24 px-3 py-1.5 bg-<?php echo $user["status"] == "active" ? "orange" : "green" ?>-500 hover:bg-<?php echo $user["status"] == "active" ? "green" : "orange"; ?>-600 text-white rounded-lg transition-colors flex items-center justify-center gap-1 text-sm">
@@ -454,7 +355,7 @@
                                                     </button>
                                                 </form>
 
-                                                <form action="admin.php" method="post">
+                                                <form action="<?= BASE_URL ?>/dashboard" method="post">
                                                     <input type="hidden" name="user_id" value="<?= $user["id"]?>">
                                                     <button type="submit" name="delete"
                                                         class="w-24 px-3 py-1.5 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors flex items-center justify-center gap-1 text-sm">
@@ -485,7 +386,7 @@
                     <div class="bg-white rounded-xl shadow-sm">
                         <div class="p-6 border-b flex justify-between items-center">
                             <h2 class="text-xl font-bold">Recent Courses</h2>
-                            <a href="managecourses.php" class="text-purple-800 hover:text-purple-900">View More</a>
+                            <a href="manage/courses" class="text-purple-800 hover:text-purple-900">View More</a>
                         </div>
                         <div class="p-6">
                             <div class="space-y-4">
@@ -559,7 +460,7 @@
                     </div>
                     <div class="p-6">
                         <!-- Add Tags Form -->
-                        <form action="admin.php" method="POST" class="mb-6">
+                        <form action="<?= BASE_URL ?>/dashboard" method="POST" class="mb-6">
                             <label for="bulkTags" class="block text-sm font-medium text-gray-700 mb-2">Add Multiple
                                 Tags</label>
                                 <div>
@@ -575,7 +476,7 @@
                             <div class="relative">
                                 <input type="text" id="bulkTags" name="tags"
                                     class="w-full rounded-lg border-gray-300 focus:border-purple-800 focus:ring-purple-800 outline-violet-600 pl-12 pr-4 py-3"
-                                    placeholder="Enter tags separated by commas ( JavaScript, Python, ..)">
+                                    placeholder="Seperated by commas (Js, Css, .. )">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
@@ -603,7 +504,7 @@
                                     <span
                                     class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-purple-800/10 text-purple-800 group hover:bg-purple-800/20 transition-colors">
                                     <?= $tag['name']?>
-                                    <form action="admin.php" method="POST" class="inline-block">
+                                    <form action="<?= BASE_URL ?>/dashboard" method="POST" class="inline-block">
                                         <input type="hidden" name="tag_id" value="<?= $tag['id']?>">
                                         <button name="del_tag" type="submit" class="ml-2 opacity-75 flex items-center hover:opacity-100 transition-opacity">
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -634,7 +535,7 @@
                     </div>
                     <div class="p-6">
                         <!-- Add Category Form -->
-                        <form action="admin.php" method="POST" class="mb-6">
+                        <form action="<?= BASE_URL ?>/dashboard" method="POST" class="mb-6">
                             <label for="newCategory" class="block text-sm font-medium text-gray-700 mb-2">Add New
                                 Category</label>
                                 <div>
@@ -650,7 +551,7 @@
                             <div class="relative">
                                 <input type="text" id="newCategory" name="categories"
                                     class="w-full rounded-lg border-gray-300 focus:border-purple-800 focus:ring-purple-800 outline-violet-600 pl-12 pr-4 py-3"
-                                    placeholder="Enter category name (e.g., Web Development)">
+                                    placeholder="(e.g., Web Development)">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -675,7 +576,7 @@
                                     <span
                                         class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-purple-800/10 text-purple-800 group hover:bg-purple-800/20 transition-colors">
                                         <?= $category["name"] ?>
-                                        <form action="admin.php" method="POST" class="inline-block">
+                                        <form action="<?= BASE_URL ?>/dashboard" method="POST" class="inline-block">
                                             <input type="hidden" name="cat_id" value="<?= $category["id"] ?>">
                                             <button type="submit" name="del_cat" class="ml-2 opacity-75 hover:opacity-100 flex items-center transition-opacity">
                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -691,7 +592,7 @@
                     </div>
                 </div>
             </main>
-        </div>
+        
     </div>
 
     <script>

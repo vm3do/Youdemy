@@ -7,14 +7,14 @@
             session_start();
 
             if(!isset($_SESSION['role'])){
-                header("Location: login.php");
+                header("Location: login");
                 exit();
             }
 
             if($_SESSION['role'] != $role){
                 session_unset();
                 session_destroy();
-                header("Location: invalid.php");
+                header("Location: invalid");
                 exit();
             }
         }
@@ -23,11 +23,11 @@
 
             if(isset($_SESSION['role'])){
                 if($_SESSION['role'] == "admin"){
-                    header("Location: admin.php");
+                    header("Location: dashboard");
                     exit();
                 }
                 if($_SESSION['role'] == "teacher"){
-                    header("Location: teacher.php");
+                    header("Location: teacher/dashboard");
                     exit();
                 }
             }

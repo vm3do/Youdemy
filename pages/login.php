@@ -18,25 +18,7 @@
 
 <body class="bg-gray-100">
     <!-- Header -->
-    <header class="fixed top-0 w-full bg-white z-50 px-10 py-4 shadow-sm">
-        <div class="max-w-8xl mx-auto flex justify-between items-center">
-            <div class="text-2xl font-bold">
-                <span class="text-purple-800">You</span>Demy
-            </div>
-            <nav>
-                <ul class="flex items-center gap-6">
-                    <li><a href="index.php" class="text-gray-600 hover:text-purple-800">Home</a></li>
-                    <li><a href="courses.php" class="text-gray-600 hover:text-purple-800">Courses</a></li>
-                    <li><a href="login.php"
-                            class="inline-flex items-center justify-center h-10 border border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white px-6 rounded-lg transition-colors">Log
-                            In</a></li>
-                    <li><a href="signup.php"
-                            class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">Sign
-                            Up</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <?php include_once __DIR__ . "/../includes/header.php" ?>
 
     <div class="min-h-screen flex">
         <!-- Purple -->
@@ -64,7 +46,7 @@
 
                 <div class="bg-white py-8 px-6 shadow-sm rounded-xl sm:px-10">
                     
-                    <form class="space-y-6" action="login.php" method="POST">
+                    <form class="space-y-6" action="login" method="POST">
                         <div>
                             <p class="text-red-500"><?= $error ?></p>
                         </div>
@@ -105,7 +87,7 @@
                     <!-- Sign Up Message -->
                     <div class="mt-6 text-center text-sm text-gray-600">
                         Don't have an account?
-                        <a href="signup.php" class="font-medium text-purple-800 hover:text-purple-800/80">
+                        <a href="register" class="font-medium text-purple-800 hover:text-purple-800/80">
                             Sign up for free
                         </a>
                     </div>
@@ -113,6 +95,7 @@
             </div>
         </div>
     </div>
+    <script src="includes/script.js"></script>
 </body>
 
 </html>

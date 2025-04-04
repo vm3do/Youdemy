@@ -1,10 +1,10 @@
 <?php
-    require "../actions/auth.php";
-    require "../Classes/Auth.php";
+    require __DIR__ . "/../actions/auth.php";
+    require __DIR__ . "/../Classes/Auth.php";
 
     Auth::checkRole("student");
 
-    require "../actions/studentFunc.php";
+    require __DIR__ .  "/../actions/studentFunc.php";
 
 ?>
 
@@ -20,31 +20,7 @@
 
 <body class="bg-gray-100">
     <!-- Header -->
-    <header class="fixed top-0 w-full bg-white z-50 px-10 py-4 shadow-sm">
-        <div class="max-w-8xl mx-auto flex justify-between items-center">
-            <div class="text-2xl font-bold">
-                <span class="text-purple-800">You</span>Demy
-            </div>
-            <nav class="flex items-center gap-8">
-                <a href="index.php" class="text-gray-800 hover:text-purple-800">Home</a>
-                <a href="courses.php" class="text-purple-800 font-medium">Courses</a>
-                <?php if(isset($_SESSION["user_id"])): ?>
-                    <a href="mycourses.php?"
-                        class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">My Courses</a>
-
-                    <a href="../actions/logout.php"
-                        class="inline-flex items-center justify-center h-10 border border-red-800 text-red-800 hover:bg-red-800 hover:text-white px-6 rounded-lg transition-colors">Log
-                        Out</a>
-                <?php else: ?>
-                    <a href="login.php"
-                        class="inline-flex items-center justify-center h-10 border border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white px-6 rounded-lg transition-colors">Log
-                        In</a>
-                    <a href="signup.php"
-                        class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">Sign up</a>
-                <?php endif ?>
-            </nav>
-        </div>
-    </header>
+    <?php include_once __DIR__ . "/../includes/header.php" ?>
 
     <!-- Main Content -->
     <main class="pt-12 pb-12">
@@ -64,7 +40,7 @@
 
                     <div
                         class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
-                        <a href="enrolledcourse.php?id=<?= $enrolled["id"] ?? "" ?>" class="block">
+                        <a href="course/enrolled?id=<?= $enrolled["id"] ?? "" ?>" class="block">
                             <img src="<?= $enrolled["background"] ?? "../assets/cover.jpeg" ?>" alt="Course thumbnail" class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <div class="flex items-center gap-2 mb-3">
@@ -105,7 +81,7 @@
                         </div>
                         <h3 class="text-lg font-medium text-gray-900 mb-2">No enrolled courses yet</h3>
                         <p class="text-gray-600 mb-6">Start your learning journey by enrolling in a course</p>
-                        <a href="courses.php"
+                        <a href="courses"
                             class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">
                             Browse Courses
                         </a>
@@ -157,6 +133,7 @@
             </div>
         </div>
     </footer>
+    <script src="includes/script.js"></script>
 </body>
 
 </html>

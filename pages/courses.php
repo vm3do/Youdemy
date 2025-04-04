@@ -21,31 +21,7 @@
 
 <body class="bg-gray-100">
     <!-- Header -->
-    <header class="fixed top-0 w-full bg-white z-50 px-10 py-4 shadow-sm">
-        <div class="max-w-8xl mx-auto flex justify-between items-center">
-            <div class="text-2xl font-bold">
-                <span class="text-purple-800">You</span>Demy
-            </div>
-            <nav class="flex items-center gap-8">
-                <a href="index.php" class="text-gray-800 hover:text-purple-800">Home</a>
-                <a href="courses.php" class="text-purple-800 font-medium">Courses</a>
-                <?php if(isset($_SESSION["user_id"])): ?>
-                    <a href="mycourses.php?"
-                        class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">My Courses</a>
-
-                    <a href="../actions/logout.php"
-                        class="inline-flex items-center justify-center h-10 border border-red-800 text-red-800 hover:bg-red-800 hover:text-white px-6 rounded-lg transition-colors">Log
-                        Out</a>
-                <?php else: ?>
-                    <a href="login.php"
-                        class="inline-flex items-center justify-center h-10 border border-purple-800 text-purple-800 hover:bg-purple-800 hover:text-white px-6 rounded-lg transition-colors">Log
-                        In</a>
-                    <a href="signup.php"
-                        class="inline-flex items-center justify-center h-10 bg-purple-800 text-white px-6 rounded-lg hover:bg-purple-900 transition-colors">Sign up</a>
-                <?php endif ?>
-            </nav>
-        </div>
-    </header>
+    <?php include_once __DIR__ . "/../includes/header.php" ?>
 
     <!-- Main Content -->
     <main class="max-w-8xl mx-auto px-4 pt-24 pb-12">
@@ -102,7 +78,7 @@
                         </div>
                         <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
                             <span class="text-purple-800 font-bold">$00.00</span>
-                            <form action="coursedetails.php" method="POST">
+                            <form action="course/details" method="POST">
                                 <input type="hidden" name="course_id" value="<?= $course["id"]?>">
                                 <button <?php if(!isset($_SESSION["user_id"])){echo "disabled";} ?>
                                     class="px-4 py-2 bg-purple-800/10 text-purple-800 font-medium rounded-lg 
@@ -183,7 +159,7 @@
                     <h3 class="font-semibold text-gray-800 mb-4">Contact</h3>
                     <ul class="space-y-2">
                         <li class="text-gray-600">support@youdemy.com</li>
-                        <li class="text-gray-600">+212777591881/li>
+                        <li class="text-gray-600">+212777591881<li>
                     </ul>
                 </div>
             </div>
@@ -194,6 +170,10 @@
             </div>
         </div>
     </footer>
+
+    <script src="includes/script.js"></script>
 </body>
+
+
 
 </html>

@@ -16,7 +16,6 @@ class Text extends Course {
         try {
 
             if (empty($this->title) || empty($this->description) || empty($this->teacher_id) || empty($this->tags) || empty($this->category_id) || empty($this->content)) {
-                die($this->title . "," . $this->description . "," . $this->teacher_id . "," . print_r($this->tags) . "," . $this->category_id . "," . $this->content);
                 return ["success" => false, "message" => "All inputs are required!"];
             }
 

@@ -20,7 +20,7 @@ if(isset($_POST['signup'])){
         if(isset($return['message'])){
             $error = $return['message'];
         } else {
-            header("Location: login.php");
+            header("Location: login");
             exit();
         }
     } elseif($role === "teacher") {
@@ -29,7 +29,7 @@ if(isset($_POST['signup'])){
         if(isset($return['message'])){
             $error = $return['message'];
         } else {
-            header("Location: login.php");
+            header("Location: login");
             exit();
         }
     }
@@ -53,13 +53,13 @@ if(isset($_POST['login'])){
 
         switch($return['role']){
             case 'admin':
-                header("Location: admin.php");
+                header("Location: dashboard");
                 break;
             case 'teacher':
-                header("Location: teacher.php");
+                header("Location: teacher/dashboard");
                 break;
             case 'student':
-                header("Location: courses.php");
+                header("Location: courses");
                 break;
         }
         exit();
