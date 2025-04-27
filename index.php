@@ -1,20 +1,20 @@
 <?php
+// if (isset($_GET['url'])) {
+//     die($_GET['url']);
+// } else {
+//     die('false');
+    
+// }
 
-$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https://' : 'http://';
-$domain = $_SERVER['HTTP_HOST'];
-define('BASE_URL', $protocol . $domain);
+define('BASE_URL', "/Youdemy");
 
-$script_name = dirname($_SERVER['SCRIPT_NAME']);
-$uri = $_SERVER['REQUEST_URI'];
+// Get the requested URL
+$request = $_GET['url'] ?? 'homepage';
 
-// Remove script name from uri
-$request = str_replace($script_name, '', $uri);
-
+// Remove trailing slash if exists
 $request = rtrim($request, '/');
 
-$request = $request ?: 'homepage';
-
-// routes
+// Define your routes
 $routes = [
     '' => 'pages/index.php',
     'homepage' => 'pages/index.php',
@@ -34,11 +34,12 @@ $routes = [
     'logout' => 'actions/logout.php',
 ];
 
+// Check if the route exists
 if (array_key_exists($request, $routes)) {
     include $routes[$request];
 } else {
+    // 404 page
     header("HTTP/1.0 404 Not Found");
     include 'pages/404.php';
     exit();
 }
-
